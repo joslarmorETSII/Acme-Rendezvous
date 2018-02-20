@@ -47,7 +47,7 @@ public class CommentAdministratorController extends AbstractController {
 
         result = new ModelAndView("comment/list");
         result.addObject("comments", comments);
-        result.addObject("requestURI", "comment/administrator/list");
+        result.addObject("requestURI", "comment/administrator/list.do");
         return result;
 
     }

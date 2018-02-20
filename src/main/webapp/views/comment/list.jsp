@@ -29,7 +29,10 @@
 
     <security:authorize access="hasRole('USER')">
         <acme:columnButton url="comment/user/edit.do?commentId=${row.id}" codeButton="comment.edit" />
+        <acme:columnButton url="comment/user/response.do?commentId=${row.id}" codeButton="comment.response" />
     </security:authorize>
+
+
 
 </display:table>
 
