@@ -8,24 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="adaab7af-c8bf-462e-ae0c-60c90f632070" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/administrator/action-1.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/administrator/action-2.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/administrator/messages.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/administrator/messages_es.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/administrator/tiles.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/administrator/tiles_es.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/customer/action-1.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/customer/action-2.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/customer/messages.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/customer/messages_es.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/customer/tiles.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/customer/tiles_es.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/profile/action-1.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/profile/action-2.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/profile/messages.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/profile/messages_es.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/profile/tiles.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/profile/tiles_es.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/Admin/AdministratorController.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CustomerController.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ProfileController.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/classes/Entities.map" afterPath="$PROJECT_DIR$/target/classes/Entities.map" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/RendezvousUserController.class" afterPath="$PROJECT_DIR$/target/classes/controllers/RendezvousUserController.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/domain/Rendezvous.class" afterPath="$PROJECT_DIR$/target/classes/domain/Rendezvous.class" />
@@ -143,15 +128,33 @@
               <item name="Acme-Rendezvous" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Acme-Rendezvous" type="b2602c69:ProjectViewProjectNode" />
               <item name="Acme-Rendezvous" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acme-Rendezvous" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acme-Rendezvous" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acme-Rendezvous" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acme-Rendezvous" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="AnnouncementUserController" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -405,7 +408,7 @@
       <workItem from="1519033345338" duration="1063000" />
       <workItem from="1519121227816" duration="28000" />
       <workItem from="1519121916420" duration="15000" />
-      <workItem from="1519136939762" duration="661000" />
+      <workItem from="1519136939762" duration="811000" />
     </task>
     <task id="LOCAL-00001" summary="Corregido en UserService el save, User por user">
       <created>1518706634215</created>
@@ -449,11 +452,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519137571464</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Eliminada las vistas para administrator, customer y profile, ya que son las que vienen por defecto en el proyecto y no nos valen.">
+      <created>1519137669996</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1519137669996</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8196000" />
+    <option name="totallyTimeSpent" value="8346000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1680" height="861" extended-state="0" />
@@ -538,7 +548,8 @@
     <MESSAGE value="Repositorio y servicio de Comment. Añadido atributos al populate" />
     <MESSAGE value="Añadida restriccion de que el admin borra los comments" />
     <MESSAGE value="Corregido el formato, y añadido TODO para felix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corregido el formato, y añadido TODO para felix" />
+    <MESSAGE value="Eliminada las vistas para administrator, customer y profile, ya que son las que vienen por defecto en el proyecto y no nos valen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Eliminada las vistas para administrator, customer y profile, ya que son las que vienen por defecto en el proyecto y no nos valen." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -652,15 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/list.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/edit.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="53" column="12" lean-forward="false" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/cancel.tag">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
@@ -726,6 +728,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/answerQuestion.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/edit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="53" column="12" lean-forward="false" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/Admin/AdministratorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/CustomerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ProfileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-138">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
         </state>
       </provider>
