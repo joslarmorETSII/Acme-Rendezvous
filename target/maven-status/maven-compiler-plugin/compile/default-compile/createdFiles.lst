@@ -1,0 +1,5 @@
+repositories/QuestionRepository.class
+repositories/AnswerRepository.class
+services/AnswerService.class
+services/AnnouncementService.class
+services/QuestionService.class
