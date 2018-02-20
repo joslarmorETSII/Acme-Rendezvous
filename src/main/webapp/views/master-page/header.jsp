@@ -22,13 +22,12 @@
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		<security:authorize access="hasRole('ADMIN')">
-			<%--<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
+			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="administrator/action-1.do"><spring:message code="master.page.administrator.action.1" /></a></li>
-					<li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li>
+					<li><a href="comment/admin/edit.do"><spring:message code="master.page.admin.comment.delete" /></a></li>
 				</ul>
-			</li>--%>
+			</li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('USER')">
@@ -37,6 +36,8 @@
 					<li class="arrow"></li>
 					<li><a href="question/user/create.do"><spring:message code="master.page.user.question.create" /></a></li>
 					<li><a href="rendezvous/user/create.do"><spring:message code="master.page.user.rendezvous.create" /></a></li>
+					<li><a href="comment/user/list.do"><spring:message code="master.page.user.comment.list" /></a></li>
+
 				</ul>
 			</li>
 		</security:authorize>

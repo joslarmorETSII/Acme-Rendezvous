@@ -49,6 +49,10 @@
 
 		<security:intercept-url pattern="/question/user/**" access="hasRole('USER')" />
 
+		<!-- Comments -->
+		<security:intercept-url pattern="/comment/user/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/comment/admin/**" access="hasRole('ADMIN')" />
+
 		<!-- Rendezvouses -->
 
 		<security:intercept-url pattern="/rendezvous/user/**" access="hasRole('USER')" />
