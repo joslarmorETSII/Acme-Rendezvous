@@ -16,14 +16,24 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<display:table name="comment" id="row" pagesize="5" class="displaytag" requestURI="comment/user/list.do">
+<display:table name="comments" id="row" pagesize="5" class="displaytag" requestURI="${requestURI}">
 
-    <acme:column code="comment.user" value="${row.user}" />
+    <acme:column code="comment.user" value="${row.user.name}" />
     <acme:column code="comment.text" value="${row.text}"/>
     <acme:column code="comment.moment" value="${row.moment}"/>
     <acme:column code="comment.picture" value="${row.picture}"/>
 
+    <security:authorize access="hasRole('ADMIN')">
+        <acme:columnButton url="comment/administrator/edit.do?commentId=${row.id}" codeButton="comment.delete" />
+    </security:authorize>
+
+    <security:authorize access="hasRole('USER')">
+        <acme:columnButton url="comment/user/edit.do?commentId=${row.id}" codeButton="comment.edit" />
+    </security:authorize>
+
 </display:table>
 
+<security:authorize access="hasRole('USER')">
 <acme:button code="comment.create" url="rondezvous/findAll.do"/>
+</security:authorize>
 

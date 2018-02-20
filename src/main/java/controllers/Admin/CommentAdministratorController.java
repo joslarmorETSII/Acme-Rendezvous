@@ -36,6 +36,22 @@ public class CommentAdministratorController extends AbstractController {
         super();
     }
 
+    // Listing -------------------------------------------------------
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ModelAndView list() {
+        ModelAndView result;
+        Collection<Comment> comments;
+
+        comments = this.commentService.findAll();
+
+        result = new ModelAndView("comment/list");
+        result.addObject("comments", comments);
+        result.addObject("requestURI", "comment/administrator/list");
+        return result;
+
+    }
+
     //  Edition ----------------------------------------------------------------
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
@@ -43,8 +59,9 @@ public class CommentAdministratorController extends AbstractController {
         final ModelAndView result;
         Comment comment;
         comment = this.commentService.findOne(commentId);
+        this.commentService.delete(comment);
         Assert.notNull(comment);
-        result = this.createEditModelAndView(comment);
+        result = new ModelAndView("redirect: list.do");
         return result;
     }
 
@@ -77,9 +94,9 @@ public class CommentAdministratorController extends AbstractController {
         ModelAndView result;
 
 
-        result = new ModelAndView("commemt/edit");
+        result = new ModelAndView("comment/edit");
         result.addObject("comment", comment);
-        result.addObject("actionURI", "commnent/admin/edit.do");
+        result.addObject("actionURI", "comment/administrator/edit.do");
         result.addObject("message", messageCode);
         return result;
     }

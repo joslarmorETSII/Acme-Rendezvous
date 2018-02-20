@@ -1,5 +1,6 @@
 package services;
 
+import domain.Admin;
 import domain.Comment;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,12 +83,15 @@ public class CommentService {
         Assert.notNull(comment);
         checkByPrincipal(comment);
 
-        if(comment.getParentComment() == null){
+        if(!(comment.getChildrenComments().isEmpty())){
+            this.commentRepository.delete(comment.getChildrenComments());
             this.commentRepository.delete(comment);
-        }else{
+        } if(comment.getParentComment() != null){
             Comment saved = comment.getParentComment();
             saved.getChildrenComments().remove(comment);
             this.commentRepository.save(saved);
+            this.commentRepository.delete(comment);
+        } else{
             this.commentRepository.delete(comment);
         }
     }
@@ -112,7 +116,14 @@ public class CommentService {
     public void checkByPrincipal(final Comment comment) {
 
         User user = this.userService.findByPrincipal();
-        Assert.isTrue(comment.getUser().equals(user) || user.getUserAccount().getAuthorities().contains(Authority.ADMIN));
+        Admin admin = this.adminService.findByPrincipal();
+        if(user==null) {
+            Collection<Authority> authorities = admin.getUserAccount().getAuthorities();
+            String authority = authorities.toArray()[0].toString();
+            Assert.isTrue(authority.equals("ADMIN"));
+        }else {
+            Assert.isTrue(comment.getUser().equals(user));
+        }
     }
 
 }

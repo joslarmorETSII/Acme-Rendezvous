@@ -36,6 +36,10 @@
         </jstl:if>
     </display:column>
 
+    <!-- TODO: Eliminar-->
+    <acme:columnButton url="comment/user/create.do?rendezvousId=${row.id}" codeButton="comment.create"/>
+
+
 </display:table>
 
 <acme:button code="rendezvous.create" url="rendezvous/user/create.do"/>

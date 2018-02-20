@@ -30,6 +30,8 @@ public class CommentUserController extends AbstractController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RendezvousService rendezvousService;
 
     // Constructor --------------------------------------------
 
@@ -40,11 +42,13 @@ public class CommentUserController extends AbstractController {
     // Creation ------------------------------------------------------
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create() {
+    public ModelAndView create(@RequestParam int rendezvousId) {
         ModelAndView result;
         Comment comment;
+        Rendezvous rendezvous = this.rendezvousService.findOne(rendezvousId);
 
         comment = this.commentService.create();
+        comment.setRendezvous(rendezvous);
         result = this.createEditModelAndView(comment);
 
         return result;

@@ -34,10 +34,8 @@
 
     <acme:submit name="save" code="comment.save"/>
 
-    <security:authorize access="hasRole('ADMIN')">
-        <acme:submit name="delete" code="comment.delete"/>
-    </security:authorize>
-
     <acme:cancel code="comment.cancel" url="comment/user/list.do"/>
+
+
 
 </form:form>

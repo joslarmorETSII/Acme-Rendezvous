@@ -25,7 +25,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="comment/admin/edit.do"><spring:message code="master.page.admin.comment.delete" /></a></li>
+					<li><a href="comment/administrator/list.do"><spring:message code="master.page.administrator.comment.list" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
