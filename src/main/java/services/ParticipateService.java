@@ -64,8 +64,10 @@ public class ParticipateService {
     public void delete(Participate participate){
         Assert.notNull(participate);
         checkByPrincipal(participate);
-        Date currentDate=new Date();
-        Assert.isTrue(currentDate.before(participate.getMoment()));
+        Assert.isTrue(participate.getRendezvous().getMoment().after(participate.getMoment()));
+        if(participate.getAttendant().equals(participate.getRendezvous().getCreator())){
+            rendezvousService.delete(participate.getRendezvous());
+        }
 
         participateRepository.delete(participate);
     }
@@ -95,5 +97,10 @@ public class ParticipateService {
         result = questions.get(0).getRendezvous();
         return result;
     }
+    public Participate participate(int attendantId,int rendezvousId){
+        Participate participate =participateRepository.participate(attendantId,rendezvousId);
+        return participate;
+    }
+
 
 }
