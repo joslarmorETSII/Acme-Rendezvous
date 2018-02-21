@@ -23,7 +23,7 @@
     <acme:column code="comment.moment" value="${row.moment}"/>
     <acme:column code="comment.picture" value="${row.picture}"/>
 
-    <security:authorize access="hasRole('ADMIN')">
+    <security:authorize access="hasRole('ADMINISTRATOR')">
         <acme:columnButton url="comment/administrator/edit.do?commentId=${row.id}" codeButton="comment.delete" />
     </security:authorize>
 
@@ -37,6 +37,6 @@
 </display:table>
 
 <security:authorize access="hasRole('USER')">
-<acme:button code="comment.create" url="rondezvous/findAll.do"/>
+<acme:button code="comment.rendezvous.list" url="rendezvous/listAll.do"/>
 </security:authorize>
 

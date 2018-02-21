@@ -120,7 +120,7 @@ public class CommentService {
         if(user==null) {
             Collection<Authority> authorities = administrator.getUserAccount().getAuthorities();
             String authority = authorities.toArray()[0].toString();
-            Assert.isTrue(authority.equals("ADMIN"));
+            Assert.isTrue(authority.equals("ADMINISTRATOR"));
         }else {
             Assert.isTrue(comment.getUser().equals(user));
         }
