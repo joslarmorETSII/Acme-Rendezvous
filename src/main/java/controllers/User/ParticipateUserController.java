@@ -64,7 +64,7 @@ public class ParticipateUserController  extends AbstractController {
         } else {
             participateService.save(participate);
             rendezvous.getParticipated().add(participate);
-            result = new ModelAndView("redirect: ../../rendezvous/user/listAll.do");
+            result = new ModelAndView("redirect: ../../rendezvous/listAll.do");
             result.addObject("rendezvous", rendezvousService.findAll());
             result.addObject("user", userService.findByPrincipal());
         }
@@ -95,7 +95,46 @@ public class ParticipateUserController  extends AbstractController {
         return result;
     }
 
-    protected ModelAndView createEditModelAndViewForm(QuestionsForm questionsForm, String message) {
+
+    @RequestMapping(value = "/cancel", method = RequestMethod.GET)
+    public ModelAndView cancel(@RequestParam int rendezvousId) {
+        ModelAndView result;
+        User user;
+        Participate participate;
+
+        user = userService.findByPrincipal();
+        participate = participateService.participate(user.getId(),rendezvousId);
+        participateService.delete(participate);
+        result = new ModelAndView("redirect: ../../rendezvous/user/list.do");
+        result.addObject("rendezvous",rendezvousService.findAll());
+        result.addObject("user",user);
+
+        return result;
+    }
+
+    @RequestMapping(value = "/cancelAll", method = RequestMethod.GET)
+    public ModelAndView cance2(@RequestParam int rendezvousId) {
+        ModelAndView result;
+        User user;
+        Participate participate;
+
+        user = userService.findByPrincipal();
+        participate = participateService.participate(user.getId(),rendezvousId);
+
+        result = new ModelAndView("redirect: ../../rendezvous/listAll.do");
+        result.addObject("rendezvous",user.getRendezvouses());
+        result.addObject("user",user);
+        result.addObject("cancelUri","cancelAll");
+        try {
+            participateService.delete(participate);
+        }catch (Throwable oops){
+            return result;
+        }
+
+        return result;
+    }
+
+        protected ModelAndView createEditModelAndViewForm(QuestionsForm questionsForm, String message) {
 
         ModelAndView result = new ModelAndView("rendezvous/answerQuestion");
 

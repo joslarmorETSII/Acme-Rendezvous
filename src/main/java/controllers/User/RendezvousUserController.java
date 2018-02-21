@@ -16,6 +16,7 @@ import services.UserService;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/rendezvous/user")
@@ -49,7 +50,10 @@ public class RendezvousUserController extends AbstractController {
         result.addObject("rendezvous", rendezvouses);
         result.addObject("user",user);
         result.addObject("requestUri","rendezvous/user/list.do");
-        return result;
+        result.addObject("cancelUri","cancel");
+       result.addObject("now",new Date());
+
+       return result;
 
     }
 

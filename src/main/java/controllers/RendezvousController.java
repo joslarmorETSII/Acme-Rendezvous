@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import services.RendezvousService;
 import services.UserService;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping("/rendezvous")
 public class RendezvousController extends AbstractController {
@@ -39,6 +41,9 @@ public class RendezvousController extends AbstractController {
         result.addObject("rendezvous", rendezvousService.findAll());
         result.addObject("user",user);
         result.addObject("requestUri","rendezvous/listAll.do");
+        result.addObject("cancelUri","cancelAll");
+        result.addObject("now",new Date());
+
         return result;
     }
 }
