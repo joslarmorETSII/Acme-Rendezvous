@@ -16,12 +16,14 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<display:table name="questions" id="row" pagesize="5" class="displaytag" requestURI="question/user/list.do">
+<display:table name="answers" id="row" pagesize="5" class="displaytag" requestURI="answer/user/list.do">
 
-    <acme:columnButton url="question/user/edit.do?questionId=${row.id}" codeButton="question.edit"/>
 
-    <acme:column code="question.text" value="${row.text}"/>
-    <acme:columnButton codeButton="question.answers" url="answer/user/list.do?questionId=${row.id}"/>
+    <acme:column code="answer.answer" value="${row.answer}"/>
+    <security:authorize access="hasRole('ADMIN')">
+        <acme:columnButton url="answer/admin/delete.do?answerId=${row.id}" codeButton="answer.delete"/>
+    </security:authorize>
+
 
 </display:table>
 

@@ -36,7 +36,7 @@ public class Authority implements GrantedAuthority {
 
 	// Values -----------------------------------------------------------------
 
-	public static final String	ADMIN		= "ADMIN";
+	public static final String	ADMIN		= "ADMINISTRATOR";
 	public static final String	USER	= "USER";
 
 	// Attributes -------------------------------------------------------------

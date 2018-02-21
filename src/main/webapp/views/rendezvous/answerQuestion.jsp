@@ -14,13 +14,19 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<form:form action="rendezvous/user/answerQuesiton.do" modelAttribute="question">
+<form:form action="participate/user/answerQuestion.do" modelAttribute="questionForm">
 
-    <jstl:forEach var="question" items="${questions}">
-        <acme:textbox path="answer" code="question.answer"/>
-    </jstl:forEach>
+    <form:hidden path="questions"/>
 
+    <jstl:set var="i"  value="0"/>
+    <c:forEach items="${questions}"  var="item">
 
+        <jstl:out value="${item.text}"  />
+        <acme:textbox path="answer${i}.answer" code="question.answer"/>
+        <jstl:set var="i" value="${i+1}"/>
+    </c:forEach>
+    <acme:submit name="save" code="question.save"/>
 </form:form>

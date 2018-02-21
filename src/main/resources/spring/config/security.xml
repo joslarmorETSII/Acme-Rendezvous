@@ -51,7 +51,7 @@
 
 		<!-- Comments -->
 		<security:intercept-url pattern="/comment/user/**" access="hasRole('USER')" />
-		<security:intercept-url pattern="/comment/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/comment/administrator/**" access="hasRole('ADMINISTRATOR')" />
 
 		<!-- Rendezvouses -->
 
@@ -62,7 +62,7 @@
 		<security:intercept-url pattern="/announcement/create.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/announcement/edit.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/announcement/list.do" access="permitAll" />
-		<security:intercept-url pattern="/announcement/delete.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/announcement/delete.do" access="hasRole('ADMINISTRATOR')" />
 
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

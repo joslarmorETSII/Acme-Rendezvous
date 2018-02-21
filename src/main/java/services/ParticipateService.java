@@ -1,16 +1,15 @@
 package services;
 
-import domain.Participate;
-import domain.User;
+import domain.*;
+import forms.QuestionsForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import repositories.ParticipateRepository;
 
 import javax.transaction.Transactional;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 @Service
 @Transactional
@@ -77,5 +76,24 @@ public class ParticipateService {
         Assert.isTrue(principal.equals(participate.getAttendant()));
     }
 
+    public Rendezvous reconstruct(QuestionsForm questionsForm, BindingResult binding) {
+        Rendezvous result;
+        List<Question> questions;
+        List<Answer> answers = new ArrayList<>();
+
+        answers.add(questionsForm.getAnswer0());
+        answers.add(questionsForm.getAnswer1());
+        answers.add(questionsForm.getAnswer2());
+        answers.add(questionsForm.getAnswer3());
+        answers.add(questionsForm.getAnswer4());
+
+        questions = new ArrayList<>(questionsForm.getQuestions());
+
+        for(int i=0;i<questions.size();i++){
+            questions.get(i).getAnswers().add(answers.get(i));
+        }
+        result = questions.get(0).getRendezvous();
+        return result;
+    }
 
 }
