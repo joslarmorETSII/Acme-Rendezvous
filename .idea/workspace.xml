@@ -8,10 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="adaab7af-c8bf-462e-ae0c-60c90f632070" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp" />
       <change beforePath="$PROJECT_DIR$/target/classes/Entities.map" afterPath="$PROJECT_DIR$/target/classes/Entities.map" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/RendezvousUserController.class" afterPath="$PROJECT_DIR$/target/classes/controllers/RendezvousUserController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/repositories/ParticipateRepository.class" afterPath="$PROJECT_DIR$/target/classes/repositories/ParticipateRepository.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/ParticipateService.class" afterPath="$PROJECT_DIR$/target/classes/services/ParticipateService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PopulateDatabase.xml" afterPath="$PROJECT_DIR$/target/classes/PopulateDatabase.xml" />
       <change beforePath="$PROJECT_DIR$/target/classes/spring/config/security.xml" afterPath="$PROJECT_DIR$/target/classes/spring/config/security.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,99 +23,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="messages.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/comment/messages.properties">
-          <provider editor-type-id="ResourceBundle">
-            <state />
-          </provider>
+      <file leaf-file-name="RendezvousController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/RendezvousController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+            <state relative-caret-position="90">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="messages_es.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/comment/messages_es.properties">
-          <provider editor-type-id="ResourceBundle">
-            <state />
-          </provider>
+      <file leaf-file-name="AnswerUserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/AnswerUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="18" column="35" lean-forward="false" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+            <state relative-caret-position="90">
+              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/edit.jsp">
+      <file leaf-file-name="CommentUserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/CommentUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Rendezvous.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/domain/Rendezvous.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RendezvousUserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/RendezvousUserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="45" column="44" lean-forward="false" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="44" />
+            <state relative-caret-position="90">
+              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ParticipateUserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ParticipateUserController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/ParticipateUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="64" column="30" lean-forward="true" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+            <state relative-caret-position="90">
+              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RendezvousService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/services/RendezvousService.java">
+      <file leaf-file-name="RendezvousUserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/RendezvousUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="147" column="5" lean-forward="false" selection-start-line="147" selection-start-column="5" selection-end-line="147" selection-end-column="5" />
+            <state relative-caret-position="90">
+              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RendezvousController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AnnouncementUserController/RendezvousController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="list.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/list.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/announcement/list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="977">
-              <caret line="48" column="112" lean-forward="false" selection-start-line="48" selection-start-column="87" selection-end-line="48" selection-end-column="112" />
+            <state relative-caret-position="-150">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="security.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/config/security.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="62" column="64" lean-forward="true" selection-start-line="62" selection-start-column="64" selection-end-line="62" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentAdministratorController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/Administrator/CommentAdministratorController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="56" column="60" lean-forward="true" selection-start-line="56" selection-start-column="60" selection-end-line="56" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuestionUserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/QuestionUserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -152,7 +153,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages_es.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/rendezvous/edit.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/services/RendezvousService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/master-page/messages.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/master-page/messages_es.properties" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/RendezvousUserController.java" />
@@ -162,6 +162,15 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/comment/messages.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/comment/messages_es.properties" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/ParticipateUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/RendezvousController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/User/AnswerUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/User/CommentUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/User/ParticipateUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/User/QuestionUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/User/RendezvousUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/AdministratorController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/Administrator/CommentAdministratorController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp" />
       </list>
     </option>
   </component>
@@ -216,10 +225,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -259,7 +267,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="converters" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Administrator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Acme-Rendezvous" type="b2602c69:ProjectViewProjectNode" />
@@ -267,7 +276,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Acme-Rendezvous" type="b2602c69:ProjectViewProjectNode" />
@@ -291,27 +301,19 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="comment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Acme-Rendezvous" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Acme-Rendezvous" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="rendezvous" type="462c0819:PsiDirectoryNode" />
+              <item name="announcement" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="sec&#9;FILE&#9;file://C:/Users/khawla/IdeaProjects/Acme-Rendezvous/src/main/resources/spring/config/security.xml&#10;header&#9;FILE&#9;file://C:/Users/khawla/IdeaProjects/Acme-Rendezvous/src/main/webapp/views/master-page/header.jsp&#10;rendezse&#9;FILE&#9;file://C:/Users/khawla/IdeaProjects/Acme-Rendezvous/src/main/java/services/RendezvousService.java&#10;popu&#9;FILE&#9;file://C:/Users/khawla/IdeaProjects/Acme-Rendezvous/src/main/java/utilities/PopulateDatabase.java&#10;populate&#9;FILE&#9;file:///Users/lara/Documents/intelliJ2Cuatri/Acme-Rendezvous/src/main/resources/PopulateDatabase.xml&#10;que&#9;PSI&#9;JAVA://utilities.QueryDatabase" />
+    <property name="SearchEverywhereHistoryKey" value="header&#9;FILE&#9;file:///Users/lara/Documents/intelliJ2Cuatri/Acme-Rendezvous/src/main/webapp/views/master-page/header.jsp&#10;secu&#9;FILE&#9;file:///Users/lara/Documents/intelliJ2Cuatri/Acme-Rendezvous/src/main/resources/spring/config/security.xml&#10;sec&#9;FILE&#9;file://C:/Users/khawla/IdeaProjects/Acme-Rendezvous/src/main/resources/spring/config/security.xml&#10;rendezse&#9;FILE&#9;file://C:/Users/khawla/IdeaProjects/Acme-Rendezvous/src/main/java/services/RendezvousService.java&#10;popu&#9;FILE&#9;file://C:/Users/khawla/IdeaProjects/Acme-Rendezvous/src/main/java/utilities/PopulateDatabase.java&#10;populate&#9;FILE&#9;file:///Users/lara/Documents/intelliJ2Cuatri/Acme-Rendezvous/src/main/resources/PopulateDatabase.xml&#10;que&#9;PSI&#9;JAVA://utilities.QueryDatabase" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -332,16 +334,12 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/encodings.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/services/AnnouncementService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/services/CommentService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/services/RendezvousService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/PopulateDatabase.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/PopulateDatabase.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/services/AnnouncementService.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/services/CommentService.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/services/RendezvousService.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/spring/config/i18n-l10n.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/spring/config/security.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/spring/config/tiles.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/master-page/messages.properties</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/master-page/messages_es.properties</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -349,21 +347,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/controllers/Administrator/CommentAdministratorController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/domain/Administrator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/repositories/AdministratorRepository.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/services/AdministratorService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/administrator/edit.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/administrator/messages.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/administrator/messages_es.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/administrator/tiles.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/administrator/tiles_es.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/user/edit.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/user/list.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/user/messages.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/user/messages_es.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/user/tiles.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/user/tiles_es.xml</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -371,13 +354,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/controllers/Admin/CommentAdministratorController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/domain/Admin.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/repositories/AdminRepository.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/services/AdminService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/domain/Admin.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/repositories/AdminRepository.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/services/AdminService.class</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -696,6 +672,7 @@
       <workItem from="1519121916420" duration="15000" />
       <workItem from="1519123685379" duration="1643000" />
       <workItem from="1519139347574" duration="17456000" />
+      <workItem from="1519212538901" duration="2272000" />
     </task>
     <task id="LOCAL-00001" summary="Corregido en UserService el save, User por user">
       <created>1518706634215</created>
@@ -746,14 +723,21 @@
       <option name="project" value="LOCAL" />
       <updated>1519211832550</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Cambio de sitio de los controladores">
+      <created>1519213106898</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1519213106899</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26634000" />
+    <option name="totallyTimeSpent" value="28906000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1054" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="942" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -773,12 +757,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36953956" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827103" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37032712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23405406" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23687424" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -837,7 +821,8 @@
     <MESSAGE value="Añadida restriccion de que el admin borra los comments" />
     <MESSAGE value="Añadido message a commet" />
     <MESSAGE value="realizados las vistas y controladores khawla" />
-    <option name="LAST_COMMIT_MESSAGE" value="realizados las vistas y controladores khawla" />
+    <MESSAGE value="Cambio de sitio de los controladores" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambio de sitio de los controladores" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -846,6 +831,65 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Rendezvous.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/comment/messages.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/RendezvousUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="45" column="44" lean-forward="false" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/ParticipateUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="64" column="30" lean-forward="true" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/RendezvousController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="48" column="112" lean-forward="false" selection-start-line="48" selection-start-column="87" selection-end-line="48" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/services/RendezvousService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="147" column="5" lean-forward="false" selection-start-line="147" selection-start-column="5" selection-end-line="147" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/PopulateDatabase.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
@@ -858,7 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="875">
           <caret line="35" column="45" lean-forward="false" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,7 +1018,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="35" column="45" lean-forward="false" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,108 +1064,80 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages_es.properties">
       <provider editor-type-id="ResourceBundle">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages_es.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/Rendezvous.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
+        <state relative-caret-position="90">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/master-page/messages.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/master-page/messages_es.properties">
       <provider editor-type-id="ResourceBundle">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/master-page/messages_es.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="23" column="52" lean-forward="false" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="33" column="53" lean-forward="false" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/config/security.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="49" column="87" lean-forward="false" selection-start-line="49" selection-start-column="87" selection-end-line="49" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AnnouncementUserController/RendezvousController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/comment/messages.properties">
       <provider editor-type-id="ResourceBundle">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/comment/messages.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="0">
           <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/comment/messages_es.properties">
       <provider editor-type-id="ResourceBundle">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/comment/messages_es.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
+        <state relative-caret-position="270">
           <caret line="18" column="35" lean-forward="false" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/edit.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="210">
           <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
           <folding />
         </state>
@@ -1131,32 +1145,104 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/list.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="977">
+        <state relative-caret-position="720">
           <caret line="48" column="112" lean-forward="false" selection-start-line="48" selection-start-column="87" selection-end-line="48" selection-end-column="112" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/RendezvousUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="45" column="44" lean-forward="false" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ParticipateUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="64" column="30" lean-forward="true" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/services/RendezvousService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
+        <state relative-caret-position="1905">
           <caret line="147" column="5" lean-forward="false" selection-start-line="147" selection-start-column="5" selection-end-line="147" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/RendezvousController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/AnswerUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/CommentUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/ParticipateUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/QuestionUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/AdministratorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/User/RendezvousUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/announcement/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/Administrator/CommentAdministratorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="56" column="60" lean-forward="true" selection-start-line="56" selection-start-column="60" selection-end-line="56" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/config/security.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="62" column="64" lean-forward="true" selection-start-line="62" selection-start-column="64" selection-end-line="62" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
           <folding />
         </state>
       </provider>
