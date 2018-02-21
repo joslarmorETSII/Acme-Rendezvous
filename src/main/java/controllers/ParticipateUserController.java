@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.LoginService;
 import services.*;
 
 import java.util.Collection;
@@ -51,11 +52,27 @@ public class ParticipateUserController  extends AbstractController {
           //result = createModelAndView(rendezvous)
         participateService.save(participate);
         rendezvous.getParticipated().add(participate);
-        result = new ModelAndView("redirect: ../../rendezvous/user/listAll.do");
+        result = new ModelAndView("redirect: ../../rendezvous/listAll.do");
         result.addObject("rendezvous",rendezvousService.findAll());
         result.addObject("user",userService.findByPrincipal());
 
         return result;
+    }
+
+    @RequestMapping(value = "/cancel", method = RequestMethod.GET)
+    public ModelAndView cancel(@RequestParam int rendezvousId){
+        ModelAndView result ;
+        Rendezvous rendezvous;
+        Participate participate;
+        User attendant= userService.findByPrincipal();
+        participate=participateService.participate(attendant.getId(),rendezvousId);
+        participateService.delete(participate);
+        result = new ModelAndView("redirect: ../../rendezvous/listAll.do");
+        result.addObject("rendezvous",rendezvousService.findAll());
+        result.addObject("user",userService.findByPrincipal());
+
+        return result;
+
     }
 
 

@@ -16,12 +16,12 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<display:table name="rendezvous" id="row" pagesize="10" class="displaytag" requestURI="rendezvous/user/list.do">
+<display:table name="rendezvous" id="row" pagesize="10" class="displaytag" requestURI="${requestUri}">
 
 
     <acme:column code="rendezvous.name" value="${row.name}"/>
     <acme:column code="rendezvous.description" value="${row.description}"/>
-    <acme:column code="rendezvous.moment" value="${row.moment}"/>
+    <acme:column code="rendezvous.moment" value="${row.moment}" sortable="true"/>
 
     <display:column>
         <jstl:set var="testuser" value="${user}"/>
@@ -34,11 +34,19 @@
         <jstl:if test="${contains eq false}">
             <acme:columnButton url="participate/user/create.do?rendezvousId=${row.id}" codeButton="rendezvous.participate"/>
         </jstl:if>
+        <jstl:if test="${contains eq true}">
+            <acme:columnButton url="participate/user/cancel.do?rendezvousId=${row.id}" codeButton="rendezvous.cancelparticipate"/>
+        </jstl:if>
     </display:column>
 
-    <!-- TODO: Eliminar-->
-    <acme:columnButton url="comment/user/create.do?rendezvousId=${row.id}" codeButton="comment.create"/>
+    <security:authorize access="hasRole('USER')">
+        <jstl:if test="${row.finalMode == false && row.creator eq testuser}">
+            <acme:columnButton url="rendezvous/user/edit.do?rendezvousId=${row.id}" codeButton="rendezvous.edit"/>
 
+        </jstl:if>
+    </security:authorize>
+
+    <acme:columnButton url="comment/user/create.do?rendezvousId=${row.id}" codeButton="comment.rendezvous.create"/>
 
 </display:table>
 

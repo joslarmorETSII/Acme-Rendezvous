@@ -40,28 +40,18 @@ public class RendezvousUserController extends AbstractController {
    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView result;
-        Collection<Rendezvous> rendezvous;
+        Collection<Rendezvous> rendezvouses;
 
         User user = userService.findByPrincipal();
-        rendezvous = user.getRendezvouses();
+        rendezvouses = user.getRendezvouses();
         result = new ModelAndView("rendezvous/list");
-        result.addObject("rendezvous", rendezvous);
+        result.addObject("rendezvous", rendezvouses);
         result.addObject("user",user);
+        result.addObject("requestUri","rendezvous/user/list.do");
         return result;
 
     }
-    @RequestMapping(value = "/listAll", method = RequestMethod.GET)
-    public ModelAndView listAll() {
-        ModelAndView result;
-        User user;
 
-        user = userService.findByPrincipal();
-        result = new ModelAndView("rendezvous/list");
-        result.addObject("rendezvous", rendezvousService.findAll());
-        result.addObject("user",user);
-        return result;
-
-    }
     // Creation ------------------------------------------------------
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -74,6 +64,8 @@ public class RendezvousUserController extends AbstractController {
 
         return result;
     }
+
+
 
 
     // Display ----------------------------------------------------------------
@@ -103,6 +95,8 @@ public class RendezvousUserController extends AbstractController {
         result = this.createEditModelAndView(rendezvous);
         return result;
     }
+
+
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid  Rendezvous rendezvous, final BindingResult binding) {

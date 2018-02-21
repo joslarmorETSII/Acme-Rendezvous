@@ -50,7 +50,7 @@ public class RendezvousService  {
 
         creator= userService.findByPrincipal();
         res=new Rendezvous();
-        res.setMoment(new Date(System.currentTimeMillis()-1000));
+
 
         res.setCreator(creator);
         res.setAnnouncements(announcements);
@@ -73,13 +73,14 @@ public class RendezvousService  {
         Assert.notNull(rendezvous);
         if(rendezvous.getId()==0){
             Participate participate = new Participate();
-            participate.setMoment(new Date());
+            //participate.setMoment(new Date());
             participate.setAttendant(rendezvous.getCreator());
 
             res=rendezvousRepository.save(rendezvous);
             participate.setRendezvous(res);
             participateService.save(participate);
         }else{
+           // Assert.isTrue(!rendezvous.getFinalMode());
             res=rendezvousRepository.save(rendezvous);
         }
 
@@ -108,7 +109,8 @@ public class RendezvousService  {
         Assert.notNull(rendezvous);
         Assert.isTrue(this.checkByPrincipal(rendezvous) || checkByPrincipalAdmin(rendezvous));
         Assert.isTrue(!rendezvous.getFinalMode());
-        rendezvous.setFinalMode(true);
+       // rendezvous.setFinalMode(true);
+        rendezvous.setDeleted(true);
         return res= rendezvousRepository.save(rendezvous);
 
 
@@ -140,7 +142,7 @@ public class RendezvousService  {
     public boolean checkByPrincipalAdmin(Rendezvous rendezvous){
         Boolean res= false;
         Administrator administrator = adminService.findByPrincipal();
-        res= administrator.getUserAccount().getAuthorities().equals("Administrator");
+        res= administrator.getUserAccount().getAuthorities().equals("ADMINISTRATOR");
         return res;
 
     }

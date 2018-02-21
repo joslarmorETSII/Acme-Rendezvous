@@ -56,6 +56,7 @@
 		<!-- Rendezvouses -->
 
 		<security:intercept-url pattern="/rendezvous/user/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/rendezvous/listAll.do" access="permitAll" />
 
 		<!-- Announcements -->
 		<!-- TODO: Falta corregir las URL y seguramente los controladores asociadas a estas -->

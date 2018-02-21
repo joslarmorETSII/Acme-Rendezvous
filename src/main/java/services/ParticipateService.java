@@ -66,7 +66,10 @@ public class ParticipateService {
         Assert.notNull(participate);
         checkByPrincipal(participate);
         Date currentDate=new Date();
-        Assert.isTrue(currentDate.before(participate.getMoment()));
+        Assert.isTrue(participate.getRendezvous().getMoment().after(participate.getMoment()));
+        if(participate.getAttendant().equals(participate.getRendezvous().getCreator())){
+            rendezvousService.delete(participate.getRendezvous());
+        }
 
         participateRepository.delete(participate);
     }
@@ -75,6 +78,11 @@ public class ParticipateService {
     private void checkByPrincipal(Participate participate) {
         User principal = userService.findByPrincipal();
         Assert.isTrue(principal.equals(participate.getAttendant()));
+    }
+
+    public Participate participate(int attendantId,int rendezvousId){
+        Participate participate =participateRepository.participate(attendantId,rendezvousId);
+        return participate;
     }
 
 
