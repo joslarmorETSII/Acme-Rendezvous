@@ -65,36 +65,66 @@ public class CommentService {
         Assert.notNull(comment);
         checkByPrincipal(comment);
         Comment res = comment;
+        Comment parentComment = comment.getParentComment();
 
         res.setMoment(new Date(System.currentTimeMillis()-1000));
 
-        if(res.getParentComment() == null){
+        if(comment.getId() == 0){
             this.commentRepository.save(comment);
         }else{
-            res.getParentComment().getChildrenComments().add(comment);
+            parentComment.getChildrenComments().add(comment);
+            this.commentRepository.save(parentComment);
             this.commentRepository.save(res);
         }
 
         return res;
     }
 
-    public void delete(Comment comment){
+    /*public void delete(Comment comment){
 
         Assert.notNull(comment);
         checkByPrincipal(comment);
 
-        if(!(comment.getChildrenComments().isEmpty())){
-            this.commentRepository.delete(comment.getChildrenComments());
+        if(comment.getChildrenComments() != null){
+            deleteComments(comment);
             this.commentRepository.delete(comment);
-        } if(comment.getParentComment() != null){
+        }else if(comment.getParentComment() != null){
             Comment saved = comment.getParentComment();
             saved.getChildrenComments().remove(comment);
             this.commentRepository.save(saved);
             this.commentRepository.delete(comment);
-        } else{
+        }else if(comment.getParentComment() == null){
             this.commentRepository.delete(comment);
         }
+    }*/
+
+    public void delete(Comment comment){
+        Assert.notNull(comment);
+        checkByPrincipal(comment);
+
+        if(comment.getChildrenComments().size() == 1) {
+            this.commentRepository.delete(comment.getChildrenComments().iterator().next());
+            this.commentRepository.delete(comment);
+
+        }else if(comment.getChildrenComments().size() > 1){
+            for(Comment c : comment.getChildrenComments()){
+                if(c.getChildrenComments().size() != 0) {
+                    c.setParentComment(null);
+                    this.commentRepository.save(c);
+                    this.commentRepository.delete(c.getChildrenComments());
+                }
+                c.setParentComment(null);
+                this.commentRepository.save(c);
+            }
+            commentRepository.delete(comment.getChildrenComments());
+            this.commentRepository.delete(comment);
+
+        } else if(comment.getChildrenComments().size() == 0) {
+            this.commentRepository.delete(comment);
+        }
+
     }
+
 
     public Comment findOne(int commentId){
         Assert.notNull(commentId);
@@ -126,4 +156,14 @@ public class CommentService {
         }
     }
 
+    /*public void deleteComments(Comment comment) {
+        Collection<Comment> comments = comment.getChildrenComments();
+        for (Comment c : comments) {
+            c.setParentComment(null);
+            c.setRendezvous(null);
+            c.setUser(null);
+            comments.remove(c);
+           // this.commentRepository.save(comment);
+        }
+    }*/
 }

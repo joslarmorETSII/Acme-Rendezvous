@@ -69,8 +69,6 @@ public class Comment extends DomainEntity {
     private Collection<Comment> childrenComments;
     private Comment parentComment;
 
-
-
     @Valid
     @NotNull
     @ManyToOne(optional = false)
