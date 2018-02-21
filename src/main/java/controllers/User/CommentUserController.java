@@ -1,5 +1,6 @@
-package controllers;
+package controllers.User;
 
+import controllers.AbstractController;
 import domain.Comment;
 import domain.Rendezvous;
 import domain.User;

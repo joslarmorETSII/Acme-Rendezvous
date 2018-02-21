@@ -1,4 +1,4 @@
-package controllers.administratoristrator;
+package controllers;
 
 import controllers.AbstractController;
 import domain.Administrator;

@@ -1,4 +1,4 @@
-package controllers.AnnouncementUserController;
+package controllers.User;
 
 import controllers.AbstractController;
 import domain.Announcement;

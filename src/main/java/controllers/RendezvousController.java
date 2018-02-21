@@ -1,7 +1,6 @@
-package controllers.AnnouncementUserController;
+package controllers;
 
 import controllers.AbstractController;
-import domain.Rendezvous;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import services.RendezvousService;
 import services.UserService;
-
-import java.util.Collection;
 
 @Controller
 @RequestMapping("/rendezvous")

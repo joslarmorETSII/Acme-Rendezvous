@@ -1,5 +1,6 @@
-package controllers;
+package controllers.User;
 
+import controllers.AbstractController;
 import domain.*;
 import forms.QuestionsForm;
 import org.springframework.beans.factory.annotation.Autowired;
