@@ -85,10 +85,9 @@ public class ParticipateUserController  extends AbstractController {
                 participate.setRendezvous(rendezvous);
                 participateService.save(participate);
                 rendezvous.getParticipated().add(participate);
-                result = new ModelAndView("redirect: ../../rendezvous/user/listAll.do");
+                result = new ModelAndView("redirect: ../../rendezvous/listAll.do");
                 result.addObject("rendezvous", rendezvousService.findAll());
                 result.addObject("user", userService.findByPrincipal());
-                result = new ModelAndView("redirect:/welcome/index.do");
             } catch (final Throwable oops) {
                 result = createEditModelAndViewForm(questionsForm, "question.save.error");
             }
