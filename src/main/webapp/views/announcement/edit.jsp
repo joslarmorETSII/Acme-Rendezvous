@@ -34,7 +34,7 @@
         <acme:submit name="save" code="announcement.save"/>
     </security:authorize>
 
-    <security:authorize access="hasRole('ADMIN')">
+    <security:authorize access="hasRole('ADMINISTRATOR')">
         <acme:submit name="delete" code="announcement.delete"/>
     </security:authorize>
 
