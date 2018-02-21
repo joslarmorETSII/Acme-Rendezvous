@@ -1,6 +1,6 @@
 package services;
 
-import domain.Admin;
+import domain.Administrator;
 import domain.Comment;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class CommentService {
     private UserService userService;
 
     @Autowired
-    private AdminService adminService;
+    private AdministratorService adminService;
 
     // Constructors -----------------------------------------------------------
 
@@ -116,9 +116,9 @@ public class CommentService {
     public void checkByPrincipal(final Comment comment) {
 
         User user = this.userService.findByPrincipal();
-        Admin admin = this.adminService.findByPrincipal();
+        Administrator administrator = this.adminService.findByPrincipal();
         if(user==null) {
-            Collection<Authority> authorities = admin.getUserAccount().getAuthorities();
+            Collection<Authority> authorities = administrator.getUserAccount().getAuthorities();
             String authority = authorities.toArray()[0].toString();
             Assert.isTrue(authority.equals("ADMIN"));
         }else {

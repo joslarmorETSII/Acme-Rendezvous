@@ -29,7 +29,7 @@ public class RendezvousService  {
     private ParticipateService participateService;
 
     @Autowired
-    private AdminService adminService;
+    private AdministratorService adminService;
 
     // Constructors -----------------------------------------------------------
 
@@ -139,8 +139,8 @@ public class RendezvousService  {
 
     public boolean checkByPrincipalAdmin(Rendezvous rendezvous){
         Boolean res= false;
-        Admin admin= adminService.findByPrincipal();
-        res=admin.getUserAccount().getAuthorities().equals("Admin");
+        Administrator administrator = adminService.findByPrincipal();
+        res= administrator.getUserAccount().getAuthorities().equals("Administrator");
         return res;
 
     }

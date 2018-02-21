@@ -1,10 +1,10 @@
 package services;
 
-import domain.Admin;
+import domain.Administrator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import repositories.AdminRepository;
+import repositories.AdministratorRepository;
 import security.LoginService;
 import security.UserAccount;
 
@@ -13,12 +13,12 @@ import java.util.Collection;
 
 @Service
 @Transactional
-public class AdminService {
+public class AdministratorService {
 
     // Managed repository -----------------------------------------------------
 
     @Autowired
-    private AdminRepository adminRepository;
+    private AdministratorRepository administratorRepository;
 
     // Supporting services ----------------------------------------------------
 
@@ -27,60 +27,60 @@ public class AdminService {
 
     // Constructors -----------------------------------------------------------
 
-    public AdminService() {
+    public AdministratorService() {
         super();
     }
 
     // Simple CRUD methods ----------------------------------------------------
 
-    public Admin create() {
+    public Administrator create() {
 
-        Admin result;
-        result = new Admin();
+        Administrator result;
+        result = new Administrator();
         final UserAccount userAccount = this.userAccountService.create("ADMIN");
         result.setUserAccount(userAccount);
         return result;
     }
 
-    public Admin findOne(final int adminId) {
+    public Administrator findOne(final int adminId) {
 
-        Admin result;
-        result = this.adminRepository.findOne(adminId);
+        Administrator result;
+        result = this.administratorRepository.findOne(adminId);
         return result;
     }
 
-    public Collection<Admin> findAll() {
+    public Collection<Administrator> findAll() {
 
-        Collection<Admin> result;
-        result = this.adminRepository.findAll();
+        Collection<Administrator> result;
+        result = this.administratorRepository.findAll();
         return result;
     }
 
-    public Admin save(final Admin admin) {
+    public Administrator save(final Administrator administrator) {
 
-        Assert.notNull(admin);
+        Assert.notNull(administrator);
 
-        Admin result;
+        Administrator result;
 
-        result = this.adminRepository.save(admin);
+        result = this.administratorRepository.save(administrator);
 
         return result;
     }
 
     // Other business methods -------------------------------------------------
 
-    public Admin findByPrincipal() {
+    public Administrator findByPrincipal() {
 
-        Admin result;
+        Administrator result;
         final UserAccount userAccount = LoginService.getPrincipal();
         result = this.findByUserAccountId(userAccount.getId());
         return result;
     }
 
-    public Admin findByUserAccountId(final int userAccountId) {
+    public Administrator findByUserAccountId(final int userAccountId) {
 
-        Admin result;
-        result = this.adminRepository.findByUserAccountId(userAccountId);
+        Administrator result;
+        result = this.administratorRepository.findByUserAccountId(userAccountId);
         return result;
     }
 

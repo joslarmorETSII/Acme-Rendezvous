@@ -1,6 +1,6 @@
 package services;
 
-import domain.Admin;
+import domain.Administrator;
 import domain.Announcement;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class AnnouncementService {
     private UserService userService;
 
     @Autowired
-    private AdminService adminService;
+    private AdministratorService adminService;
 
 
     // Simple CRUD methods ----------------------------------------------------
@@ -89,9 +89,9 @@ public class AnnouncementService {
 
     private void checkByPrincipalAdministrator() {
 
-        Admin admin = null;
-        admin = this.adminService.findByPrincipal();
-        Assert.isTrue(admin.getUserAccount().getAuthorities().equals("ADMIN"));
+        Administrator administrator = null;
+        administrator = this.adminService.findByPrincipal();
+        Assert.isTrue(administrator.getUserAccount().getAuthorities().equals("ADMIN"));
 
     }
 
