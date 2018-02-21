@@ -35,6 +35,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.user" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="user/edit.do"><spring:message code="master.page.user.edit" /></a></li>
 					<li><a href="question/user/create.do"><spring:message code="master.page.user.question.create" /></a></li>
                     <li><a href="rendezvous/user/list.do"><spring:message code="master.page.customer.rendezvous.list" /></a></li>
                     <li><a href="comment/user/list.do"><spring:message code="master.page.user.comment.list" /></a></li>

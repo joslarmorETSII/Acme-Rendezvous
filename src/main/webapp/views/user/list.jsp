@@ -26,6 +26,7 @@
     <acme:column code="user.email" value="${user.email}"/>
     <acme:column code="user.phone" value="${user.phone}"/>
     <acme:column code="user.postalAdresses" value="${user.postalAdresses}"/>
+    <acme:column code="user.birthday" value="${user.birthday}"/>
 
     <security:authorize access="hasRole('USER')">
         <display:column>

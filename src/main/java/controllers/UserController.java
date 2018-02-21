@@ -8,6 +8,7 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.UserService;
@@ -65,13 +66,10 @@ public class UserController extends AbstractController{
     public ModelAndView list() {
         ModelAndView result;
 
-        Collection<User> users;
-        users = userService.findAll();
-
         result = new ModelAndView("user/list");
-        result.addObject("users", users);
+        result.addObject("user", userService.findAll());
+
         result.addObject("requestURI", "user/list.do");
-        result.addObject("users",users);
         return result;
 
     }

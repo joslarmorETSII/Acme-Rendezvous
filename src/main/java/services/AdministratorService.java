@@ -42,10 +42,10 @@ public class AdministratorService {
         return result;
     }
 
-    public Administrator findOne(final int adminId) {
+    public Administrator findOne(final int administratorId) {
 
         Administrator result;
-        result = this.administratorRepository.findOne(adminId);
+        result = this.administratorRepository.findOne(administratorId);
         return result;
     }
 

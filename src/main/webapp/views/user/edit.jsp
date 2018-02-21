@@ -16,7 +16,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="user/user/edit.do" modelAttribute="user" onsubmit="return validateForm()">
+<form:form action="user/edit.do" modelAttribute="user" onsubmit="return validateForm()">
 
 	<form:hidden path="id"/>
 	<form:hidden path="version"/>
@@ -51,9 +51,8 @@
 	<form:errors path="phone" cssClass="error"/>
 	<br/>
 
-	<b><form:label path="birthday"><spring:message code="user.birthday"/></form:label>:&nbsp;</b>
-	<form:errors path="birthday" cssClass="error"/>
-	<br/>
+	<acme:textbox path="birthday" code="user.birthday" />
+
 	<input type="submit" name="save" value="<spring:message code="user.save"/>" />
 	
 	<input type="button" name="cancel" value="<spring:message code="user.cancel" />"
