@@ -29,7 +29,7 @@ public class CommentService {
     private UserService userService;
 
     @Autowired
-    private AdministratorService adminService;
+    private AdministratorService administratorService;
 
     // Constructors -----------------------------------------------------------
 
@@ -116,7 +116,7 @@ public class CommentService {
     public void checkByPrincipal(final Comment comment) {
 
         User user = this.userService.findByPrincipal();
-        Administrator administrator = this.adminService.findByPrincipal();
+        Administrator administrator = this.administratorService.findByPrincipal();
         if(user==null) {
             Collection<Authority> authorities = administrator.getUserAccount().getAuthorities();
             String authority = authorities.toArray()[0].toString();

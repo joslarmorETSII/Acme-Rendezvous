@@ -19,7 +19,7 @@
     <!-- User accounts -->
 
     <bean id="userAccount1" class="security.UserAccount">
-        <property name="username" value="admin"/>
+        <property name="username" value="administrator"/>
         <property name="password" value="21232f297a57a5a743894a0e4a801fc3"/>
         <property name="authorities">
             <list>
@@ -56,7 +56,7 @@
 
     <!-- Admins -->
 
-    <bean id="admin1" class="domain.Admin">
+    <bean id="admin1" class="domain.Administrator">
         <property name="name" value="admin1"/>
         <property name="surname" value="admin1"/>
         <property name="email" value="admin1@acme.com"/>
