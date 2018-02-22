@@ -68,11 +68,9 @@
 		<security:intercept-url pattern="/rendezvous/listAll.do" access="permitAll" />
 
 		<!-- Announcements -->
-		<!-- TODO: Falta corregir las URL y seguramente los controladores asociadas a estas -->
-		<security:intercept-url pattern="/announcement/create.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/announcement/edit.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/announcement/list.do" access="permitAll" />
-		<security:intercept-url pattern="/announcement/delete.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/announcement/user/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/announcement/administrator/**" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/announcement/listAll.do" access="permitAll()" />
 
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

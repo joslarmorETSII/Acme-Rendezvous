@@ -109,7 +109,6 @@ public class RendezvousService  {
         Assert.notNull(rendezvous);
         Assert.isTrue(this.checkByPrincipal(rendezvous) || checkByPrincipalAdmin(rendezvous));
         Assert.isTrue(!rendezvous.getFinalMode());
-       // rendezvous.setFinalMode(true);
         rendezvous.setDeleted(true);
         return res= rendezvousRepository.save(rendezvous);
 
@@ -145,6 +144,14 @@ public class RendezvousService  {
         res= administrator.getUserAccount().getAuthorities().equals("ADMINISTRATOR");
         return res;
 
+    }
+
+    public Rendezvous findParticipate(int rendezvousId){
+        User user= userService.findByPrincipal();
+        Rendezvous rendezvous= rendezvousRepository.findOne(rendezvousId);
+        Participate participate=participateService.participate(user.getId(),rendezvousId);
+        Assert.notNull(participate);
+        return  rendezvous;
     }
 
 
