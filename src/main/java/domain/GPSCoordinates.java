@@ -21,13 +21,12 @@ public class GPSCoordinates {
 
     // Attributes -------------------------------------------------------------
 
-    private Double	longitude;
-    private Double	latitude;
+    private double	longitude;
+    private double	latitude;
 
 
     @Digits(integer = 3, fraction = 5)
     @Range(min = (long) -180.0, max = (long) 180.0)
-    @NotNull
     public double getLongitude() {
         return this.longitude;
     }
@@ -38,7 +37,6 @@ public class GPSCoordinates {
 
     @Digits(integer = 2, fraction = 5)
     @Range(min = (long) -90.0, max = (long) 90.0)
-    @NotNull
     public double getLatitude() {
         return this.latitude;
     }
