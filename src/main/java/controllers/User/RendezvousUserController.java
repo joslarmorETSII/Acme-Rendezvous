@@ -118,6 +118,20 @@ public class RendezvousUserController extends AbstractController {
         return result;
     }
 
+    @RequestMapping(value = "/edit", method = RequestMethod.POST,params = "delete")
+    public ModelAndView edit(Rendezvous rendezvous){
+        ModelAndView result;
+
+        try{
+            rendezvousService.delete(rendezvous);
+            result = new ModelAndView("redirect:list.do");
+        }catch (Throwable oops){
+            result = createEditModelAndView(rendezvous,"rendezvous.delete.error");
+        }
+
+        return result;
+    }
+
 
     // Ancillary methods ------------------------------------------------------
 
