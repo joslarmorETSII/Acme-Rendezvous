@@ -27,6 +27,7 @@
 					<li class="arrow"></li>
 					<li><a href="administrator/edit.do"><spring:message code="master.page.administrator.edit" /></a></li>
 					<li><a href="comment/administrator/list.do"><spring:message code="master.page.comment.administrator.list" /></a></li>
+					<li><a href="announcement/listAll.do"><spring:message code="master.page.announcement.listAll" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -39,12 +40,14 @@
 					<li><a href="question/user/create.do"><spring:message code="master.page.user.question.create" /></a></li>
                     <li><a href="rendezvous/user/list.do"><spring:message code="master.page.customer.rendezvous.list" /></a></li>
                     <li><a href="comment/user/list.do"><spring:message code="master.page.user.comment.list" /></a></li>
+					<li><a href="announcement/user/list.do"><spring:message code="master.page.user.announcement.list" /></a></li>
                 </ul>
 			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
+			<li><a class="fNiv" href="announcement/listAll.do"><spring:message code="master.page.announcement.listAll" /></a></li>
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>
 		

@@ -2,6 +2,7 @@ package controllers.User;
 
 import controllers.AbstractController;
 import domain.Announcement;
+import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.AnnouncementService;
+import services.UserService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -23,6 +25,9 @@ public class AnnouncementUserController extends AbstractController {
 
     @Autowired
     private AnnouncementService announcementService;
+
+    @Autowired
+    private UserService userService;
 
     // Constructor -----------------------------------------
     public AnnouncementUserController() {
@@ -61,13 +66,15 @@ public class AnnouncementUserController extends AbstractController {
     public ModelAndView save(@Valid final Announcement announcement, final BindingResult binding) {
 
         ModelAndView res = null;
+        User user = userService.findByPrincipal();
+        Assert.isTrue(user.equals(announcement.getRendezvous().getCreator()));
 
         if (binding.hasErrors())
             res = this.createEditModelAndView(announcement);
         else
             try {
                 this.announcementService.save(announcement);
-                res = new ModelAndView("redirect:/announcement/list.do");
+                res = new ModelAndView("redirect:list.do");
             } catch (final Throwable t) {
                 res = this.createEditModelAndView(announcement, "announcement.commit.error");
             }
@@ -77,18 +84,25 @@ public class AnnouncementUserController extends AbstractController {
 
     // Listing --------------------------------------------
 
+    // Display ----------------------------------------------------------------
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
 
         final Collection<Announcement> announcements;
-        announcements = this.announcementService.findAll();
+        User user;
+
+        user = userService.findByPrincipal();
+        announcements = this.announcementService.announcementFindByParticipated(user.getId());
 
         final ModelAndView res = new ModelAndView("announcement/list");
         res.addObject("announcements", announcements);
-        res.addObject("requestURI", "announcement/list.do");
+        res.addObject("requestURI", "announcement/user/list.do");
 
         return res;
     }
+
+
     // Ancillary methods
 
     private ModelAndView createEditModelAndView(final Announcement announcement) {
@@ -100,9 +114,12 @@ public class AnnouncementUserController extends AbstractController {
     private ModelAndView createEditModelAndView(final Announcement announcement, final String message) {
 
         final ModelAndView res = new ModelAndView("announcement/edit");
+        User user;
+        user = userService.findByPrincipal();
         res.addObject("announcement", announcement);
         res.addObject("message", message);
-        res.addObject("actionUri", "announcement/user/create.do");
+        res.addObject("myRendezvouses", user.getRendezvouses());
+        res.addObject("actionUri", "announcement/user/edit.do");
         res.addObject("cancelUri","announcement/user/list.do");
 
         return res;

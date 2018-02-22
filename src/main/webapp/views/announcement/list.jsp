@@ -24,12 +24,7 @@
     <acme:column code="announcement.title" value="${announcement.title}" />
     <acme:column code="announcement.moment" value="${announcement.moment}" />
     <acme:column code="announcement.description" value="${announcement.description}"/>
-
-    <security:authorize access="hasRole('USER')">
-        <display:column>
-            <acme:button code="announcement.create" url="announcement/user/create.do?announcementId=${announcement.id}" />
-        </display:column>
-    </security:authorize>
+    <acme:column code="announcement.rendezvous.name" value="${announcement.rendezvous.name}"/>
 
     <security:authorize access="hasRole('USER')">
         <display:column>
@@ -37,4 +32,14 @@
         </display:column>
     </security:authorize>
 
+    <security:authorize access="hasRole('ADMINISTRATOR')">
+        <acme:columnButton url="announcement/administrator/edit.do?announcementId=${announcement.id}" codeButton="announcement.delete" />
+    </security:authorize>
+
 </display:table>
+
+<security:authorize access="hasRole('USER')">
+
+    <acme:button code="announcement.create" url="announcement/user/create.do" />
+
+</security:authorize>
