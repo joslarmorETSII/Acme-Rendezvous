@@ -46,7 +46,7 @@ public class CommentUserController extends AbstractController {
     public ModelAndView create(@RequestParam int rendezvousId) {
         ModelAndView result;
         Comment comment;
-        Rendezvous rendezvous = this.rendezvousService.findOne(rendezvousId);
+        Rendezvous rendezvous = this.rendezvousService.findParticipate(rendezvousId);
 
         comment = this.commentService.create();
         comment.setRendezvous(rendezvous);
