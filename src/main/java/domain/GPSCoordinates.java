@@ -4,6 +4,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
@@ -20,12 +21,13 @@ public class GPSCoordinates {
 
     // Attributes -------------------------------------------------------------
 
-    private double	longitude;
-    private double	latitude;
+    private Double	longitude;
+    private Double	latitude;
 
 
     @Digits(integer = 3, fraction = 5)
     @Range(min = (long) -180.0, max = (long) 180.0)
+    @NotNull
     public double getLongitude() {
         return this.longitude;
     }
@@ -36,6 +38,7 @@ public class GPSCoordinates {
 
     @Digits(integer = 2, fraction = 5)
     @Range(min = (long) -90.0, max = (long) 90.0)
+    @NotNull
     public double getLatitude() {
         return this.latitude;
     }
