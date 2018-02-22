@@ -7,14 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adaab7af-c8bf-462e-ae0c-60c90f632070" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/views/rendezvous/listAll.jsp" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RendezvousController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/RendezvousController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/config/security.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/config/security.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages.properties" afterPath="$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages_es.properties" afterPath="$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages_es.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/rendezvous/tiles.xml" afterPath="$PROJECT_DIR$/src/main/webapp/views/rendezvous/tiles.xml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/config/security.xml" afterPath="$PROJECT_DIR$/target/classes/spring/config/security.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -359,28 +353,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/controllers/User/AnnouncementUserController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/controllers/User/ParticipateUserController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/services/AnnouncementService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/Entities.map</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/spring/config/i18n-l10n.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/spring/config/security.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/spring/config/tiles.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/announcement/edit.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/announcement/list.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/announcement/messages.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/announcement/messages_es.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/master-page/header.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/master-page/messages.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/master-page/messages_es.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/question/messages.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/rendezvous/list.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/rendezvous/messages_es.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/user/list.jsp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/user/messages.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/webapp/views/user/messages_es.properties</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/domain/GPSCoordinates.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -388,7 +361,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/controllers/AnnouncementController.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -713,7 +685,7 @@
       <workItem from="1519121227816" duration="28000" />
       <workItem from="1519121916420" duration="15000" />
       <workItem from="1519123685379" duration="1643000" />
-      <workItem from="1519139347574" duration="26393000" />
+      <workItem from="1519139347574" duration="26452000" />
     </task>
     <task id="LOCAL-00001" summary="Corregido en UserService el save, User por user">
       <created>1518706634215</created>
@@ -778,11 +750,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519294590919</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="corregido controlador rendezvous khawla">
+      <created>1519296099677</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1519296099677</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35571000" />
+    <option name="totallyTimeSpent" value="35630000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1054" extended-state="6" />
@@ -870,7 +849,8 @@
     <MESSAGE value="Añadido message a commet" />
     <MESSAGE value="realizados las vistas y controladores khawla" />
     <MESSAGE value="corregido controlador comment khawla" />
-    <option name="LAST_COMMIT_MESSAGE" value="corregido controlador comment khawla" />
+    <MESSAGE value="corregido controlador rendezvous khawla" />
+    <option name="LAST_COMMIT_MESSAGE" value="corregido controlador rendezvous khawla" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
