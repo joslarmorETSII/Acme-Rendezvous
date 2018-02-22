@@ -46,4 +46,20 @@ public class RendezvousController extends AbstractController {
 
         return result;
     }
+
+    @RequestMapping(value = "/listAll-2", method = RequestMethod.GET)
+    public ModelAndView listAll2() {
+        ModelAndView result;
+
+
+
+        result = new ModelAndView("rendezvous/list");
+        result.addObject("rendezvous", rendezvousService.findAll());
+
+        result.addObject("requestUri","rendezvous/listAll-2.do");
+
+        result.addObject("now",new Date());
+
+        return result;
+    }
 }
