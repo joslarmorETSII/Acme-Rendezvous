@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import repositories.AnnouncementRepository;
+import security.Authority;
 
 import java.util.Collection;
 import java.util.Date;
@@ -91,7 +92,9 @@ public class AnnouncementService {
 
         Administrator administrator = null;
         administrator = this.adminService.findByPrincipal();
-        Assert.isTrue(administrator.getUserAccount().getAuthorities().equals("ADMIN"));
+        Collection<Authority> authorities = administrator.getUserAccount().getAuthorities();
+        String authority = authorities.toArray()[0].toString();
+        Assert.isTrue(authority.equals("ADMINISTRATOR"));
 
     }
 
