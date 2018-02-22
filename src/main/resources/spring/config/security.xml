@@ -66,6 +66,8 @@
 
 		<security:intercept-url pattern="/rendezvous/user/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/rendezvous/listAll.do" access="permitAll" />
+		<security:intercept-url pattern="/rendezvous/listAll-2.do" access="permitAll" />
+
 
 		<!-- Announcements -->
 		<security:intercept-url pattern="/announcement/user/**" access="hasRole('USER')" />
