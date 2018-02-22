@@ -30,7 +30,7 @@
 
     <security:authorize access="hasRole('USER')">
         <display:column>
-            <acme:button code="user.edit" url="user/user/edit.do?userId=${user.id}" />
+            <acme:button code="user.edit" url="user/edit.do?userId=${user.id}" />
         </display:column>
     </security:authorize>
 

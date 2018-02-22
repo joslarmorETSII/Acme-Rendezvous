@@ -44,11 +44,13 @@
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
-			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
+			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
+			<li><a href="rendezvous/listAll.do"><spring:message code="master.page.customer.rendezvous.listAll" /></a></li>
+			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
 			<li>
 				<a class="fNiv"> 
 					<spring:message code="master.page.profile" /> 
@@ -59,7 +61,6 @@
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
-			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
 		</security:authorize>
 	</ul>
 </div>
