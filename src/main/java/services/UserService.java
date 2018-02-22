@@ -1,5 +1,8 @@
 package services;
 
+import domain.Comment;
+import domain.Participate;
+import domain.Rendezvous;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -10,6 +13,8 @@ import security.LoginService;
 import security.UserAccount;
 
 import javax.transaction.Transactional;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -43,7 +48,10 @@ public class UserService {
 
         result = new User();
 
-        result.setBirthday(new Date(System.currentTimeMillis() - 1000));
+        result.setBirthday(new Date());
+        result.setComments(new ArrayList<Comment>());
+        result.setParticipates(new ArrayList<Participate>());
+        result.setRendezvouses(new ArrayList<Rendezvous>());
         result.setUserAccount(this.userAccountService.create("USER"));
 
         return result;
@@ -87,6 +95,8 @@ public class UserService {
         result = this.findByUserAccountId(userAccount.getId());
         return result;
     }
+
+
 
     public User findByUserAccountId(final int userAccountId) {
 

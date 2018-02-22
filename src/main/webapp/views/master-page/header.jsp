@@ -49,6 +49,7 @@
 			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
 			<li><a class="fNiv" href="announcement/listAll.do"><spring:message code="master.page.announcement.listAll" /></a></li>
 			<li><a class="fNiv" href="rendezvous/listAll-2.do"><spring:message code="master.page.rendezvous.listAll-2" /></a></li>
+			<li><a class="fNiv" href="user/create.do"><spring:message code="master.page.user.create" /></a><
 
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>

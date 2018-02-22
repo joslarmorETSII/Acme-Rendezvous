@@ -47,8 +47,9 @@
 
 		<!-- User -->
 
-		<security:intercept-url pattern="/user/edit.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/user/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/user/list.do" access="permitAll" />
+		<security:intercept-url pattern="/user/create.do" access="permitAll" />
 
 		<!-- Participates -->
 

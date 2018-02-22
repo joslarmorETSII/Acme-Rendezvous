@@ -60,6 +60,19 @@ public class UserController extends AbstractController{
         return result;
     }
 
+    // Creating  --------------------------------------------------
+
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public ModelAndView create() {
+
+        ModelAndView result;
+
+        final User user = this.userService.create();
+        result = this.createEditModelAndView(user);
+        return result;
+    }
+
+
     // Listing -------------------------------------------------------
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)

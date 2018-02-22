@@ -25,6 +25,19 @@
 	<form:hidden path="participates" />
 	<form:hidden path="rendezvouses" />
 
+	<jstl:if test="${user.id == 0}">
+		<form:hidden path="userAccount.authorities" />
+
+		<b><form:label path="userAccount.username"><spring:message code="user.userAccount.username" /></form:label>:&nbsp;</b>
+		<form:input path="userAccount.username" />
+		<form:errors path="userAccount.username" cssClass="error"  />
+		<br />
+
+		<b><form:label path="userAccount.password"><spring:message code="user.userAccount.password" /></form:label>:&nbsp;</b>
+		<form:password path="userAccount.password" />
+		<form:errors path="userAccount.password" cssClass="error"  />
+		<br />
+	</jstl:if>
 	
 	<b><form:label path="name"><spring:message code="user.name"/></form:label>:&nbsp;</b>
 	<form:input path="name"/>
@@ -51,7 +64,11 @@
 	<form:errors path="phone" cssClass="error"/>
 	<br/>
 
-	<acme:textbox path="birthday" code="user.birthday" />
+    <b><form:label path="birthday"><spring:message code="user.birthday"/></form:label>:&nbsp;</b>
+    <form:input path="birthday"/>
+    <form:errors path="birthday" cssClass="error"/>
+    <br/>
+
 
 	<input type="submit" name="save" value="<spring:message code="user.save"/>" />
 	

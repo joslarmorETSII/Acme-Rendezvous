@@ -34,4 +34,8 @@
         </display:column>
     </security:authorize>
 
+    <display:column>
+        <acme:button code="user.rendezvous.list" url="rendezvous/user/list.do" />
+    </display:column>
+
 </display:table>
