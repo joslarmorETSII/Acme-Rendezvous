@@ -40,12 +40,17 @@ public class RendezvousUserController extends AbstractController {
     // Listing -------------------------------------------------------
 
    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView list() {
+    public ModelAndView list(@RequestParam(required= false, defaultValue = "0") Integer userId ) {
         ModelAndView result;
+        User user;
         Collection<Rendezvous> rendezvouses;
-
-        User user = userService.findByPrincipal();
-        rendezvouses = user.getRendezvouses();
+        if(userId!=0){
+             user=userService.findOne(userId);
+            rendezvouses= user.getRendezvouses();
+        }else {
+            user = userService.findByPrincipal();
+            rendezvouses = user.getRendezvouses();
+        }
         result = new ModelAndView("rendezvous/list");
         result.addObject("rendezvous", rendezvouses);
         result.addObject("user",user);
@@ -150,7 +155,7 @@ public class RendezvousUserController extends AbstractController {
         result.addObject("rendezvous", rendezvous);
 
 
-       // result.addObject("cancelURI", "note/auditor/list.do");
+
         result.addObject("message", messageCode);
         return result;
     }
