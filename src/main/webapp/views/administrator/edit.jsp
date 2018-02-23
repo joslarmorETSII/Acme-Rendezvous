@@ -16,7 +16,9 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="administrator/edit.do" modelAttribute="administrator" onsubmit="return validateForm()">
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+
+<form:form action="administrator/edit.do" modelAttribute="administrator" >
 
 	<form:hidden path="id"/>
 	<form:hidden path="version"/>
@@ -46,11 +48,10 @@
 	<form:input path="phone" placeholder="+CC (AC) PN"/>
 	<form:errors path="phone" cssClass="error"/>
 	<br/>
-	
-	<input type="submit" name="save" value="<spring:message code="administrator.save"/>" />
-	
-	<input type="button" name="cancel" value="<spring:message code="administrator.cancel" />"
-			onclick="javascript: relativeRedir('welcome/index.do');" />
+
+	<acme:submit name="save" code="administrator.save"/>
+
+	<acme:cancel code="administrator.cancel" url="administrator/edit.do"/>
 
 </form:form>
 

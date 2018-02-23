@@ -20,8 +20,8 @@
 
 
     <acme:column code="answer.answer" value="${row.answer}"/>
-    <security:authorize access="hasRole('ADMIN')">
-        <acme:columnButton url="answer/admin/delete.do?answerId=${row.id}" codeButton="answer.delete"/>
+    <security:authorize access="hasRole('ADMINISTRATOR')">
+        <acme:columnButton url="answer/administrator/delete.do?answerId=${row.id}" codeButton="answer.delete"/>
     </security:authorize>
 
 

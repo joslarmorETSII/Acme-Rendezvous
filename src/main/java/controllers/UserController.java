@@ -2,6 +2,7 @@ package controllers;
 
 
 import domain.User;
+import forms.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -30,47 +31,84 @@ public class UserController extends AbstractController{
         super();
     }
 
-    // Edition  ----------------------------------------------------------------
+    // Edition Profile ----------------------------------------------------------------
 
-    @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public ModelAndView edit() {
+    @RequestMapping(value = "/editProfile", method = RequestMethod.GET)
+    public ModelAndView editProfile() {
 
         ModelAndView result;
 
         final User user = this.userService.findByPrincipal();
-        result = this.createEditModelAndView(user);
+        result = this.createEditModelAndView2(user);
 
         return result;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+    @RequestMapping(value = "/editProfile", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid final User user, final BindingResult binding) {
 
         ModelAndView result;
 
         if (binding.hasErrors())
-            result = this.createEditModelAndView(user);
+            result = this.createEditModelAndView2(user);
         else
             try {
                 this.userService.save(user);
                 result = new ModelAndView("redirect:/welcome/index.do");
             } catch (final Throwable oops) {
-                result = this.createEditModelAndView(user, "user.commit.error");
+                result = this.createEditModelAndView2(user, "user.commit.error");
             }
         return result;
     }
 
-    // Creating  --------------------------------------------------
+    //Edition --------------------------------------------------------------------
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create() {
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView edit() {
 
         ModelAndView result;
+        result = new ModelAndView("user/edit");
 
-        final User user = this.userService.create();
-        result = this.createEditModelAndView(user);
+        result.addObject("userForm", new UserForm());
+
         return result;
     }
+
+    // Save ------------------------------------------------------------------------
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
+    public ModelAndView save(@Valid final UserForm userForm, final BindingResult binding) {
+        ModelAndView result;
+        User user;
+
+        try {
+            user = this.userService.reconstruct(userForm, binding);
+
+            if (binding.hasErrors())
+                result = this.createEditModelAndView(userForm, "user.save.error");
+            else {
+                result = new ModelAndView("redirect:/welcome/index.do");
+                user = this.userService.save(user);
+
+            }
+        } catch (final Throwable oops) {
+            result = this.createEditModelAndView(userForm, "user.save.error");
+        }
+
+        return result;
+    }
+
+//    // Creating  --------------------------------------------------
+//
+//    @RequestMapping(value = "/create", method = RequestMethod.GET)
+//    public ModelAndView create() {
+//
+//        ModelAndView result;
+//
+//        final User user = this.userService.create();
+//        result = this.createEditModelAndView(user);
+//        return result;
+//    }
 
 
     // Listing -------------------------------------------------------
@@ -89,22 +127,24 @@ public class UserController extends AbstractController{
 
     // Ancillary methods ------------------------------------------------------------
 
-    protected ModelAndView createEditModelAndView(final User user) {
+    private ModelAndView createEditModelAndView(final UserForm userForm, final String message) {
 
-        ModelAndView result;
+        final ModelAndView result = new ModelAndView("user/edit");
 
-        result = this.createEditModelAndView(user, null);
-
+        result.addObject("userForm", userForm);
+        result.addObject("message", message);
         return result;
     }
 
-    protected ModelAndView createEditModelAndView(final User user, final String message) {
+    private ModelAndView createEditModelAndView2(final User user) {
 
-        Assert.notNull(user);
+        return this.createEditModelAndView2(user, null);
+    }
 
-        ModelAndView result;
+    private ModelAndView createEditModelAndView2(final User user, final String message) {
 
-        result = new ModelAndView("user/edit");
+        final ModelAndView result = new ModelAndView("user/editProfile");
+
         result.addObject("user", user);
         result.addObject("message", message);
 

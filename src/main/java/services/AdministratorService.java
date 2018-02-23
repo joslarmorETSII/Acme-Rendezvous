@@ -33,28 +33,6 @@ public class AdministratorService {
 
     // Simple CRUD methods ----------------------------------------------------
 
-    public Administrator create() {
-
-        Administrator result;
-        result = new Administrator();
-        final UserAccount userAccount = this.userAccountService.create("ADMIN");
-        result.setUserAccount(userAccount);
-        return result;
-    }
-
-    public Administrator findOne(final int administratorId) {
-
-        Administrator result;
-        result = this.administratorRepository.findOne(administratorId);
-        return result;
-    }
-
-    public Collection<Administrator> findAll() {
-
-        Collection<Administrator> result;
-        result = this.administratorRepository.findAll();
-        return result;
-    }
 
     public Administrator save(final Administrator administrator) {
 
@@ -70,17 +48,23 @@ public class AdministratorService {
     // Other business methods -------------------------------------------------
 
     public Administrator findByPrincipal() {
-
         Administrator result;
-        final UserAccount userAccount = LoginService.getPrincipal();
-        result = this.findByUserAccountId(userAccount.getId());
+        UserAccount userAccount;
+
+        userAccount = LoginService.getPrincipal();
+        Assert.notNull(userAccount);
+
+        result = this.findByUserAccount(userAccount);
+        Assert.notNull(result);
+
         return result;
     }
 
-    public Administrator findByUserAccountId(final int userAccountId) {
+    public Administrator findByUserAccount(final UserAccount userAccount) {
 
+        Assert.notNull(userAccount);
         Administrator result;
-        result = this.administratorRepository.findByUserAccountId(userAccountId);
+        result = this.administratorRepository.findByUserAccountId(userAccount.getId());
         return result;
     }
 
