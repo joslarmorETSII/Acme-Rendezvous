@@ -32,7 +32,9 @@
 		<bean class="converters.AnnouncementToStringConverter"/>
 		<bean class="converters.ParticipateToStringConverter"/>
 		<bean class="converters.AuthorityToStringConverter"/>
-
+		<bean class="converters.AdministratorToStringConverter"/>
+		<bean class="converters.ActorToStringConverter"/>
+		<bean class="converters.UserAccountToStringConverter"/>
 
 		<bean class="converters.StringToAnswerConverter"/>
 		<bean class="converters.StringToCommentConverter"/>
@@ -43,6 +45,9 @@
 		<bean class="converters.StringToParticipateConverter"/>
 		<bean class="converters.StringToAnnouncementConverter"/>
 		<bean class="converters.StringToAuthorityConverter"/>
+		<bean class="converters.StringToAdministratorConverter"/>
+		<bean class="converters.StringToActorConverter"/>
+		<bean class="converters.StringToUserAccountConverter"/>
 
 	</util:list>
 	
