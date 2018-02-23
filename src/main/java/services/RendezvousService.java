@@ -172,6 +172,10 @@ public class RendezvousService  {
         return  rendezvous;
     }
 
+    public Collection<Rendezvous> userParticipate(Integer userId){
+        return rendezvousRepository.userParticipate(userId);
+    }
+
 
 
 

@@ -21,5 +21,8 @@ public interface RendezvousRepository extends JpaRepository<Rendezvous,Integer> 
     //@Query("select avg(r.participated.size),sqrt(sum(r.participated.size *r.participated.size)/ count(r) - (avg(r.participated.size) *avg(r.participated.size))) from  Rendezvous r")
     //Collection<Double> avgDevRendezvousParticipatePerUser();
 
+    @Query("select p.rendezvous from Participate p where p.attendant.id = ?1")
+
+    Collection<Rendezvous> userParticipate(int userId);
 
 }

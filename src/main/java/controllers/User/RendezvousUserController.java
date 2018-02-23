@@ -46,10 +46,10 @@ public class RendezvousUserController extends AbstractController {
         Collection<Rendezvous> rendezvouses;
         if(userId!=0){
              user=userService.findOne(userId);
-            rendezvouses= user.getRendezvouses();
+            rendezvouses= rendezvousService.userParticipate(user.getId());
         }else {
             user = userService.findByPrincipal();
-            rendezvouses = user.getRendezvouses();
+            rendezvouses = rendezvousService.userParticipate(user.getId());
         }
         result = new ModelAndView("rendezvous/list");
         result.addObject("rendezvous", rendezvouses);
