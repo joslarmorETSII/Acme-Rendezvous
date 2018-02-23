@@ -82,7 +82,6 @@ public class UserService {
         User result;
 
         if (user.getId() == 0) {
-            user.getUserAccount().setPassword(new Md5PasswordEncoder().encodePassword(user.getUserAccount().getPassword(),null));
             result = this.userRepository.save(user);
         } else
             result = this.userRepository.save(user);
