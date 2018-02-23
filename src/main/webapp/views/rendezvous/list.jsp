@@ -60,6 +60,9 @@
              <acme:button url="comment/user/create.do?rendezvousId=${row.id}" code="comment.rendezvous.create"/>
         </jstl:if>
     </display:column>
+    <display:column >
+        <acme:button url="rendezvous/user/display.do?rendezvousId=${row.id}" code="rendezvous.display"/>
+    </display:column>
 
 
 </display:table>

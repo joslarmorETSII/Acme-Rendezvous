@@ -42,6 +42,10 @@
         </jstl:if>
     </display:column>
 
+    <display:column >
+        <acme:button url="rendezvous/display.do?rendezvousId=${row.id}" code="rendezvous.display"/>
+    </display:column>
+
 
 
 

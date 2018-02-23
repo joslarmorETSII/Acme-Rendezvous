@@ -75,20 +75,20 @@ public class RendezvousUserController extends AbstractController {
 
     // Display ----------------------------------------------------------------
 
-   /* @RequestMapping(value = "/display", method = RequestMethod.GET)
-    public ModelAndView display(@RequestParam final int noteId) {
+    @RequestMapping(value = "/display", method = RequestMethod.GET)
+    public ModelAndView display(@RequestParam final int rendezvousId) {
         ModelAndView result;
-        Note note;
+        Rendezvous rendezvous;
 
-        note = this.noteService.findOne(noteId);
-        result = new ModelAndView("note/display");
-        result.addObject("note", note);
-        result.addObject("cancelURI", "note/auditor/list.do");
+        rendezvous = this.rendezvousService.findOne(rendezvousId);
+        result = new ModelAndView("rendezvous/display");
+        result.addObject("rendezvous", rendezvous);
+        result.addObject("cancelURI", "rendezvous/user/list.do");
 
         return result;
     }
 
-*/
+
    //  Edition ----------------------------------------------------------------
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
