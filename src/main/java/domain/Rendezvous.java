@@ -151,7 +151,7 @@ public class Rendezvous extends DomainEntity{
 
 
     @Valid
-    @NotEmpty
+    @NotNull
     @OneToMany(mappedBy = "rendezvous")
     public Collection<Participate> getParticipated() {
         return participated;

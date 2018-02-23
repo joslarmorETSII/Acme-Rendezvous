@@ -62,8 +62,6 @@ public class RendezvousService  {
         res.setDeleted(false);
         creator.getRendezvouses().add(res);
 
-        res.getParticipated().add(new Participate());
-
         return res;
     }
 
@@ -72,8 +70,8 @@ public class RendezvousService  {
         Assert.isTrue(checkByPrincipal(rendezvous));
         Assert.notNull(rendezvous);
         if(rendezvous.getId()==0){
-            Participate participate = new Participate();
-            //participate.setMoment(new Date());
+            Participate participate = participateService.create();
+            participate.setMoment(new Date());
             participate.setAttendant(rendezvous.getCreator());
 
             res=rendezvousRepository.save(rendezvous);
