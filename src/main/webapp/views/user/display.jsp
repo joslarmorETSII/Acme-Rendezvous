@@ -36,4 +36,4 @@
 
 
 <input type="button" name="cancel" value="<spring:message code="user.cancel" />"
-       onclick="javascript: relativeRedir('rendezvous/listAll.do');" />
+       onclick="javascript: relativeRedir('rendezvous/listAll-2.do');" />

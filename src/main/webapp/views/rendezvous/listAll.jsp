@@ -21,9 +21,11 @@
 
     <jstl:set var="now" value="${now}"/>
 
+    <display:column>
+   <a href="user/display.do?userId=${row.creator.id}"><jstl:out value="${row.creator.name}"/></a>
+    <br/>
+    </display:column>
 
-
-    <acme:column code="rendezvous.creator" value="${row.creator.name}"/>
     <acme:column code="rendezvous.name" value="${row.name}"/>
     <acme:column code="rendezvous.description" value="${row.description}"/>
     <acme:column code="rendezvous.moment" value="${row.moment}" sortable="true"/>
