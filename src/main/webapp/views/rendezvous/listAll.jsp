@@ -44,14 +44,12 @@
         </jstl:if>
     </display:column>
 
-    <display:column >
-        <acme:button url="rendezvous/display.do?rendezvousId=${row.id}" code="rendezvous.display"/>
-    </display:column>
 
+    <acme:columnButton url="rendezvous/display.do?rendezvousId=${row.id}" codeButton="rendezvous.display"/>
 
-
-
-
+    <security:authorize access="hasRole('ADMINISTRATOR')">
+        <acme:columnButton url="rendezvous/administrator/edit.do?rendezvousId=${row.id}"  codeButton="rendezvous.delete" />
+    </security:authorize>
 
 </display:table>
 

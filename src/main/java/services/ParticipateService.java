@@ -72,6 +72,10 @@ public class ParticipateService {
         participateRepository.delete(participate);
     }
 
+    public void deleteParticipated(Rendezvous rendezvous){
+        this.participateRepository.delete(rendezvous.getParticipated());
+    }
+
     // Other business methods -------------------------------------------------
     private void checkByPrincipal(Participate participate) {
         User principal = userService.findByPrincipal();

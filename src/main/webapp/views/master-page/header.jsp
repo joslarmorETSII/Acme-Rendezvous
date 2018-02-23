@@ -23,12 +23,13 @@
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		<security:authorize access="hasRole('ADMINISTRATOR')">
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
-				<ul>
+			<ul>
 					<li class="arrow"></li>
 					<li><a href="administrator/edit.do"><spring:message code="master.page.administrator.edit" /></a></li>
 					<li><a href="comment/administrator/list.do"><spring:message code="master.page.comment.administrator.list" /></a></li>
 					<li><a href="announcement/listAll.do"><spring:message code="master.page.announcement.listAll" /></a></li>
-				</ul>
+					<li><a href="rendezvous/administrator/listAll.do"><spring:message code="master.page.rendezvous.administrator.list" /></a></li>
+			</ul>
 			</li>
 		</security:authorize>
 		
@@ -43,6 +44,7 @@
 					<li><a href="announcement/user/list.do"><spring:message code="master.page.user.announcement.list" /></a></li>
                 </ul>
 			</li>
+			<li><a class="fNiv" href="rendezvous/listAll.do"><spring:message code="master.page.rendezvous.listAll-2" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
@@ -55,7 +57,6 @@
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
-			<li><a href="rendezvous/listAll.do"><spring:message code="master.page.customer.rendezvous.listAll" /></a></li>
 			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
 			<li>
 				<a class="fNiv"> 

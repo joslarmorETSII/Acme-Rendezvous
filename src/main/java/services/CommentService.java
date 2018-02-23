@@ -2,6 +2,7 @@ package services;
 
 import domain.Administrator;
 import domain.Comment;
+import domain.Rendezvous;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,7 +64,7 @@ public class CommentService {
     public Comment save(Comment comment){
 
         Assert.notNull(comment);
-        checkByPrincipal(comment);
+        Assert.isTrue(checkByPrincipal(comment) || checkByPrincipalAdmin(comment));
         Comment res = comment;
         Comment parentComment = comment.getParentComment();
 
@@ -80,27 +81,9 @@ public class CommentService {
         return res;
     }
 
-    /*public void delete(Comment comment){
-
-        Assert.notNull(comment);
-        checkByPrincipal(comment);
-
-        if(comment.getChildrenComments() != null){
-            deleteComments(comment);
-            this.commentRepository.delete(comment);
-        }else if(comment.getParentComment() != null){
-            Comment saved = comment.getParentComment();
-            saved.getChildrenComments().remove(comment);
-            this.commentRepository.save(saved);
-            this.commentRepository.delete(comment);
-        }else if(comment.getParentComment() == null){
-            this.commentRepository.delete(comment);
-        }
-    }*/
-
     public void delete(Comment comment){
         Assert.notNull(comment);
-        checkByPrincipal(comment);
+        Assert.isTrue(checkByPrincipalAdmin(comment));
 
         if(comment.getChildrenComments().size() == 1) {
             this.commentRepository.delete(comment.getChildrenComments().iterator().next());
@@ -134,36 +117,40 @@ public class CommentService {
     public Comment findOneToEdit(int commentId){
         Assert.notNull(commentId);
         Comment comment = this.commentRepository.findOne(commentId);
-        checkByPrincipal(comment);
+        Assert.isTrue(checkByPrincipal(comment));
         return this.commentRepository.findOne(commentId);
     }
 
     public Collection<Comment> findAll(){
         return this.commentRepository.findAll();
     }
+
+    public  void deleteComments(Rendezvous rendezvous){
+        this.commentRepository.delete(rendezvous.getComments());
+    }
     // Other business methods -------------------------------------------------
 
-    public void checkByPrincipal(final Comment comment) {
+    public boolean checkByPrincipal(final Comment comment) {
+        Boolean res = null;
+        User principal = null;
 
-        User user = this.userService.findByPrincipal();
-        Administrator administrator = this.administratorService.findByPrincipal();
-        if(user==null) {
-            Collection<Authority> authorities = administrator.getUserAccount().getAuthorities();
-            String authority = authorities.toArray()[0].toString();
-            Assert.isTrue(authority.equals("ADMINISTRATOR"));
-        }else {
-            Assert.isTrue(comment.getUser().equals(user));
-        }
+        res = false;
+        principal = this.userService.findByPrincipal();
+
+        if (comment.getUser().equals(principal))
+            res = true;
+
+        return res;
     }
 
-    /*public void deleteComments(Comment comment) {
-        Collection<Comment> comments = comment.getChildrenComments();
-        for (Comment c : comments) {
-            c.setParentComment(null);
-            c.setRendezvous(null);
-            c.setUser(null);
-            comments.remove(c);
-           // this.commentRepository.save(comment);
-        }
-    }*/
+    public boolean checkByPrincipalAdmin(Comment comment){
+        Boolean res= false;
+        Administrator administrator = administratorService.findByPrincipal();
+        Collection<Authority> authorities= administrator.getUserAccount().getAuthorities();
+        String authority= authorities.toArray()[0].toString();
+        res= authority.equals("ADMINISTRATOR");
+        return res;
+
+    }
+
 }

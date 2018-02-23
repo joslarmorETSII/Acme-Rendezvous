@@ -1,6 +1,7 @@
 package services;
 
 import domain.Question;
+import domain.Rendezvous;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,10 @@ public class QuestionService {
         Question question = questionRepository.findOne(questionId);
         checkByPrincipal(question);
         return question;
+   }
+
+   public void deleteQuestions(Rendezvous rendezvous){
+       this.questionRepository.delete(rendezvous.getQuestions());
    }
 
     // Other business methods -------------------------------------------------

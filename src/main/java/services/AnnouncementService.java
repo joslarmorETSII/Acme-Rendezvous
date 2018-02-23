@@ -2,6 +2,7 @@ package services;
 
 import domain.Administrator;
 import domain.Announcement;
+import domain.Rendezvous;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,10 @@ public class AnnouncementService {
     public void delete(final Announcement announcement) {
         checkByPrincipalAdministrator();
         this.announcementRepository.delete(announcement);
+    }
+
+    public void deleteAnnouncements(Rendezvous rendezvous){
+        this.announcementRepository.delete(rendezvous.getAnnouncements());
     }
 
     // Other business methods -------------------------------------------------

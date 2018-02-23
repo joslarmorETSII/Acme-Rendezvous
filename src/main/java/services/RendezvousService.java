@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.RendezvousRepository;
+import security.Authority;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -29,8 +30,16 @@ public class RendezvousService  {
     private ParticipateService participateService;
 
     @Autowired
-    private AdministratorService adminService;
+    private AdministratorService administratorService;
 
+    @Autowired
+    private CommentService commentService;
+
+    @Autowired
+    private QuestionService questionService;
+
+    @Autowired
+    private AnnouncementService announcementService;
     // Constructors -----------------------------------------------------------
 
     public RendezvousService() {
@@ -109,8 +118,17 @@ public class RendezvousService  {
         Assert.isTrue(!rendezvous.getFinalMode());
         rendezvous.setDeleted(true);
         return res= rendezvousRepository.save(rendezvous);
+    }
 
+    public void deleteAdmin(Rendezvous rendezvous){
+        Assert.isTrue(checkByPrincipalAdmin(rendezvous));
+        Assert.notNull(rendezvous);
 
+        this.commentService.deleteComments(rendezvous);
+        this.participateService.deleteParticipated(rendezvous);
+        this.questionService.deleteQuestions(rendezvous);
+        this.announcementService.deleteAnnouncements(rendezvous);
+        rendezvousRepository.delete(rendezvous);
 
     }
 
@@ -138,8 +156,10 @@ public class RendezvousService  {
 
     public boolean checkByPrincipalAdmin(Rendezvous rendezvous){
         Boolean res= false;
-        Administrator administrator = adminService.findByPrincipal();
-        res= administrator.getUserAccount().getAuthorities().equals("ADMINISTRATOR");
+        Administrator administrator = administratorService.findByPrincipal();
+        Collection<Authority> authorities= administrator.getUserAccount().getAuthorities();
+        String authority= authorities.toArray()[0].toString();
+        res= authority.equals("ADMINISTRATOR");
         return res;
 
     }

@@ -56,7 +56,7 @@
     </display:column>
 
     <display:column >
-        <jstl:if test="${contains eq true && row.deleted ne true}">
+        <jstl:if test="${contains eq true && row.deleted ne true  }">
              <acme:button url="comment/user/create.do?rendezvousId=${row.id}" code="comment.rendezvous.create"/>
         </jstl:if>
     </display:column>
