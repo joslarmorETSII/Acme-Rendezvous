@@ -78,6 +78,7 @@
 		<security:intercept-url pattern="/announcement/user/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/announcement/administrator/**" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/announcement/listAll.do" access="permitAll()" />
+		<security:intercept-url pattern="/announcement/list.do" access="permitAll()" />
 
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
