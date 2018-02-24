@@ -16,11 +16,23 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:if test="${pageContext.response.locale.language == 'es' }">
+    <jstl:set value="{0,date,dd/MM/yyyy HH:mm}" var="formatDate"/>
+</jstl:if>
+
+<jstl:if test="${pageContext.response.locale.language == 'en' }">
+    <jstl:set value="{0,date,yyyy/MM/dd HH:mm}" var="formatDate"/>
+</jstl:if>
+
 <display:table name="comments" id="row" pagesize="5" class="displaytag" requestURI="${requestURI}">
 
     <acme:column code="comment.user" value="${row.user.name}" />
     <acme:column code="comment.text" value="${row.text}"/>
-    <acme:column code="comment.moment" value="${row.moment}"/>
+
+    <spring:message var="moment" code="comment.moment"/>
+    <spring:message var="formatDate" code="event.format.date"/>
+    <display:column property="moment" title="${moment}" format="${formatDate}" sortable="true" />
+
     <acme:column code="comment.picture" value="${row.picture}"/>
 
     <security:authorize access="hasRole('ADMINISTRATOR')">

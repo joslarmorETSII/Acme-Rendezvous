@@ -17,6 +17,13 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:if test="${pageContext.response.locale.language == 'es' }">
+    <jstl:set value="{0,date,dd/MM/yyyy}" var="formatDate"/>
+</jstl:if>
+
+<jstl:if test="${pageContext.response.locale.language == 'en' }">
+    <jstl:set value="{0,date,yyyy/MM/dd}" var="formatDate"/>
+</jstl:if>
 
 <display:table id="user" name="user" requestURI="${requestURI}"
                pagesize="5">
@@ -26,7 +33,10 @@
     <acme:column code="user.email" value="${user.email}"/>
     <acme:column code="user.phone" value="${user.phone}"/>
     <acme:column code="user.postalAdresses" value="${user.postalAdresses}"/>
-    <acme:column code="user.birthday" value="${user.birthday}"/>
+
+    <spring:message var="birthday" code="user.birthday"/>
+    <spring:message var="formatDate" code="event.format.date"/>
+    <display:column property="birthday" title="${birthday}" format="${formatDate}" sortable="true" />
 
     <security:authorize access="hasRole('USER')">
         <display:column>
