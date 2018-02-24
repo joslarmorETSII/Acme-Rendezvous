@@ -39,7 +39,7 @@ public class RendezvousController extends AbstractController {
         User user;
 
         user = userService.findByPrincipal();
-        result = new ModelAndView("rendezvous/list");
+        result = new ModelAndView("rendezvous/listAll");
         result.addObject("rendezvous", rendezvousService.findAll());
         result.addObject("user",user);
         result.addObject("requestUri","rendezvous/listAll.do");
@@ -53,7 +53,7 @@ public class RendezvousController extends AbstractController {
     public ModelAndView listAll2() {
         ModelAndView result;
         result = new ModelAndView("rendezvous/listAll");
-        result.addObject("rendezvous", rendezvousService.findAll());
+        result.addObject("rendezvous", rendezvousService.rendezvousForAnonymous());
 
         result.addObject("requestUri","rendezvous/listAll-2.do");
 

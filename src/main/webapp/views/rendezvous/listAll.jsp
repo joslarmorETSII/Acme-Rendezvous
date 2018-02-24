@@ -21,6 +21,8 @@
 
     <jstl:set var="now" value="${now}"/>
 
+
+
     <display:column>
    <a href="user/display.do?userId=${row.creator.id}"><jstl:out value="${row.creator.name}"/></a>
     <br/>
@@ -49,6 +51,14 @@
 
     <security:authorize access="hasRole('ADMINISTRATOR')">
         <acme:columnButton url="rendezvous/administrator/edit.do?rendezvousId=${row.id}"  codeButton="rendezvous.delete" />
+    </security:authorize>
+
+    <security:authorize access="hasRole('USER')">
+    <display:column >
+        <jstl:if test="${row.forAdults eq true }">
+            <spring:message code="rendezvous.forAdults.flag" var="forAdults"/><jstl:out value="${forAdults}"/>
+        </jstl:if>
+    </display:column>
     </security:authorize>
 
 </display:table>

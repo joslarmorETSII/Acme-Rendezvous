@@ -30,6 +30,6 @@
 <%-- Definition --%>
 
 <spring:message code="${code}" var="title" />
-<display:column title="${title}" sortable="${sortable}" >
+<display:column title="${title}" sortable="${sortable} " >
     <jstl:out value="${value}" />
 </display:column>

@@ -25,14 +25,16 @@
     <display:column>
         <security:authorize access="hasRole('USER')">
         <jstl:if test="${row.finalMode == false && row.creator eq testuser && row.deleted ne true}">
-            <acme:button url="rendezvous/user/edit.do?rendezvousId=${row.id}" code="rendezvous.edit"/>
+            <acme:button url="rendezvous/user/edit.do?rendezvousId=${row.id}" code="rendezvous.edit" />
         </jstl:if>
     </security:authorize>
     </display:column>
-    <acme:column code="rendezvous.creator" value="${row.creator.name}"/>
+    <acme:column code="rendezvous.creator" value="${row.creator.name} " />
     <acme:column code="rendezvous.name" value="${row.name}"/>
     <acme:column code="rendezvous.description" value="${row.description}"/>
     <acme:column code="rendezvous.moment" value="${row.moment}" sortable="true"/>
+
+
 
     <display:column>
         <jstl:set var="contains" value="false" />
@@ -53,6 +55,8 @@
         <jstl:if test="${row.moment lt now }">
             <spring:message code="rendezvous.passed" var="passed"/><jstl:out value="${passed}"/>
         </jstl:if>
+
+
     </display:column>
 
     <display:column >
@@ -66,7 +70,16 @@
     </display:column>
 
 
+    <display:column >
+    <jstl:if test="${row.forAdults eq true }">
+        <spring:message code="rendezvous.forAdults.flag" var="forAdults"/><jstl:out value="${forAdults}"/>
+    </jstl:if>
+    </display:column>
+
+
+
 </display:table>
+
 
 <acme:button code="rendezvous.create" url="rendezvous/user/create.do"/>
 
