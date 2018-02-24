@@ -21,43 +21,29 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<spring:message code="rendezvous.picture" var="picture1"/>
-<h3><jstl:out value="${picture1}"/></h3>
-<img src="<jstl:out value="${rendezvous.picture}"/>" width="500px" height="100%" alt="image_head">
-</br>
-<spring:message code="rendezvous.name" />
-<h3><jstl:out value="${rendezvous.name}"/></h3>
-<jstl:out value="${rendezvous.name}"/>
+<div id="banner">
+    <a href="${rendezvous.name}">
+        <img src="${rendezvous.picture}" />
+    </a>
+</div>
+<br>
 
+<h3><spring:message code="rendezvous.name" />:&nbsp;<jstl:out value="${rendezvous.name}"/></h3>
+<h3><spring:message code="rendezvous.description"/>:&nbsp;<jstl:out value="${rendezvous.description}"/></h3>
+<h3><spring:message code="rendezvous.moment"/>:&nbsp;<jstl:out value="${rendezvous.moment}"/></h3>
+<h3><spring:message code="rendezvous.location.longitude"/>:&nbsp;<jstl:out value="${rendezvous.location.longitude}"/></h3>
+<h3><spring:message code="rendezvous.location.latitude"/>:&nbsp;<jstl:out value="${rendezvous.location.latitude}"/></h3>
+<h3><spring:message code="rendezvous.creator"/>:&nbsp;<jstl:out value="${rendezvous.creator.name}"/></h3>
+<h3><spring:message code="rendezvous.forAdults"/>:&nbsp;<jstl:out value="${rendezvous.forAdults}" /></h3>
 
-<spring:message code="rendezvous.description" var="description1"/>
-<h3><jstl:out value="${description1}"/></h3>
-<jstl:out value="${rendezvous.description}"/>
-
-
-<spring:message code="rendezvous.moment" var="momment1"/>
-<h3><jstl:out value="${momment1}"/></h3>
-<jstl:out value="${rendezvous.moment}"/>
-
-<spring:message code="rendezvous.location" var="location"/>
-<h3><jstl:out value="${location}"/></h3>
-<jstl:out value="${rendezvous.location}"/>
-
-<spring:message code="rendezvous.creator" />
-<h3><jstl:out value="${rendezvous.creator.name}"/></h3>
-
-<spring:message code="rendezvous.forAdults"/>
-<h3><jstl:out value="${rendezvous.forAdults}" /></h3>
-
+<a href="announcement/list.do?rendezvousId=${rendezvous.id}"><spring:message code="rendezvous.listAnnouncement"/></a>
+<br/>
 
 <security:authorize access="hasRole('USER')">
 <div id="comment-box">
 
     <spring:message code="rendezvous.comments" var="comments2"/>
     <h2><jstl:out value="${comments2}"/></h2>
-
-
-
 
     <display:table pagesize="2" class="displaytag" keepStatus="true" name="rendezvous.comments" requestURI="${requestUri}" id="row">
 
@@ -69,13 +55,9 @@
     </display:table>
 </security:authorize>
 
-<a href="announcement/list.do?rendezvousId=${rendezvous.id}"><spring:message code="rendezvous.listAnnouncement"/></a>
-<br/>
-
 <spring:message code="rendezvous.associated" var="associated"/>
 <h2><jstl:out value="${associated}"/></h2>
     <display:table pagesize="2" class="displaytag" keepStatus="true" name="rendezvous.associated" requestURI="${requestUri}" id="row">
-
 
         <spring:message code="rendezvous.name" var="name"/>
         <display:column property="name" title="${name}"/>
@@ -90,7 +72,6 @@
         </display:column>
 
     </display:table>
-
 
 <input type="button" name="cancel" value="<spring:message code="rendezvous.cancel" />"
        onclick="javascript: relativeRedir('${cancelURI}');" />
