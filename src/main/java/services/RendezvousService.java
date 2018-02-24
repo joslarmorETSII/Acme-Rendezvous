@@ -176,7 +176,9 @@ public class RendezvousService  {
         return rendezvousRepository.userParticipate(userId);
     }
 
-
+    public Collection<Rendezvous> rendezvousForAnonymous(){
+        return rendezvousRepository.rendezvousForAnonymous();
+    }
 
 
 }

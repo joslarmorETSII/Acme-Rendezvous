@@ -25,4 +25,7 @@ public interface RendezvousRepository extends JpaRepository<Rendezvous,Integer> 
 
     Collection<Rendezvous> userParticipate(int userId);
 
+    @Query("select r from Rendezvous r where r.forAdults=false")
+    Collection<Rendezvous> rendezvousForAnonymous();
+
 }
