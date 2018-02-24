@@ -47,6 +47,7 @@
 
 		<!-- User -->
 
+		<security:intercept-url pattern="/user/display.do" access="permitAll" />
 		<security:intercept-url pattern="/user/register.do" access="permitAll" />
 		<security:intercept-url pattern="/user/list.do" access="permitAll" />
 		<security:intercept-url pattern="/user/editProfile.do" access="hasRole('USER')" />
@@ -62,14 +63,15 @@
 		<!-- Comments -->
 		<security:intercept-url pattern="/comment/user/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/comment/administrator/**" access="hasRole('ADMINISTRATOR')" />
-
+        <security:intercept-url pattern="/rendezvous/administrator/**" access="hasRole('ADMINISTRATOR')" />
 		<!-- Rendezvouses -->
 
-		<security:intercept-url pattern="/rendezvous/user/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/rendezvous/user/list.do" access="permitAll()" />
 		<security:intercept-url pattern="/rendezvous/listAll.do" access="permitAll" />
 		<security:intercept-url pattern="/rendezvous/listAll-2.do" access="permitAll" />
 		<security:intercept-url pattern="/rendezvous/display.do" access="permitAll" />
+		<security:intercept-url pattern="/rendezvous/user/**" access="hasRole('USER')" />
+
 
 
 		<!-- Announcements -->

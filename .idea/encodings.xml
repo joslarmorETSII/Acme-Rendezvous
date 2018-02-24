@@ -2,15 +2,14 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/administrator/edit.jsp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/administrator/messages.properties" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/administrator/messages_es.properties" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/administrator/tiles.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/administrator/tiles_es.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/user/edit.jsp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/user/messages.properties" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/user/messages_es.properties" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/user/tiles.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/views/user/tiles_es.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/forms" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/images/logo.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/views/answer/edit.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/views/answer/list.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/views/answer/messages.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/views/answer/messages_es.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/views/answer/tiles.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/views/answer/tiles_es.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/views/rendezvous/answerQuestion.jsp" charset="UTF-8" />
   </component>
 </project>
