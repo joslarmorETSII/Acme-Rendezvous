@@ -23,7 +23,7 @@
 
 <div id="banner">
     <a href="${rendezvous.name}">
-        <img src="${rendezvous.picture}" />
+        <img src="${rendezvous.picture}" width="500px" height="100%" alt="image_head"/>
     </a>
 </div>
 <br>
