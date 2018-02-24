@@ -20,7 +20,6 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-
 <div id="banner">
     <a href="${rendezvous.name}">
         <img src="${rendezvous.picture}" width="500px" height="100%" alt="image_head"/>
@@ -30,7 +29,15 @@
 
 <h3><spring:message code="rendezvous.name" />:&nbsp;<jstl:out value="${rendezvous.name}"/></h3>
 <h3><spring:message code="rendezvous.description"/>:&nbsp;<jstl:out value="${rendezvous.description}"/></h3>
-<h3><spring:message code="rendezvous.moment"/>:&nbsp;<jstl:out value="${rendezvous.moment}"/></h3>
+
+<jstl:if test="${pageContext.response.locale.language == 'es'}">
+    <p><b><spring:message code="rendezvous.moment" />:&nbsp;</b>${momentEs} </p>
+</jstl:if>
+
+<jstl:if test="${pageContext.response.locale.language == 'en'}">
+    <p><b><spring:message code="rendezvous.moment" />:&nbsp;</b>${momentEn} </p>
+</jstl:if>
+
 <h3><spring:message code="rendezvous.location.longitude"/>:&nbsp;<jstl:out value="${rendezvous.location.longitude}"/></h3>
 <h3><spring:message code="rendezvous.location.latitude"/>:&nbsp;<jstl:out value="${rendezvous.location.latitude}"/></h3>
 <h3><spring:message code="rendezvous.creator"/>:&nbsp;<jstl:out value="${rendezvous.creator.name}"/></h3>

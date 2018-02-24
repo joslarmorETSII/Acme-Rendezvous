@@ -49,9 +49,13 @@
 		<!-- User -->
 
 		<security:intercept-url pattern="/user/display.do" access="permitAll" />
-		<security:intercept-url pattern="/user/register.do" access="permitAll" />
+		<security:intercept-url pattern="/user/register.do" access="isAnonymous()" />
 		<security:intercept-url pattern="/user/list.do" access="permitAll" />
 		<security:intercept-url pattern="/user/editProfile.do" access="hasRole('USER')" />
+
+		<!-- Term and Conditions -->
+
+		<security:intercept-url pattern="/termAndCondition/termAndCondition.do" access="permitAll()" />
 
 		<!-- Participates -->
 

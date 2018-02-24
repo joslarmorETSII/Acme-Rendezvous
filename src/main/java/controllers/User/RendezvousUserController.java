@@ -15,6 +15,7 @@ import services.RendezvousService;
 import services.UserService;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
@@ -44,6 +45,17 @@ public class RendezvousUserController extends AbstractController {
         ModelAndView result;
         User user;
         Collection<Rendezvous> rendezvouses;
+
+       SimpleDateFormat formatterEs;
+       SimpleDateFormat formatterEn;
+       String momentEs;
+       String momentEn;
+
+       formatterEs = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+       momentEs = formatterEs.format(new Date());
+       formatterEn = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+       momentEn = formatterEn.format(new Date());
+
         if(userId!=0){
              user=userService.findOne(userId);
             rendezvouses= rendezvousService.userParticipate(user.getId());
@@ -57,6 +69,8 @@ public class RendezvousUserController extends AbstractController {
         result.addObject("requestUri","rendezvous/user/list.do");
         result.addObject("cancelUri","cancel");
        result.addObject("now",new Date());
+       result.addObject("momentEs", momentEs);
+       result.addObject("momentEn", momentEn);
 
        return result;
 

@@ -17,12 +17,23 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:if test="${pageContext.response.locale.language == 'es' }">
+    <jstl:set value="{0,date,dd/MM/yyyy HH:mm}" var="formatDate"/>
+</jstl:if>
+
+<jstl:if test="${pageContext.response.locale.language == 'en' }">
+    <jstl:set value="{0,date,yyyy/MM/dd HH:mm}" var="formatDate"/>
+</jstl:if>
 
 <display:table id="announcement" name="announcements" requestURI="${requestURI}"
                pagesize="5">
 
     <acme:column code="announcement.title" value="${announcement.title}" />
-    <acme:column code="announcement.moment" value="${announcement.moment}" />
+
+    <spring:message var="moment" code="announcement.moment"/>
+    <spring:message var="formatDate" code="event.format.date"/>
+    <display:column property="moment" title="${moment}" format="${formatDate}" sortable="true" />
+
     <acme:column code="announcement.description" value="${announcement.description}"/>
     <acme:column code="announcement.rendezvous.name" value="${announcement.rendezvous.name}"/>
 

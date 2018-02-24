@@ -16,6 +16,13 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:if test="${pageContext.response.locale.language == 'es' }">
+    <jstl:set value="{0,date,dd/MM/yyyy HH:mm}" var="formatDate"/>
+</jstl:if>
+
+<jstl:if test="${pageContext.response.locale.language == 'en' }">
+    <jstl:set value="{0,date,yyyy/MM/dd HH:mm}" var="formatDate"/>
+</jstl:if>
 
 <display:table name="rendezvous" id="row" pagesize="10" class="displaytag" requestURI="${requestUri}">
 
@@ -30,7 +37,10 @@
 
     <acme:column code="rendezvous.name" value="${row.name}"/>
     <acme:column code="rendezvous.description" value="${row.description}"/>
-    <acme:column code="rendezvous.moment" value="${row.moment}" sortable="true"/>
+
+    <spring:message var="moment" code="rendezvous.moment"/>
+    <spring:message var="formatDate" code="event.format.date"/>
+    <display:column property="moment" title="${moment}" format="${formatDate}" sortable="true" />
 
     <display:column>
         <jstl:set var="contains" value="false" />

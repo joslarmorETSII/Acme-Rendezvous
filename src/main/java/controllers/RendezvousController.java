@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.RendezvousService;
 import services.UserService;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -70,11 +71,23 @@ public class RendezvousController extends AbstractController {
         ModelAndView result;
         Rendezvous rendezvous;
 
+        SimpleDateFormat formatterEs;
+        SimpleDateFormat formatterEn;
+        String momentEs;
+        String momentEn;
+
+        formatterEs = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        momentEs = formatterEs.format(new Date());
+        formatterEn = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        momentEn = formatterEn.format(new Date());
+
         rendezvous = this.rendezvousService.findOne(rendezvousId);
         result = new ModelAndView("rendezvous/display");
         result.addObject("rendezvous", rendezvous);
-        result.addObject("cancelURI", "rendezvous/listAll.do");
+        result.addObject("cancelURI", "rendezvous/listAll-2.do");
         result.addObject("requestUri","rendezvous/display.do");
+        result.addObject("momentEs", momentEs);
+        result.addObject("momentEn", momentEn);
 
         return result;
     }
