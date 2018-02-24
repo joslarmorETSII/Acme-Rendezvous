@@ -103,6 +103,7 @@ public class RendezvousUserController extends AbstractController {
         result = new ModelAndView("rendezvous/display");
         result.addObject("rendezvous", rendezvous);
         result.addObject("cancelURI", "rendezvous/user/list.do");
+        result.addObject("associated",rendezvous.getAssociated());
 
         return result;
     }
@@ -121,6 +122,34 @@ public class RendezvousUserController extends AbstractController {
     }
 
 
+    @RequestMapping(value = "/associate", method = RequestMethod.GET)
+    public ModelAndView associate(@RequestParam  int rendezvousId) {
+        final ModelAndView result;
+        Rendezvous rendezvous;
+        rendezvous = this.rendezvousService.findOne(rendezvousId);
+        result = new ModelAndView("rendezvous/associate");
+        result.addObject("rendezvous",rendezvous);
+        result.addObject("allRendezvous",rendezvousService.findAll());
+        return result;
+    }
+    @RequestMapping(value = "/associate", method = RequestMethod.POST,params = "save")
+    public ModelAndView associate(@Valid Rendezvous rendezvous, final BindingResult binding) {
+        ModelAndView result;
+        result = new ModelAndView("rendezvous/associate");
+
+        if (binding.hasErrors()) {
+            result.addObject("rendezvous", rendezvous);
+            result.addObject("message", null);
+        } else
+            try {
+                this.rendezvousService.associados(rendezvous);
+                result = new ModelAndView("redirect:display.do");
+            } catch (final Throwable oops) {
+                result.addObject("rendezvous", rendezvous);
+                result.addObject("message", "rendezvous.commit.error");
+            }
+        return result;
+    }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid  Rendezvous rendezvous, final BindingResult binding) {
@@ -163,14 +192,10 @@ public class RendezvousUserController extends AbstractController {
 
     protected ModelAndView createEditModelAndView(final Rendezvous rendezvous, final String messageCode) {
         ModelAndView result;
-
-
         result = new ModelAndView("rendezvous/edit");
         result.addObject("rendezvous", rendezvous);
-
-
-
         result.addObject("message", messageCode);
+
         return result;
     }
 }

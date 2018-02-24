@@ -78,7 +78,11 @@
             <acme:button url="rendezvous/display.do?rendezvousId=${row.id}" code="rendezvous.display"/>
         </display:column>
 
-    </display:table>
+ </display:table>
 
+<a href="rendezvous/user/associate.do?rendezvousId=${row.id}"><spring:message code="rendezvous.associate"/></a>
+<br/>
+
+<br>
 <input type="button" name="cancel" value="<spring:message code="rendezvous.cancel" />"
        onclick="javascript: relativeRedir('${cancelURI}');" />

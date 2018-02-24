@@ -185,4 +185,12 @@ public class RendezvousService  {
         Integer edad=  fechaActual.getYear()-attendant.getBirthday().getYear();
        return edad>=18;
     }
+
+    public void associados(Rendezvous rendezvous) {
+
+        rendezvousRepository.save(rendezvous);
+
+    }
+
+
 }
