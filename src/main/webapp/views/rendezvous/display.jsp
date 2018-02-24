@@ -23,31 +23,22 @@
 
 <spring:message code="rendezvous.picture" var="picture1"/>
 <h3><jstl:out value="${picture1}"/></h3>
-<img src="<jstl:out value="${rendezvous.picture}"/>" width="500px" height="100%" alt="image_head">
+<img src="<jstl:out value="${rendezvous.picture}"/>" width="500px" height="100%" >
 </br>
-<spring:message code="rendezvous.name" />
-<h3><jstl:out value="${rendezvous.name}"/></h3>
-<jstl:out value="${rendezvous.name}"/>
 
+<div >
+    <h3><b><spring:message code="rendezvous.name"/>:&nbsp;</b><jstl:out value="${rendezvous.name}"/></h3>
 
-<spring:message code="rendezvous.description" var="description1"/>
-<h3><jstl:out value="${description1}"/></h3>
-<jstl:out value="${rendezvous.description}"/>
+    <h3><b><spring:message code="rendezvous.description"/>:&nbsp;</b><jstl:out value="${rendezvous.description}"/></h3>
 
+    <h3><b><spring:message code="rendezvous.moment"/>:&nbsp;</b><jstl:out value="${rendezvous.moment}"/></h3>
 
-<spring:message code="rendezvous.moment" var="momment1"/>
-<h3><jstl:out value="${momment1}"/></h3>
-<jstl:out value="${rendezvous.moment}"/>
+    <h3><b><spring:message code="rendezvous.location"/>:&nbsp;</b><jstl:out value="${rendezvous.location.longitude}"/></h3>
 
-<spring:message code="rendezvous.location" var="location"/>
-<h3><jstl:out value="${location}"/></h3>
-<jstl:out value="${rendezvous.location}"/>
+    <h3><b><spring:message code="rendezvous.creator"/>:&nbsp;</b><jstl:out value="${rendezvous.creator.name}"/></h3>
 
-<spring:message code="rendezvous.creator" />
-<h3><jstl:out value="${rendezvous.creator.name}"/></h3>
-
-<spring:message code="rendezvous.forAdults"/>
-<h3><jstl:out value="${rendezvous.forAdults}" /></h3>
+    <h3><b><spring:message code="rendezvous.forAdults"/>:&nbsp;</b><jstl:out value="${rendezvous.forAdults}"/></h3>
+</div>
 
 
 <security:authorize access="hasRole('USER')">
