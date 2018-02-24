@@ -31,17 +31,24 @@ public class WelcomeController extends AbstractController {
 	// Index ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/index")
-	public ModelAndView index(@RequestParam(required = false, defaultValue = "John Doe") final String name) {
+	public ModelAndView index() {
 		ModelAndView result;
-		SimpleDateFormat formatter;
-		String moment;
 
-		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		moment = formatter.format(new Date());
+		SimpleDateFormat formatterEs;
+		SimpleDateFormat formatterEn;
+		String momentEs;
+		String momentEn;
+
+		formatterEs = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		momentEs = formatterEs.format(new Date());
+		formatterEn = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		momentEn = formatterEn.format(new Date());
 
 		result = new ModelAndView("welcome/index");
-		result.addObject("name", name);
-		result.addObject("moment", moment);
+		result.addObject("englishWelcome", "to our web of rendezvous");
+		result.addObject("spanishWelcome", "de nuestra web de citas");
+		result.addObject("momentEs", momentEs);
+		result.addObject("momentEn", momentEn);
 
 		return result;
 	}

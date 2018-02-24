@@ -51,7 +51,7 @@
 
 	<acme:submit name="save" code="administrator.save"/>
 
-	<acme:cancel code="administrator.cancel" url="administrator/edit.do"/>
+	<acme:cancel code="administrator.cancel" url="welcome/index.do"/>
 
 </form:form>
 
