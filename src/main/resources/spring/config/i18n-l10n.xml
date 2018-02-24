@@ -29,6 +29,7 @@
 		<value>/views/announcement/messages</value>
 		<value>/views/user/messages</value>
 		<value>/views/administrator/messages</value>
+		<value>/views/termAndCondition/messages</value>
 
 	</util:list>
 

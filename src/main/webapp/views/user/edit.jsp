@@ -50,7 +50,16 @@
         <br/>
 
 
-	<input type="submit" name="save" value="<spring:message code="user.save"/>" />
+        <div>
+                <form:checkbox id="myCheck" onclick="comprobar();" path="check"/>
+                <form:label path="check">
+                        <spring:message code="user.accept" />
+                        <a href="termAndCondition/termAndCondition.do"><spring:message code="user.lopd"/></a>
+                </form:label>
+        </div>
+
+
+	<input type="submit" name="save" id="submitButton" value="<spring:message code="user.save"/>" />
 	
 	<input type="button" name="cancel" value="<spring:message code="user.cancel" />"
 			onclick="javascript: relativeRedir('welcome/index.do');" />
@@ -68,5 +77,23 @@ function validateForm() {
     } 
 }
 
+</script>
+
+<script>
+
+    document.getElementById("submitButton").disabled = true;
+    document.getElementById("myCheck").checked = false;
+
+    function comprobar() {
+
+        var x = document.getElementById("myCheck").checked;
+
+        if(x == true){
+            document.getElementById("submitButton").disabled = false;
+        }
+        else{
+            document.getElementById("submitButton").disabled = true;
+        }
+    }
 </script>
 

@@ -29,7 +29,7 @@ public class UserForm {
     private String	email;
     private String  postalAdresses;
     private Date  birthday;
-
+    private boolean	check;
 
     @Column(unique = true)
     @Size(min = 4, max = 32)
@@ -111,5 +111,12 @@ public class UserForm {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public boolean getCheck() {
+        return this.check;
+    }
+    public void setCheck(final boolean check) {
+        this.check = check;
     }
 }
