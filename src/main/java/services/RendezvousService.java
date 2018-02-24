@@ -180,5 +180,9 @@ public class RendezvousService  {
         return rendezvousRepository.rendezvousForAnonymous();
     }
 
-
+    public boolean mayor18(User attendant){
+        Date fechaActual= new Date();
+        Integer edad=  fechaActual.getYear()-attendant.getBirthday().getYear();
+       return edad>=18;
+    }
 }

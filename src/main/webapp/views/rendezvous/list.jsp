@@ -44,7 +44,12 @@
             </jstl:if>
         </jstl:forEach>
         <jstl:if test="${contains eq false && row.deleted ne true && row.moment ge now }">
+            <jstl:if test="${row.forAdults eq true && mayor18 eq true}">
             <acme:button url="participate/user/create.do?rendezvousId=${row.id}" code="rendezvous.participate"/>
+            </jstl:if>
+        <jstl:if test="${row.forAdults eq true && mayor18 eq false}">
+            <spring:message code="rendezvous.mayor18" var="mayor"/><jstl:out value="${mayor}"/>
+        </jstl:if>
         </jstl:if>
         <jstl:if test="${row.deleted eq true && row.moment ge now}">
             <spring:message code="rendezvous.deleted" var="delet"/><jstl:out value="${delet}"/>

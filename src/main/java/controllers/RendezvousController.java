@@ -39,8 +39,9 @@ public class RendezvousController extends AbstractController {
         User user;
 
         user = userService.findByPrincipal();
-        result = new ModelAndView("rendezvous/listAll");
+        result = new ModelAndView("rendezvous/list");
         result.addObject("rendezvous", rendezvousService.findAll());
+        result.addObject("mayor18",rendezvousService.mayor18(user));
         result.addObject("user",user);
         result.addObject("requestUri","rendezvous/listAll.do");
         result.addObject("cancelUri","cancelAll");
