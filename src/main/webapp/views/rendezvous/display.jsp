@@ -46,6 +46,9 @@
 <a href="announcement/list.do?rendezvousId=${rendezvous.id}"><spring:message code="rendezvous.listAnnouncement"/></a>
 <br/>
 
+<a href="answer/list.do?rendezvousId=${rendezvous.id}"><spring:message code="rendezvous.listParticipated"/></a>
+<br/>
+
 <security:authorize access="hasRole('USER')">
 <div id="comment-box">
 
@@ -79,6 +82,8 @@
         </display:column>
 
  </display:table>
+
+
 
 <br>
 <input type="button" name="cancel" value="<spring:message code="rendezvous.cancel" />"

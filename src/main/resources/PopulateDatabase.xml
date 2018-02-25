@@ -299,7 +299,6 @@
         <property name="rendezvous" ref="rendezvous2"/>
     </bean>
 
-
     <!-- Answers -->
 
     <bean id="answer1" class="domain.Answer">

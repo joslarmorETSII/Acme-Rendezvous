@@ -152,6 +152,9 @@ public class UserService {
         result = this.userRepository.avgDevRendezvousPerUser();
         return result;
     }
+    public Collection<User> rendezvousAttendants(int rendezvousId){
+        return userRepository.rendezvousAttendant(rendezvousId);
+    }
 
     public Double RatioCreatorsVsNoCreators() {
         Double result;
