@@ -11,21 +11,24 @@ import java.util.Collection;
 @Repository
 public interface RendezvousRepository extends JpaRepository<Rendezvous,Integer> {
     @Query("select avg(u.rendezvouses.size),sqrt(sum(u.rendezvouses.size *u.rendezvouses.size)/ count(u) - (avg(u.rendezvouses.size) *avg(u.rendezvouses.size))) from  User u")
-    Collection<Double> avgDevRendezvousesPerUser();
+    Object[] avgDevRendezvousesPerUser();
 
-    //@Query("select concat ( 100 * ( select count(u) from User u where u.rendezvouses is not empty )/ count(u.rendezvouses is empty) , '%') from User u")
-    //public String ratioOfTripsWithAnyAuditRecord();
+    @Query("select avg(u.participated.size),stddev(u.participated.size) from Rendezvous u where u.participated.size>1")
+    Object[] avgDevRendezvousParticipatePerUser();
 
-    //Collection<Double> avgDevUserPerRendezvous();
-
-    //@Query("select avg(r.participated.size),sqrt(sum(r.participated.size *r.participated.size)/ count(r) - (avg(r.participated.size) *avg(r.participated.size))) from  Rendezvous r")
-    //Collection<Double> avgDevRendezvousParticipatePerUser();
+    @Query("select r from Rendezvous r order by r.participated.size desc")
+    Collection<Rendezvous> top10RendezvousParticipated();
 
     @Query("select p.rendezvous from Participate p where p.attendant.id = ?1")
-
     Collection<Rendezvous> userParticipate(int userId);
 
     @Query("select r from Rendezvous r where r.forAdults=false")
     Collection<Rendezvous> rendezvousForAnonymous();
+
+    @Query("select r from Rendezvous r where r.announcements.size > (select avg(r1.announcements.size)*1.75 from Rendezvous r1)")
+    Collection<Rendezvous> rendezvousPlus75AvgAnnouncements();
+
+    @Query("select r from Rendezvous r where r.associated.size > (select avg(r1.associated.size)*1.1 from Rendezvous r1)")
+    Collection<Rendezvous> rendezvousPlus10AvgAssociated();
 
 }

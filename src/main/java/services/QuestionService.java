@@ -75,4 +75,12 @@ public class QuestionService {
         User creater = question.getRendezvous().getCreator();
         Assert.isTrue(principal.equals(creater));
     }
+
+    public Object[] questionsPerRendezvous() {
+
+        Object[] result;
+
+        result = this.questionRepository.questionsPerRendezvous();
+        return result;
+    }
 }

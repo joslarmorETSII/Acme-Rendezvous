@@ -13,5 +13,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select u from User u where u.userAccount.id = ?1")
     User findByUserAccountId(int userAccountId);
 
+    @Query("select avg(u.participates.size),sqrt(sum(u.participates.size *u.participates.size)/ count(u) - (avg(u.participates.size) *avg(u.participates.size))) from  User u")
+    Object[] avgDevRendezvousPerUser();
+
+    @Query("select count(u)*1.0 / (select count(u1)*1.0 from User u1 where u1.rendezvouses.size = 0 ) from User u where u.rendezvouses.size > 0")
+    Double RatioCreatorsVsNoCreators();
 
 }

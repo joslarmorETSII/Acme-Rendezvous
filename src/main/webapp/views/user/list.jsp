@@ -32,7 +32,7 @@
     <acme:column code="user.surname" value="${user.surname}" />
     <acme:column code="user.email" value="${user.email}"/>
     <acme:column code="user.phone" value="${user.phone}"/>
-    <acme:column code="user.postalAdresses" value="${user.postalAdresses}"/>
+    <acme:column code="user.postalAddresses" value="${user.postalAddresses}"/>
 
     <spring:message var="birthday" code="user.birthday"/>
     <spring:message var="formatDate" code="event.format.date"/>

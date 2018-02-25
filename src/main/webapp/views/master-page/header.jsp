@@ -29,6 +29,8 @@
 					<li><a href="comment/administrator/list.do"><spring:message code="master.page.comment.administrator.list" /></a></li>
 					<li><a href="announcement/listAll.do"><spring:message code="master.page.announcement.listAll" /></a></li>
 					<li><a href="rendezvous/administrator/listAll.do"><spring:message code="master.page.rendezvous.administrator.list" /></a></li>
+                <li><a href="/administrator/dashboard.do"><spring:message
+                        code="master.page.administrator.dashboard"/></a></li>
 			</ul>
 			</li>
 		</security:authorize>
