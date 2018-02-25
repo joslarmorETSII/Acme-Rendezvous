@@ -1,6 +1,7 @@
 package services;
 
 import domain.Answer;
+import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.AnswerRepository;
@@ -16,6 +17,9 @@ public class AnswerService {
     @Autowired
     private AnswerRepository answerRepository;
 
+    @Autowired
+    private UserService userService;
+
     // Supporting services ----------------------------------------------------
 
     // Constructors -----------------------------------------------------------
@@ -25,8 +29,9 @@ public class AnswerService {
 
     public Answer create(){
         Answer answer;
-
+        User user = userService.findByPrincipal();
         answer = new Answer();
+        answer.setUser(user);
 
         return answer;
     }
@@ -40,7 +45,11 @@ public class AnswerService {
     }
 
     public Answer save(Answer answer){
-        return answerRepository.save(answer);
+        User user = answer.getUser();
+        Answer aux = answerRepository.save(answer);
+        user.getAnswers().add(aux);
+        userService.save(user);
+        return aux;
     }
 
     public void delete(Answer answer){
