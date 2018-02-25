@@ -195,5 +195,34 @@ public class RendezvousService  {
 
     }
 
+    public Object[] avgDevRendezvousesPerUser() {
+        Object[] result;
+        result = this.rendezvousRepository.avgDevRendezvousesPerUser();
+        return result;
+    }
+
+    public Object[] avgDevRendezvousParticipatePerUser() {
+        Object[] result;
+        result = this.rendezvousRepository.avgDevRendezvousParticipatePerUser();
+        return result;
+    }
+
+    public Collection<Rendezvous> rendezvousPlus75AvgAnnouncements() {
+        Collection<Rendezvous> result;
+        result = this.rendezvousRepository.rendezvousPlus75AvgAnnouncements();
+        return result;
+    }
+
+    public Collection<Rendezvous> rendezvousPlus10AvgAssociated() {
+        Collection<Rendezvous> result;
+        result = this.rendezvousRepository.rendezvousPlus10AvgAssociated();
+        return result;
+    }
+
+    public Collection<Rendezvous> top10RendezvousParticipated() {
+        Collection<Rendezvous> result;
+        result = this.rendezvousRepository.top10RendezvousParticipated();
+        return result;
+    }
 
 }

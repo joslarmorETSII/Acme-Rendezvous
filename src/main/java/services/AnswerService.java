@@ -49,4 +49,10 @@ public class AnswerService {
     public void saveAnswers(Collection<Answer> answers){
         answerRepository.save(answers);
     }
+
+    public Object[] avgDevAnswersQuestionsPerRendezvous() {
+        Object[] result;
+        result = this.answerRepository.avgDevAnswersQuestionsPerRendezvous();
+        return result;
+    }
 }

@@ -153,4 +153,11 @@ public class CommentService {
 
     }
 
+    public Object[] avgDevRepliesPerComment() {
+        Object[] result;
+
+        result = this.commentRepository.avgDevRepliesPerComment();
+
+        return result;
+    }
 }

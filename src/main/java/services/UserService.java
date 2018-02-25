@@ -147,6 +147,16 @@ public class UserService {
         return result;
     }
 
+    public Object[] avgDevRendezvousPerUser() {
+        Object[] result;
+        result = this.userRepository.avgDevRendezvousPerUser();
+        return result;
+    }
 
+    public Double RatioCreatorsVsNoCreators() {
+        Double result;
+        result = this.userRepository.RatioCreatorsVsNoCreators();
+        return result;
+    }
 
 }
