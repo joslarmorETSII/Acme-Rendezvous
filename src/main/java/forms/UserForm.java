@@ -27,7 +27,7 @@ public class UserForm {
     private String	surname;
     private String	phone;
     private String	email;
-    private String  postalAdresses;
+    private String  postalAddresses;
     private Date  birthday;
     private boolean	check;
 
@@ -74,7 +74,7 @@ public class UserForm {
         this.surname = surname;
     }
 
-    @Pattern(regexp = "^\\+([1-9]\\d{0,2})( )?(\\([1-9]\\d{0,2}\\))?( )?\\d{4,}$")
+    @Pattern(regexp = "^\\+([3][4])( )(\\d{9})|()$")
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getPhone() {
         return this.phone;
@@ -94,11 +94,11 @@ public class UserForm {
     }
 
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
-    public String getPostalAdresses() {
-        return this.postalAdresses;
+    public String getPostalAddresses() {
+        return this.postalAddresses;
     }
-    public void setPostalAdresses(final String postalAdresses) {
-        this.postalAdresses = postalAdresses;
+    public void setPostalAddresses(final String postalAddresses) {
+        this.postalAddresses = postalAddresses;
     }
 
     @NotNull

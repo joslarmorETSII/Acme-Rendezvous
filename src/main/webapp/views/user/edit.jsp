@@ -18,7 +18,7 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="user/register.do" modelAttribute="userForm">
+<form:form action="user/register.do" modelAttribute="userForm" onsubmit="return validatePhone()">
 
 
         <acme:textbox code="user.username" path="username" />
@@ -37,13 +37,15 @@
         <acme:textbox code="user.surname" path="surname" />
         <br />
 
-        <acme:textbox code="user.phone" path="phone"/>
+        <form:label path="phone"><spring:message code="user.phone" /></form:label>:&nbsp;
+        <form:input id="phoneId" path="phone" placeholder="+34 611222333" />
+        <form:errors cssClass="error" path="phone" />
         <br />
 
         <acme:textbox code="user.email" path="email"/>
         <br />
 
-        <acme:textbox code="user.postalAdresses" path="postalAdresses"/>
+        <acme:textbox code="user.postalAddresses" path="postalAddresses"/>
         <br/>
 
         <acme:textbox code="user.birthday" path="birthday"/>
@@ -68,10 +70,10 @@
 
 <script>
 
-function validateForm() {
+function validatePhone() {
  <spring:message code="user.phone.ask" var="ask"/>
     var x = document.getElementById("phoneId").value;
-    var patt = new RegExp("^(\\+[1-9][0-9]{2}|\\+[1-9][0-9]|\\+[1-9])(\\s\\([1-9][0-9]{2}\\)|\\ \\([1-9][0-9]\\)|\\ \\([1-9]\\))?(\\ \\d{4,})|(\\d{4,})$");
+    var patt = new RegExp("^\\+([3][4])( )(\\d{9})|()$");
     if(x != "" && !patt.test(x)){
         return confirm('<jstl:out value="${ask}"/>');
     } 

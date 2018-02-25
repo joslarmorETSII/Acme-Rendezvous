@@ -18,7 +18,7 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="administrator/edit.do" modelAttribute="administrator" >
+<form:form action="administrator/edit.do" modelAttribute="administrator" onsubmit="return validatePhone()">
 
 	<form:hidden path="id"/>
 	<form:hidden path="version"/>
@@ -39,15 +39,15 @@
 	<form:errors path="email" cssClass="error"/>
 	<br/>
 	
-	<b><form:label path="postalAdresses"><spring:message code="administrator.postalAdresses"/></form:label>:&nbsp;</b>
-	<form:input path="postalAdresses"/>
-	<form:errors path="postalAdresses" cssClass="error"/>
+	<b><form:label path="postalAddresses"><spring:message code="administrator.postalAddresses"/></form:label>:&nbsp;</b>
+	<form:input path="postalAddresses"/>
+	<form:errors path="postalAddresses" cssClass="error"/>
 	<br/>
-	
-	<b><form:label path="phone"><spring:message code="administrator.phone"/></form:label>:&nbsp;</b>
-	<form:input path="phone" placeholder="+CC (AC) PN"/>
-	<form:errors path="phone" cssClass="error"/>
-	<br/>
+
+    <form:label path="phone"><spring:message code="user.phone" /></form:label>:&nbsp;
+    <form:input id="phoneId" path="phone" placeholder="+34 611222333" />
+    <form:errors cssClass="error" path="phone" />
+    <br />
 
 	<acme:submit name="save" code="administrator.save"/>
 
@@ -57,10 +57,10 @@
 
 <script>
 
-function validateForm() {
+function validatePhone() {
  <spring:message code="administrator.phone.ask" var="ask"/>
     var x = document.getElementById("phoneId").value;
-    var patt = new RegExp("^(\\+[1-9][0-9]{2}|\\+[1-9][0-9]|\\+[1-9])(\\s\\([1-9][0-9]{2}\\)|\\ \\([1-9][0-9]\\)|\\ \\([1-9]\\))?(\\ \\d{4,})|(\\d{4,})$");
+    var patt = new RegExp("^\\+([3][4])( )(\\d{9})|()$");
     if(x != "" && !patt.test(x)){
         return confirm('<jstl:out value="${ask}"/>');
     } 

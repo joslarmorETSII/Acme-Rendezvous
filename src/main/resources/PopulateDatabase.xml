@@ -60,8 +60,8 @@
         <property name="name" value="admin1"/>
         <property name="surname" value="admin1"/>
         <property name="email" value="admin1@acme.com"/>
-        <property name="phone" value="+34606"/>
-        <property name="postalAdresses" value="C\ Reina Mercerdez N11"/>
+        <property name="phone" value="+34 666666666"/>
+        <property name="postalAddresses" value="C\ Reina Mercerdez N11"/>
         <property name="userAccount" ref="userAccount1"/>
     </bean>
 
@@ -71,8 +71,8 @@
         <property name="name" value="user1"/>
         <property name="surname" value="user1"/>
         <property name="email" value="user1@acme.com"/>
-        <property name="phone" value="+34606"/>
-        <property name="postalAdresses" value="C\ Reina Mercerdez N11"/>
+        <property name="phone" value="+34 606777777"/>
+        <property name="postalAddresses" value="C\ Reina Mercerdez N11"/>
         <property name="userAccount" ref="userAccount2"/>
         <property name="birthday" value="1987/02/14"/>
         <property name="rendezvouses">
@@ -96,8 +96,8 @@
         <property name="name" value="user2"/>
         <property name="surname" value="user2"/>
         <property name="email" value="user2@acme.com"/>
-        <property name="phone" value="+34606"/>
-        <property name="postalAdresses" value="C\ Reina Mercerdez N11"/>
+        <property name="phone" value="+34 606888888"/>
+        <property name="postalAddresses" value="C\ Reina Mercerdez N11"/>
         <property name="userAccount" ref="userAccount3"/>
         <property name="birthday" value="1997/01/01"/>
         <property name="rendezvouses">

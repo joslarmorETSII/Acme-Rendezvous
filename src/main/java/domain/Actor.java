@@ -27,7 +27,7 @@ public abstract class Actor extends DomainEntity {
     private String	surname;
     private String	phone;
     private String	email;
-    private String	postalAdresses ;
+    private String	postalAddresses ;
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -49,7 +49,7 @@ public abstract class Actor extends DomainEntity {
         this.surname = surname;
     }
 
-    @Pattern(regexp = "^\\+([1-9]\\d{0,2})( )?(\\([1-9]\\d{0,2}\\))?( )?\\d{4,}$")
+    @Pattern(regexp = "^\\+([3][4])( )(\\d{9})|()$")
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getPhone() {
         return phone;
@@ -71,12 +71,12 @@ public abstract class Actor extends DomainEntity {
     }
 
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
-    public String getPostalAdresses() {
-        return postalAdresses;
+    public String getPostalAddresses() {
+        return postalAddresses;
     }
 
-    public void setPostalAdresses(String postalAdresses) {
-        this.postalAdresses = postalAdresses;
+    public void setPostalAddresses(String postalAddresses) {
+        this.postalAddresses = postalAddresses;
     }
 
     // Relationships ----------------------------------------------------------

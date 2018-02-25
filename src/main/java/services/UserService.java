@@ -118,7 +118,7 @@ public class UserService {
         result.setSurname(userForm.getSurname());
         result.setPhone(userForm.getPhone());
         result.setEmail(userForm.getEmail());
-        result.setPostalAdresses(userForm.getPostalAdresses());
+        result.setPostalAddresses(userForm.getPostalAddresses());
         result.setBirthday(userForm.getBirthday());
         result.getUserAccount().setPassword(new Md5PasswordEncoder().encodePassword(userForm.getPassword(), null));
 
