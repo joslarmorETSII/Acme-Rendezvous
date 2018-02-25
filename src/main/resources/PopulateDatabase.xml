@@ -90,6 +90,12 @@
                 <null/>
             </list>
         </property>
+        <property name="answers">
+            <list>
+                <ref bean="answer1"/>
+                <ref bean="answer2"/>
+            </list>
+        </property>
     </bean>
 
     <bean id="user2" class="domain.User">
@@ -118,6 +124,11 @@
         <property name="Participates">
             <list>
                 <ref bean="participate1"/>
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+                <null/>
             </list>
         </property>
     </bean>
@@ -293,10 +304,12 @@
 
     <bean id="answer1" class="domain.Answer">
         <property name="answer" value="Yes I do"/>
+        <property name="user" ref="user1"/>
     </bean>
 
     <bean id="answer2" class="domain.Answer">
         <property name="answer" value="No, I have"/>
+        <property name="user" ref="user1"/>
     </bean>
 
     <!-- Participates -->

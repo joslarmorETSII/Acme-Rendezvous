@@ -41,6 +41,18 @@ public class User extends Actor {
     private Collection<Comment> comments;
     private Collection<Participate> participates;
     private Collection<Rendezvous> rendezvouses;
+    private Collection<Answer> answers;
+
+    @Valid
+    @NotNull
+    @OneToMany(mappedBy = "user")
+    public Collection<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Collection<Answer> answers) {
+        this.answers = answers;
+    }
 
     @Valid
     @OneToMany(mappedBy = "user")
