@@ -1,9 +1,6 @@
 package services;
 
-import domain.Comment;
-import domain.Participate;
-import domain.Rendezvous;
-import domain.User;
+import domain.*;
 import forms.UserForm;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +14,8 @@ import security.LoginService;
 import security.UserAccount;
 
 import javax.transaction.Transactional;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 @Service
 @Transactional
@@ -56,6 +51,7 @@ public class UserService {
         result.setComments(new ArrayList<Comment>());
         result.setParticipates(new ArrayList<Participate>());
         result.setRendezvouses(new ArrayList<Rendezvous>());
+        result.setAnswers(new ArrayList<Answer>());
         result.setUserAccount(this.userAccountService.create("USER"));
 
         return result;
