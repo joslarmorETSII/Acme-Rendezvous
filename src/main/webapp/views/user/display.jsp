@@ -31,7 +31,7 @@
 <b><spring:message code="user.email"/>:&nbsp;</b><jstl:out value="${user.email}" />
 <br/>
 
-<b><spring:message code="user.postalAdresses"/>:&nbsp;</b><jstl:out value="${user.postalAdresses}" />
+<b><spring:message code="user.postalAddresses"/>:&nbsp;</b><jstl:out value="${user.postalAddresses}" />
 <br/>
 
 

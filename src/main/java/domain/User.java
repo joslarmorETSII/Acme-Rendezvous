@@ -11,8 +11,7 @@ import java.util.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class
-User extends Actor {
+public class User extends Actor {
 
     // Constructors -----------------------------------------------------------
 
