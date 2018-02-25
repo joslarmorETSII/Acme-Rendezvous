@@ -13,6 +13,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select u from User u where u.userAccount.id = ?1")
     User findByUserAccountId(int userAccountId);
 
+    @Query("select p.attendant from Participate p where p.rendezvous.id=?1")
+    Collection<User> rendezvousAttendant(int rendevoudId);
+
     @Query("select avg(u.participates.size),sqrt(sum(u.participates.size *u.participates.size)/ count(u) - (avg(u.participates.size) *avg(u.participates.size))) from  User u")
     Object[] avgDevRendezvousPerUser();
 
