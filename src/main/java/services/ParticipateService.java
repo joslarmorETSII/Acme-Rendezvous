@@ -93,8 +93,7 @@ public class ParticipateService {
 
     public Rendezvous reconstruct(QuestionsForm questionsForm, String[] answers,BindingResult binding) {
         Rendezvous result;
-        FieldError error;
-        String[] codigos;
+
         List<Question> questions = new ArrayList<>(questionsForm.getQuestions());
         List<Answer> allAnswer = new ArrayList<>();
         questions = new ArrayList<>(questionsForm.getQuestions());
@@ -104,14 +103,9 @@ public class ParticipateService {
             userAnswer.setAnswer(s);
             allAnswer.add(userAnswer);
         }
-        try {
-            answerService.saveAnswers(allAnswer);
-        }catch(Throwable oops){
-                codigos = new String[1];
-                codigos[0] = "user.password.mismatch";
-                error= new FieldError("questionsForm","answer", questions,false,codigos,null,"");
-                binding.addError(error);
-        }
+
+        answerService.saveAnswers(allAnswer);
+
         for(int i =0;i<questions.size();i++){
             questions.get(i).getAnswers().add(allAnswer.get(i));
         }

@@ -59,6 +59,7 @@ public class ParticipateUserController  extends AbstractController {
         if (rendezvous.getQuestions().size() > 0) {
             QuestionsForm questionsForm = new QuestionsForm();
             questionsForm.setQuestions(rendezvous.getQuestions());
+            questionsForm.setAnswer(answerService.create());
             result = new ModelAndView("rendezvous/answerQuestion");
             result.addObject("questionForm", questionsForm);
             result.addObject("questions",rendezvous.getQuestions());
@@ -78,10 +79,8 @@ public class ParticipateUserController  extends AbstractController {
         ModelAndView result;
         Rendezvous rendezvous;
         String[] answers = request.getParameterValues("answer");
-        if(answers == null){
-            return null;
-        }
-        if (binding.hasErrors() || answers==null)
+
+        if (binding.hasErrors() )
             result = createEditModelAndViewForm(questionsForm, "question.save.error");
         else
             try {
@@ -94,7 +93,7 @@ public class ParticipateUserController  extends AbstractController {
                 result.addObject("rendezvous", rendezvousService.findAll());
                 result.addObject("user", userService.findByPrincipal());
             } catch (final Throwable oops) {
-                result = createQuestionForm(questionsForm.getQuestions().iterator().next().getRendezvous(),"question.save.error");
+                result = createQuestionForm(questionsForm,questionsForm.getQuestions().iterator().next().getRendezvous(),"question.save.error");
             }
         return result;
     }
@@ -164,11 +163,10 @@ public class ParticipateUserController  extends AbstractController {
         result.addObject("message", messageCode);
         return result;
     }
-    protected ModelAndView createQuestionForm(Rendezvous rendezvous,String message){
+    protected ModelAndView createQuestionForm(QuestionsForm questionsForm,Rendezvous rendezvous,String message){
         ModelAndView result;
 
-        QuestionsForm questionsForm = new QuestionsForm();
-        questionsForm.setQuestions(rendezvous.getQuestions());
+
         result = new ModelAndView("rendezvous/answerQuestion");
         result.addObject("questionForm", questionsForm);
         result.addObject("questions",rendezvous.getQuestions());
