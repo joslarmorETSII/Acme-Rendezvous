@@ -64,7 +64,7 @@
 
 <spring:message code="rendezvous.associated" var="associated"/>
 <h2><jstl:out value="${associated}"/></h2>
-    <display:table pagesize="2" class="displaytag" keepStatus="true" name="rendezvous.associated" requestURI="${requestUri}" id="row">
+    <display:table pagesize="5" class="displaytag" keepStatus="true" name="rendezvous.associated" requestURI="${requestUri}" id="row">
 
         <spring:message code="rendezvous.name" var="name"/>
         <display:column property="name" title="${name}"/>
@@ -79,9 +79,6 @@
         </display:column>
 
  </display:table>
-
-<a href="rendezvous/user/associate.do?rendezvousId=${row.id}"><spring:message code="rendezvous.associate"/></a>
-<br/>
 
 <br>
 <input type="button" name="cancel" value="<spring:message code="rendezvous.cancel" />"

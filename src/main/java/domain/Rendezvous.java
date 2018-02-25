@@ -114,7 +114,7 @@ public class Rendezvous extends DomainEntity{
     private Collection<Participate> participated;
     private Collection<Comment> comments;
     private Collection<Question> questions;
-    private Rendezvous parentRendezvous;
+    private Collection<Rendezvous> parentRendezvous;
 
     @Valid
     @NotNull
@@ -129,7 +129,7 @@ public class Rendezvous extends DomainEntity{
 
     @Valid
     @NotNull
-    @OneToMany(mappedBy = "parentRendezvous")
+    @ManyToMany(mappedBy = "parentRendezvous")
     public Collection<Rendezvous> getAssociated() {
         return associated;
     }
@@ -184,12 +184,12 @@ public class Rendezvous extends DomainEntity{
     }
 
     @Valid
-    @ManyToOne(optional = true)
-    public Rendezvous getParentRendezvous() {
+    @ManyToMany
+    public Collection<Rendezvous> getParentRendezvous() {
         return parentRendezvous;
     }
 
-    public void setParentRendezvous(Rendezvous parentRendezvous) {
+    public void setParentRendezvous(Collection<Rendezvous> parentRendezvous) {
         this.parentRendezvous = parentRendezvous;
     }
 }

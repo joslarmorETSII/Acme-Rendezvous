@@ -60,6 +60,10 @@ public class QuestionService {
         return question;
    }
 
+   public void saveAll(Collection<Question> questions){
+        questionRepository.save(questions);
+   }
+
    public void deleteQuestions(Rendezvous rendezvous){
        this.questionRepository.delete(rendezvous.getQuestions());
    }

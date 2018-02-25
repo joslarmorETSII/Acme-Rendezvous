@@ -46,5 +46,7 @@ public class AnswerService {
     public void delete(Answer answer){
     }
     // Other business methods -------------------------------------------------
-
+    public void saveAnswers(Collection<Answer> answers){
+        answerRepository.save(answers);
+    }
 }

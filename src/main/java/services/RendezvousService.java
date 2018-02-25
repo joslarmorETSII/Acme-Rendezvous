@@ -186,9 +186,12 @@ public class RendezvousService  {
        return edad>=18;
     }
 
-    public void associados(Rendezvous rendezvous) {
+    public void associate(Rendezvous rendezvousParent,Collection<Rendezvous> childs) {
 
-        rendezvousRepository.save(rendezvous);
+        for(Rendezvous c:childs){
+            c.getParentRendezvous().add(rendezvousParent);
+        }
+        rendezvousRepository.save(rendezvousParent);
 
     }
 

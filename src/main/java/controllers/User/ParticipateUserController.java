@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,7 +48,7 @@ public class ParticipateUserController  extends AbstractController {
     // Creation --------------------------------------------
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create(@RequestParam int rendezvousId) {
+    public ModelAndView create(@RequestParam int rendezvousId,@RequestParam(required= false) String message) {
         ModelAndView result;
         Rendezvous rendezvous;
         Participate participate;
@@ -61,6 +62,7 @@ public class ParticipateUserController  extends AbstractController {
             result = new ModelAndView("rendezvous/answerQuestion");
             result.addObject("questionForm", questionsForm);
             result.addObject("questions",rendezvous.getQuestions());
+            result.addObject("message",message);
         } else {
             participateService.save(participate);
             rendezvous.getParticipated().add(participate);
@@ -72,15 +74,18 @@ public class ParticipateUserController  extends AbstractController {
     }
 
     @RequestMapping(value = "/answerQuestion", method = RequestMethod.POST)
-    public ModelAndView answerQuestion(@Valid  QuestionsForm questionsForm, BindingResult binding) {
+    public ModelAndView answerQuestion(@Valid  QuestionsForm questionsForm, BindingResult binding, HttpServletRequest request) {
         ModelAndView result;
         Rendezvous rendezvous;
-
-        if (binding.hasErrors())
+        String[] answers = request.getParameterValues("answer");
+        if(answers == null){
+            return null;
+        }
+        if (binding.hasErrors() || answers==null)
             result = createEditModelAndViewForm(questionsForm, "question.save.error");
         else
             try {
-                rendezvous = participateService.reconstruct(questionsForm, binding);
+                rendezvous = participateService.reconstruct(questionsForm, answers, binding);
                 Participate participate = participateService.create();
                 participate.setRendezvous(rendezvous);
                 participateService.save(participate);
@@ -89,7 +94,7 @@ public class ParticipateUserController  extends AbstractController {
                 result.addObject("rendezvous", rendezvousService.findAll());
                 result.addObject("user", userService.findByPrincipal());
             } catch (final Throwable oops) {
-                result = createEditModelAndViewForm(questionsForm, "question.save.error");
+                result = createQuestionForm(questionsForm.getQuestions().iterator().next().getRendezvous(),"question.save.error");
             }
         return result;
     }
@@ -157,6 +162,18 @@ public class ParticipateUserController  extends AbstractController {
         result.addObject("question", question);
 
         result.addObject("message", messageCode);
+        return result;
+    }
+    protected ModelAndView createQuestionForm(Rendezvous rendezvous,String message){
+        ModelAndView result;
+
+        QuestionsForm questionsForm = new QuestionsForm();
+        questionsForm.setQuestions(rendezvous.getQuestions());
+        result = new ModelAndView("rendezvous/answerQuestion");
+        result.addObject("questionForm", questionsForm);
+        result.addObject("questions",rendezvous.getQuestions());
+        result.addObject("message",message);
+
         return result;
     }
 }

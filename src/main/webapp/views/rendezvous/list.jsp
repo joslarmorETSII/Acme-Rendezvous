@@ -29,6 +29,7 @@
     <jstl:set var="now" value="${now}"/>
 
 
+
     <display:column>
         <security:authorize access="hasRole('USER')">
         <jstl:if test="${row.finalMode == false && row.creator eq testuser && row.deleted ne true}">
@@ -51,11 +52,14 @@
                 <jstl:set var="contains" value="true"/>
             </jstl:if>
         </jstl:forEach>
-        <jstl:if test="${contains eq false && row.deleted ne true && row.moment ge now }">
+        <jstl:if test="${contains eq false && row.deleted ne true && row.moment ge now && row.finalMode eq false}">
+            <jstl:if test="${row.forAdults eq false}">
+                <acme:button url="participate/user/create.do?rendezvousId=${row.id}" code="rendezvous.participate"/>
+            </jstl:if>
             <jstl:if test="${row.forAdults eq true && mayor18 eq true}">
             <acme:button url="participate/user/create.do?rendezvousId=${row.id}" code="rendezvous.participate"/>
             </jstl:if>
-        <jstl:if test="${row.forAdults eq true && mayor18 eq false}">
+        <jstl:if test="${row.forAdults eq true && mayor18 eq false }">
             <spring:message code="rendezvous.mayor18" var="mayor"/><jstl:out value="${mayor}"/>
         </jstl:if>
         </jstl:if>
@@ -68,7 +72,6 @@
         <jstl:if test="${row.moment lt now }">
             <spring:message code="rendezvous.passed" var="passed"/><jstl:out value="${passed}"/>
         </jstl:if>
-
 
     </display:column>
 
@@ -89,6 +92,11 @@
     </jstl:if>
     </display:column>
 
+    <display:column>
+        <jstl:if test="${row.creator eq user}">
+            <a href="rendezvous/user/associate.do?rendezvousId=${row.id}"><spring:message code="rendezvous.associate"/></a>
+        </jstl:if>
+    </display:column>
 
 
 </display:table>

@@ -134,6 +134,7 @@
         <property name="participated">
             <list>
                 <ref bean="participate1"/>
+                <ref bean="participate4"/>
             </list>
         </property>
         <property name="picture" value="https://files.salsacdn.com/card/1444_Rendez-Vous/imagemain/1_d16x9_0_6_848.20170803170739.jpg"/>
@@ -160,9 +161,7 @@
             </list>
         </property>
         <property name="creator" ref="user1"/>
-        <property name="parentRendezvous">
-            <null/>
-        </property>
+
     </bean>
 
     <bean id="rendezvous2" class="domain.Rendezvous">
@@ -175,6 +174,8 @@
         <property name="participated">
             <list>
                 <ref bean="participate2"/>
+                <ref bean="participate5"/>
+
             </list>
         </property>
         <property name="picture" value="https://d1dd4ethwnlwo2.cloudfront.net/wp-content/uploads/2016/10/shutterstock_345816716.jpg"/>
@@ -201,7 +202,6 @@
             </list>
         </property>
         <property name="creator" ref="user1"/>
-        <property name="parentRendezvous" ref="rendezvous3"/>
     </bean>
 
 
@@ -241,9 +241,6 @@
             </list>
         </property>
         <property name="creator" ref="user2"/>
-        <property name="parentRendezvous">
-            <null/>
-        </property>
     </bean>
 
     <!-- Announcements -->
@@ -316,6 +313,23 @@
         <property name="moment" value="2018/02/11 11:11"/>
     </bean>
 
+    <bean id="participate3" class="domain.Participate">
+        <property name="rendezvous" ref="rendezvous3"/>
+        <property name="attendant" ref="user2"/>
+        <property name="moment" value="2018/02/11 11:11"/>
+    </bean>
+
+    <bean id="participate4" class="domain.Participate">
+        <property name="rendezvous" ref="rendezvous1"/>
+        <property name="attendant" ref="user1"/>
+        <property name="moment" value="2018/02/10 11:11"/>
+    </bean>
+
+    <bean id="participate5" class="domain.Participate">
+        <property name="rendezvous" ref="rendezvous2"/>
+        <property name="attendant" ref="user1"/>
+        <property name="moment" value="2018/02/11 11:11"/>
+    </bean>
     <!-- Comments -->
 
     <bean id="comment1" class="domain.Comment">

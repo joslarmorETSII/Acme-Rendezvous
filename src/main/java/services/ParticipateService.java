@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import repositories.ParticipateRepository;
 
 import javax.transaction.Transactional;
@@ -26,6 +27,12 @@ public class ParticipateService {
 
     @Autowired
     private RendezvousService rendezvousService;
+
+    @Autowired
+    private AnswerService answerService;
+
+    @Autowired
+    private QuestionService questionService;
 
     // Constructors -----------------------------------------------------------
     public ParticipateService(){
@@ -84,22 +91,31 @@ public class ParticipateService {
         Assert.isTrue(principal.equals(participate.getAttendant()));
     }
 
-    public Rendezvous reconstruct(QuestionsForm questionsForm, BindingResult binding) {
+    public Rendezvous reconstruct(QuestionsForm questionsForm, String[] answers,BindingResult binding) {
         Rendezvous result;
-        List<Question> questions;
-        List<Answer> answers = new ArrayList<>();
-
-        answers.add(questionsForm.getAnswer0());
-        answers.add(questionsForm.getAnswer1());
-        answers.add(questionsForm.getAnswer2());
-        answers.add(questionsForm.getAnswer3());
-        answers.add(questionsForm.getAnswer4());
-
+        FieldError error;
+        String[] codigos;
+        List<Question> questions = new ArrayList<>(questionsForm.getQuestions());
+        List<Answer> allAnswer = new ArrayList<>();
         questions = new ArrayList<>(questionsForm.getQuestions());
 
-        for(int i=0;i<questions.size();i++){
-            questions.get(i).getAnswers().add(answers.get(i));
+        for(String s:answers){
+            Answer userAnswer = answerService.create();
+            userAnswer.setAnswer(s);
+            allAnswer.add(userAnswer);
         }
+        try {
+            answerService.saveAnswers(allAnswer);
+        }catch(Throwable oops){
+                codigos = new String[1];
+                codigos[0] = "user.password.mismatch";
+                error= new FieldError("questionsForm","answer", questions,false,codigos,null,"");
+                binding.addError(error);
+        }
+        for(int i =0;i<questions.size();i++){
+            questions.get(i).getAnswers().add(allAnswer.get(i));
+        }
+        questionService.saveAll(questions);
         result = questions.get(0).getRendezvous();
         return result;
     }

@@ -18,31 +18,26 @@
 
 
 
-<form:form action="rendezvous/user/associate.do" modelAttribute="rendezvous">
+<form:form action="rendezvous/user/associate.do" modelAttribute="associatForm">
 
 
-    <form:hidden path="id"/>
-    <form:hidden path="version"/>
-    <form:hidden path="comments"/>
-    <form:hidden path="announcements"/>
-    <form:hidden path="questions"/>
-    <form:hidden path="participated"/>
-    <form:hidden path="creator"/>
-    <form:hidden path="parentRendezvous"/>
+    <form:hidden path="formid"/>
+
 
     <security:authorize access="hasRole('USER')">
-        <form:label path="associated"><spring:message code="rendezvous.associated"/></form:label>
-        <form:select path="associated">
-            <form:option label="----" value="0"/>
-            <form:options items="${allRendezvous}" itemLabel="name" itemValue="id"/>
-        </form:select>
-        <form:errors path="associated" cssClass="error"/>
-        <br/>
+        <jstl:forEach items="${allRendezvous}" var="allRendezvous">
+
+            <input type="checkbox" name="rendezvous" value="${allRendezvous.id}">${allRendezvous.name}<br>
+
+        </jstl:forEach>
     </security:authorize>
 
-
+<jstl:if test="${not empty allRendezvous }">
     <input type="submit" name="save" value="<spring:message code="rendezvous.save"/>" />
-
+</jstl:if>
+    <jstl:if test="${empty allRendezvous }">
+        <spring:message code="rendezvous.associate.nothing" var="nothing"/><jstl:out value="${nothing}"/><br>
+    </jstl:if>
     <input type="button" name="cancel" value="<spring:message code="rendezvous.cancel" />"
            onclick="javascript: relativeRedir('rendezvous/user/list.do');" />
 

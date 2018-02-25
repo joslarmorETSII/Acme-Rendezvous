@@ -27,7 +27,6 @@
     <form:hidden path="questions"/>
     <form:hidden path="participated"/>
     <form:hidden path="creator"/>
-    <form:hidden path="parentRendezvous"/>
     <form:hidden path="associated"/>
 
 

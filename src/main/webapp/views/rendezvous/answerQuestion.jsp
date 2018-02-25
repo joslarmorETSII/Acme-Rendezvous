@@ -23,10 +23,9 @@
 
     <jstl:set var="i"  value="0"/>
     <c:forEach items="${questions}"  var="item">
-
-        <jstl:out value="${item.text}"  />
-        <acme:textbox path="answer${i}.answer" code="question.answer"/>
-        <jstl:set var="i" value="${i+1}"/>
+       <b> <jstl:out value="${item.text}"/></b>
+        <input type="text" name="answer" id="question.id"><br>
     </c:forEach>
+
     <acme:submit name="save" code="question.save"/>
 </form:form>

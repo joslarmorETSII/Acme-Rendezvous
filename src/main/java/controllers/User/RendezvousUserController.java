@@ -3,6 +3,7 @@ package controllers.User;
 import controllers.AbstractController;
 import domain.Rendezvous;
 import domain.User;
+import forms.AssociatForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -14,10 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 import services.RendezvousService;
 import services.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 @Controller
 @RequestMapping("/rendezvous/user")
@@ -121,33 +125,46 @@ public class RendezvousUserController extends AbstractController {
         return result;
     }
 
-
     @RequestMapping(value = "/associate", method = RequestMethod.GET)
-    public ModelAndView associate(@RequestParam  int rendezvousId) {
-        final ModelAndView result;
-        Rendezvous rendezvous;
-        rendezvous = this.rendezvousService.findOne(rendezvousId);
+    public ModelAndView associate(@RequestParam  int rendezvousId,@RequestParam(required= false) String message) {
+        ModelAndView result;
+        User user = userService.findByPrincipal();
+        Rendezvous rendezvous =rendezvousService.findOne(rendezvousId);
+        Assert.isTrue(rendezvous.getCreator().equals(user));
+        AssociatForm associatForm = new AssociatForm();
+        associatForm.setFormid(rendezvousId);
+        Collection<Rendezvous> notAssociated = rendezvousService.findAll();
+        notAssociated.removeAll(rendezvous.getAssociated());
         result = new ModelAndView("rendezvous/associate");
-        result.addObject("rendezvous",rendezvous);
-        result.addObject("allRendezvous",rendezvousService.findAll());
+        result.addObject("associatForm", associatForm);
+        result.addObject("allRendezvous", notAssociated);
+        result.addObject("emptyCollection",notAssociated.size()==0);
+        result.addObject("message",message);
         return result;
     }
-    @RequestMapping(value = "/associate", method = RequestMethod.POST,params = "save")
-    public ModelAndView associate(@Valid Rendezvous rendezvous, final BindingResult binding) {
+    @RequestMapping(value = "/associate", method = RequestMethod.POST, params = "save")
+    public ModelAndView associate( AssociatForm associatForm, HttpServletRequest request) {
         ModelAndView result;
-        result = new ModelAndView("rendezvous/associate");
+        Collection<Rendezvous> rendezvousToAssociate = new HashSet<>();
+        Rendezvous rendezvous = rendezvousService.findOne(associatForm.getFormid());
 
-        if (binding.hasErrors()) {
-            result.addObject("rendezvous", rendezvous);
-            result.addObject("message", null);
-        } else
-            try {
-                this.rendezvousService.associados(rendezvous);
-                result = new ModelAndView("redirect:display.do");
-            } catch (final Throwable oops) {
-                result.addObject("rendezvous", rendezvous);
-                result.addObject("message", "rendezvous.commit.error");
-            }
+        String[] rendezvousesToAssociateId = request.getParameterValues("rendezvous");
+        if(request.getParameterValues("rendezvous")==null){
+            return associate(rendezvous.getId(),"rendezvous.select.error");
+        }
+        for (int i = 0; i <= rendezvousesToAssociateId.length - 1; i++) {
+            Rendezvous aux = rendezvousService.findOne(new Integer(rendezvousesToAssociateId[i]));
+            rendezvousToAssociate.add(aux);
+        }
+
+        rendezvous.getAssociated().addAll(rendezvousToAssociate);
+        try {
+            rendezvousService.associate(rendezvous,rendezvousToAssociate);
+        }catch (Throwable oops){
+            result = associate(rendezvous.getId(),oops.getCause().getMessage());
+        }
+        result = new ModelAndView("redirect:display.do?rendezvousId="+rendezvous.getId());
+
         return result;
     }
 
