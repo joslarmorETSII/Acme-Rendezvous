@@ -52,4 +52,16 @@ public class WelcomeController extends AbstractController {
 
 		return result;
 	}
+
+	@RequestMapping(value = "/cookies")
+	public ModelAndView cookies() {
+
+		ModelAndView result;
+
+		result = new ModelAndView("welcome/cookies");
+		result.addObject("backURI", "/welcome/index.do");
+
+		return result;
+	}
+
 }

@@ -41,6 +41,7 @@
 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 
+		<security:intercept-url pattern="/welcome/cookies.do" access="permitAll" />
 		<!-- Administrator -->
 
 		<security:intercept-url pattern="/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
