@@ -119,7 +119,7 @@ public class RendezvousUserController extends AbstractController {
     public ModelAndView edit(@RequestParam  int rendezvousId) {
         final ModelAndView result;
         Rendezvous rendezvous;
-        rendezvous = this.rendezvousService.findOne(rendezvousId);
+        rendezvous = this.rendezvousService.findOneToEdit(rendezvousId);
         Assert.notNull(rendezvous);
         result = this.createEditModelAndView(rendezvous);
         return result;
