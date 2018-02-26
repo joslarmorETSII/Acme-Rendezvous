@@ -107,6 +107,8 @@ public class ParticipateUserController  extends AbstractController {
 
         user = userService.findByPrincipal();
         participate = participateService.participate(user.getId(),rendezvousId);
+        //TODO: falta comprobar que la linea siguiente funciona (punto 2 del doc de cosas pendientes)
+        answerService.deleteAnswers(participate.getAttendant().getAnswers());
         participateService.delete(participate);
         result = new ModelAndView("redirect: ../../rendezvous/user/list.do");
         result.addObject("rendezvous",rendezvousService.findAll());

@@ -52,7 +52,8 @@ public class AnswerService {
         return aux;
     }
 
-    public void delete(Answer answer){
+    public void deleteAnswers(Collection<Answer> answers){
+        answerRepository.delete(answers);
     }
     // Other business methods -------------------------------------------------
     public void saveAnswers(Collection<Answer> answers){

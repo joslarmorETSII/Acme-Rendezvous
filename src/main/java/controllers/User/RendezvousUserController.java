@@ -133,7 +133,7 @@ public class RendezvousUserController extends AbstractController {
         Assert.isTrue(rendezvous.getCreator().equals(user));
         AssociatForm associatForm = new AssociatForm();
         associatForm.setFormid(rendezvousId);
-        Collection<Rendezvous> notAssociated = rendezvousService.findAll();
+        Collection<Rendezvous> notAssociated = user.getRendezvouses();
         notAssociated.removeAll(rendezvous.getAssociated());
         result = new ModelAndView("rendezvous/associate");
         result.addObject("associatForm", associatForm);
