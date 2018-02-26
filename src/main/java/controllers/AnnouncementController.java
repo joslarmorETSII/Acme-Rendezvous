@@ -35,6 +35,23 @@ public class AnnouncementController extends AbstractController {
     }
 
     // List -----------------------------------------------
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ModelAndView list(@RequestParam final int rendezvousId) {
+
+        final Collection<Announcement> announcements;
+        Rendezvous rendezvous;
+
+        rendezvous = rendezvousService.findOne(rendezvousId);
+        announcements = rendezvous.getAnnouncements();
+
+        final ModelAndView res = new ModelAndView("announcement/list");
+        res.addObject("announcements", announcements);
+        res.addObject("requestURI", "announcement/list.do");
+
+        return res;
+    }
+
+    // List -----------------------------------------------
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     public ModelAndView list() {
 
