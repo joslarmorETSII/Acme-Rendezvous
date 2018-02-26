@@ -10,6 +10,9 @@ import java.util.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
+@Table(indexes = {
+        @Index(columnList = "attendant_id"), @Index(columnList = "rendezvous_id")
+})
 public class Participate extends DomainEntity {
 
     // Constructors -----------------------------------------------------------

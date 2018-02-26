@@ -34,7 +34,6 @@
     <div class="panel-body">
         <legend><b><spring:message code="user.RatioCreatorsVsNoCreators"/></b></legend>
 
-        <spring:message code="user.RatioCreatorsVsNoCreators"/><br>
         <jstl:out value="${RatioCreatorsVsNoCreators}"></jstl:out><br>
     </div>
 </fieldset>

@@ -8,9 +8,7 @@ import repositories.RendezvousRepository;
 import security.Authority;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 @Service
 @Transactional
@@ -220,8 +218,12 @@ public class RendezvousService  {
     }
 
     public Collection<Rendezvous> top10RendezvousParticipated() {
-        Collection<Rendezvous> result;
-        result = this.rendezvousRepository.top10RendezvousParticipated();
+        List<Rendezvous> result;
+        result = new ArrayList<>(this.rendezvousRepository.top10RendezvousParticipated());
+
+        if (result.size() > 10) {
+            result.subList(0, 9);
+        }
         return result;
     }
 

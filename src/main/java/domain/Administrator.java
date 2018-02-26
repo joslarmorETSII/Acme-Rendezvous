@@ -1,9 +1,7 @@
 package domain;
 
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 @Access(AccessType.PROPERTY)
