@@ -27,5 +27,6 @@
 </jstl:forEach>
 
 <br>
-<input type="button" name="cancel" value="<spring:message code="rendezvous.cancel" />"
-       onclick="javascript: relativeRedir('rendezvous/display.do');" />
+<acme:cancel code="rendezvous.cancel" url="rendezvous/display.do?rendezvousId=${rendezvous.id}" />
+<%--<input type="button" name="cancel" value="<spring:message code="rendezvous.cancel" />"--%>
+       <%--onclick="javascript: relativeRedir('rendezvous/display.do?rendezvousId=${rendezvous.id}');" />--%>

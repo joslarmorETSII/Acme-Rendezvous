@@ -37,10 +37,11 @@ public class AnswerController extends AbstractController {
     // List -----------------------------------------------
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list(@RequestParam final int rendezvousId) {
-
+        Rendezvous rendezvous = this.rendezvousService.findOne(rendezvousId);
 
         Collection<User> attendants= userService.rendezvousAttendants(rendezvousId);
         final ModelAndView res = new ModelAndView("rendezvous/participated");
+        res.addObject("rendezvous", rendezvous);
         res.addObject("attendants", attendants);
         res.addObject("requestURI", "answer/list.do");
 
