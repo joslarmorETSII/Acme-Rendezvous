@@ -45,6 +45,7 @@
     <spring:message var="formatDate" code="event.format.date"/>
     <display:column property="moment" title="${moment}" format="${formatDate}" sortable="true" />
 
+    <security:authorize access="hasRole('USER')">
     <display:column>
         <jstl:set var="contains" value="false" />
         <jstl:forEach var="item" items="${row.participated}">
@@ -66,6 +67,7 @@
         <jstl:if test="${row.deleted eq true && row.moment ge now}">
             <spring:message code="rendezvous.deleted" var="delet"/><jstl:out value="${delet}"/>
         </jstl:if>
+
         <jstl:if test="${contains eq true  && row.deleted ne true && row.creator ne testuser && row.moment ge now }">
             <acme:button url="participate/user/${cancelUri}.do?rendezvousId=${row.id}" code="rendezvous.cancelparticipate"/>
         </jstl:if>
@@ -74,12 +76,15 @@
         </jstl:if>
 
     </display:column>
+    </security:authorize>
 
+    <security:authorize access="hasRole('USER')">
     <display:column >
         <jstl:if test="${contains eq true && row.deleted ne true  }">
              <acme:button url="comment/user/create.do?rendezvousId=${row.id}" code="comment.rendezvous.create"/>
         </jstl:if>
     </display:column>
+    </security:authorize>
 
     <display:column >
         <acme:button url="rendezvous/display.do?rendezvousId=${row.id}" code="rendezvous.display"/>
@@ -92,18 +97,21 @@
     </jstl:if>
     </display:column>
 
+    <security:authorize access="hasRole('USER')">
     <display:column>
         <jstl:if test="${row.creator eq user}">
             <a href="rendezvous/user/associate.do?rendezvousId=${row.id}"><spring:message code="rendezvous.associate"/></a>
         </jstl:if>
     </display:column>
+    </security:authorize>
+
 
 
 </display:table>
 
-
+<security:authorize access="hasRole('USER')">
 <acme:button code="rendezvous.create" url="rendezvous/user/create.do"/>
-
+</security:authorize>
 
 
 
