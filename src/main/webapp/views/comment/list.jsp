@@ -27,6 +27,8 @@
 <display:table name="comments" id="row" pagesize="5" class="displaytag" requestURI="${requestURI}">
 
     <acme:column code="comment.user" value="${row.user.name}" />
+    <acme:column code="comment.id" value="${row.id}" sortable="true"/>
+    <acme:column code="comment.parentComment" value="${row.parentComment.id}" sortable="true"/>
     <acme:column code="comment.text" value="${row.text}"/>
 
     <spring:message var="moment" code="comment.moment"/>

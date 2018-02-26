@@ -73,9 +73,13 @@ public class CommentService {
         if(comment.getId() == 0){
             this.commentRepository.save(comment);
         }else{
-            parentComment.getChildrenComments().add(comment);
-            this.commentRepository.save(parentComment);
-            this.commentRepository.save(res);
+            if(parentComment != null) {
+                parentComment.getChildrenComments().add(comment);
+                this.commentRepository.save(parentComment);
+                this.commentRepository.save(res);
+            }else{
+                this.commentRepository.save(comment);
+            }
         }
 
         return res;
