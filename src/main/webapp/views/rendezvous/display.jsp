@@ -20,6 +20,14 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:if test="${pageContext.response.locale.language == 'es' }">
+    <jstl:set value="{0,date,dd/MM/yyyy HH:mm}" var="formatDate"/>
+</jstl:if>
+
+<jstl:if test="${pageContext.response.locale.language == 'en' }">
+    <jstl:set value="{0,date,yyyy/MM/dd HH:mm}" var="formatDate"/>
+</jstl:if>
+
 <div id="banner">
     <jstl:if test="${testPicture eq false}">
         <img src="${rendezvous.picture}" width="500px" height="100%" />
@@ -76,8 +84,9 @@
         <display:column property="name" title="${name}"/>
         <spring:message code="rendezvous.description" var="description"/>
         <display:column property="description" title="${description}"/>
-        <spring:message code="rendezvous.moment" var="moment"/>
-        <display:column property="moment" title="${moment}"/>
+        <spring:message var="moment" code="rendezvous.moment"/>
+        <spring:message var="formatDate" code="event.format.date"/>
+        <display:column property="moment" title="${moment}" format="${formatDate}" sortable="true" />¡
         <spring:message code="rendezvous.picture" var="pic"/>
         <display:column title="${pic}"><img src="${row.picture}" width="130" height="100"></display:column>
         <display:column >

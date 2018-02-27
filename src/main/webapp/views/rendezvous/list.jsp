@@ -105,12 +105,13 @@
     </display:column>
     </security:authorize>
 
+    <security:authorize access="isAuthenticated()">
     <jstl:if test="${row.creator eq user}">
     <display:column >
         <acme:button url="question/user/list.do?rendezvousId=${row.id}" code="rendezvous.question"/>
     </display:column>
     </jstl:if>
-
+    </security:authorize>
 
 
 </display:table>

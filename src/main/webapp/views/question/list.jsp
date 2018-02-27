@@ -26,3 +26,4 @@
 </display:table>
 
 <acme:button code="question.create" url="question/user/create.do"/>
+<acme:button code="question.cancel" url="rendezvous/listAll.do"/>
