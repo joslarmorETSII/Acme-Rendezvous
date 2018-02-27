@@ -56,6 +56,12 @@
 <security:authorize access="hasRole('USER')">
 
     <acme:button code="announcement.create" url="announcement/user/create.do" />
-    <acme:button code="announcement.cancel" url="welcome/index.do" />
 
 </security:authorize>
+<input type="button" value="<spring:message code="question.cancel" /> " onclick="goBack()">
+
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>

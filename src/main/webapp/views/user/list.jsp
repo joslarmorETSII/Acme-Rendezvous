@@ -49,3 +49,10 @@
     </display:column>
 
 </display:table>
+
+<input type="button" value="<spring:message code="question.cancel" /> " onclick="goBack()">
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>

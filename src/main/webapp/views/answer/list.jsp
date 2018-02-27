@@ -28,3 +28,9 @@
 </display:table>
 
 <acme:button code="question.create" url="question/user/create.do"/>
+<input type="button" value="<spring:message code="question.cancel" /> " onclick="goBack()">
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
