@@ -52,7 +52,7 @@ public class AnnouncementUserController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView edit(@RequestParam(required = true) final Integer announcementId) {
 
-        final Announcement announcement = this.announcementService.findOne(announcementId);
+        final Announcement announcement = this.announcementService.findOneToEdit(announcementId);
         Assert.notNull(announcement);
 
         final ModelAndView res = this.createEditModelAndView(announcement);
@@ -97,12 +97,26 @@ public class AnnouncementUserController extends AbstractController {
 
         final ModelAndView res = new ModelAndView("announcement/list");
         res.addObject("announcements", announcements);
+        res.addObject("user", user);
         res.addObject("requestURI", "announcement/user/list.do");
 
         return res;
     }
 
+    @RequestMapping(value = "/listAllUser", method = RequestMethod.GET)
+    public ModelAndView listAllUser() {
 
+        final Collection<Announcement> announcements;
+        User user = this.userService.findByPrincipal();
+        announcements = this.announcementService.findAll();
+
+        final ModelAndView res = new ModelAndView("announcement/list");
+        res.addObject("announcements", announcements);
+        res.addObject("user", user);
+        res.addObject("requestURI", "announcement/user/listAllUser.do");
+
+        return res;
+    }
     // Ancillary methods
 
     private ModelAndView createEditModelAndView(final Announcement announcement) {

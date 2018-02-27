@@ -79,8 +79,8 @@ public class AnnouncementService {
 
     public Announcement findOneToEdit(final int announcementId) {
         Announcement announcement = null;
-
         announcement = this.announcementRepository.findOne(announcementId);
+
         this.checkByPrincipal(announcement);
 
         return announcement;

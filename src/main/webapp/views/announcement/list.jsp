@@ -25,6 +25,8 @@
     <jstl:set value="{0,date,yyyy/MM/dd HH:mm}" var="formatDate"/>
 </jstl:if>
 
+
+
 <display:table id="announcement" name="announcements" requestURI="${requestURI}"
                pagesize="5">
 
@@ -38,10 +40,12 @@
     <acme:column code="announcement.rendezvous.name" value="${announcement.rendezvous.name}"/>
 
     <security:authorize access="hasRole('USER')">
+        <jstl:if test="${announcement.rendezvous.creator.id eq user.id}">
         <display:column>
             <acme:button code="announcement.edit" url="announcement/user/edit.do?announcementId=${announcement.id}" />
         </display:column>
-    </security:authorize>
+        </jstl:if>
+</security:authorize>
 
     <security:authorize access="hasRole('ADMINISTRATOR')">
         <acme:columnButton url="announcement/administrator/edit.do?announcementId=${announcement.id}" codeButton="announcement.delete" />
