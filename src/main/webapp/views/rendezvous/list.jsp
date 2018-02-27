@@ -120,5 +120,16 @@
 <acme:button code="rendezvous.create" url="rendezvous/user/create.do"/>
 </security:authorize>
 
+<security:authorize access="isAnonymous()">
+
+    <input type="button" value="<spring:message code="question.cancel" /> " onclick="goBack()">
+
+</security:authorize>
+
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
 
 
