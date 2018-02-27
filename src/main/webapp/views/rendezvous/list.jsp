@@ -100,10 +100,16 @@
     <security:authorize access="hasRole('USER')">
     <display:column>
         <jstl:if test="${row.creator eq user}">
-            <a href="rendezvous/user/associate.do?rendezvousId=${row.id}"><spring:message code="rendezvous.associate"/></a>
+            <acme:button code="rendezvous.associate" url="rendezvous/user/associate.do?rendezvousId=${row.id}"/>
         </jstl:if>
     </display:column>
     </security:authorize>
+
+    <jstl:if test="${row.creator eq user}">
+    <display:column >
+        <acme:button url="question/user/list.do?rendezvousId=${row.id}" code="rendezvous.question"/>
+    </display:column>
+    </jstl:if>
 
 
 

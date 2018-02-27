@@ -29,7 +29,7 @@
 					<li><a href="comment/administrator/list.do"><spring:message code="master.page.comment.administrator.list" /></a></li>
 					<li><a href="announcement/listAll.do"><spring:message code="master.page.announcement.listAll" /></a></li>
 					<li><a href="rendezvous/administrator/listAll.do"><spring:message code="master.page.rendezvous.administrator.list" /></a></li>
-                <li><a href="/administrator/dashboard.do"><spring:message
+                <li><a href="administrator/dashboard.do"><spring:message
                         code="master.page.administrator.dashboard"/></a></li>
 			</ul>
 			</li>
@@ -40,7 +40,6 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="user/editProfile.do"><spring:message code="master.page.user.edit" /></a></li>
-					<li><a href="question/user/create.do"><spring:message code="master.page.user.question.create" /></a></li>
                     <li><a href="rendezvous/user/list.do"><spring:message code="master.page.customer.rendezvous.list" /></a></li>
                     <li><a href="comment/user/list.do"><spring:message code="master.page.user.comment.list" /></a></li>
 					<li><a href="announcement/user/list.do"><spring:message code="master.page.user.announcement.list" /></a></li>
