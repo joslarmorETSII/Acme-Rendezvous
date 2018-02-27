@@ -123,7 +123,6 @@ public class ParticipateUserController extends AbstractController {
 
         user = userService.findByPrincipal();
         participate = participateService.participate(user.getId(),rendezvousId);
-        //TODO: falta comprobar que la linea siguiente funciona (punto 2 del doc de cosas pendientes)
         answersToDelete = answerService.answersOfUserInRendezvous(rendezvousId,user.getId());
         answerService.deleteAnswers(answersToDelete,rendezvousService.findOne(rendezvousId));
         participateService.delete(participate);

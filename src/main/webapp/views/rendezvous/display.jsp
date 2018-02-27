@@ -34,11 +34,11 @@
 <h3><spring:message code="rendezvous.description"/>:&nbsp;<jstl:out value="${rendezvous.description}"/></h3>
 
 <jstl:if test="${pageContext.response.locale.language == 'es'}">
-    <p><b><spring:message code="rendezvous.moment" />:&nbsp;</b>${momentEs} </p>
+    <h3><p><b><spring:message code="rendezvous.moment" />:&nbsp;${momentEs} </b></p></h3>
 </jstl:if>
 
 <jstl:if test="${pageContext.response.locale.language == 'en'}">
-    <p><b><spring:message code="rendezvous.moment" />:&nbsp;</b>${momentEn} </p>
+    <h3><p><b><spring:message code="rendezvous.moment" />:&nbsp;${momentEn} </b></p></h3>
 </jstl:if>
 
 <h3><spring:message code="rendezvous.location.longitude"/>:&nbsp;<jstl:out value="${rendezvous.location.longitude}"/></h3>

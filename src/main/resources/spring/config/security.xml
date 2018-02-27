@@ -42,6 +42,7 @@
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 
 		<security:intercept-url pattern="/welcome/cookies.do" access="permitAll" />
+
 		<!-- Administrator -->
 
 		<security:intercept-url pattern="/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
@@ -76,9 +77,13 @@
 		<security:intercept-url pattern="/rendezvous/listAll.do" access="permitAll" />
 		<security:intercept-url pattern="/rendezvous/listAll-2.do" access="permitAll" />
 		<security:intercept-url pattern="/rendezvous/display.do" access="permitAll" />
-		<security:intercept-url pattern="/answer/list.do" access="permitAll" />
-
 		<security:intercept-url pattern="/rendezvous/user/**" access="hasRole('USER')" />
+
+		<!-- Answer -->
+
+		<security:intercept-url pattern="/answer/list.do" access="permitAll" />
+		<security:intercept-url pattern="/answer/user/**" access="hasRole('USER')" />
+
 
 
 
