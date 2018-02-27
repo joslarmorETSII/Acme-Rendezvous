@@ -122,9 +122,18 @@ public class ParticipateService {
     }
 
     public void checkMayorEdad(User attendant){
-        Date fechaActual= new Date();
-        Integer edad=  fechaActual.getYear()-attendant.getBirthday().getYear();
-        Assert.isTrue(edad>=18,"debe ser mayor de edad");
+
+        Calendar calendar = Calendar.getInstance();
+        Long fechaActual = calendar.getTimeInMillis();
+
+        Calendar birthday = Calendar.getInstance();
+        birthday.setTime(attendant.getBirthday());
+        Long fechaNacimiento = birthday.getTimeInMillis();
+
+        Long aux = fechaActual -  fechaNacimiento;
+        Long anosDieciocho = (long) 568036800000L;
+
+        Assert.isTrue(aux > anosDieciocho,"Debe ser mayor de edad");
     }
 
 

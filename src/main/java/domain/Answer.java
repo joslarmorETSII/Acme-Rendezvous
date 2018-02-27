@@ -39,7 +39,7 @@ public class Answer extends DomainEntity {
     private Question question;
     @Valid
     @NotNull
-    @ManyToOne(optional = false)
+    @ManyToOne
     public User getUser() {
         return user;
     }
@@ -48,7 +48,7 @@ public class Answer extends DomainEntity {
         this.user = user;
     }
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     public Question getQuestion() {
         return question;
     }

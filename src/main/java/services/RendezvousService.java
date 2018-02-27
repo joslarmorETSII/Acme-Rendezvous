@@ -1,5 +1,6 @@
 package services;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -180,9 +181,21 @@ public class RendezvousService  {
     }
 
     public boolean mayor18(User attendant){
-        Date fechaActual= new Date();
-        Integer edad=  fechaActual.getYear()-attendant.getBirthday().getYear();
-       return edad>=18;
+        Boolean res = false;
+        Calendar calendar = Calendar.getInstance();
+        Long fechaActual = calendar.getTimeInMillis();
+
+        Calendar birthday = Calendar.getInstance();
+        birthday.setTime(attendant.getBirthday());
+        Long fechaNacimiento = birthday.getTimeInMillis();
+
+        Long aux = fechaActual -  fechaNacimiento;
+        Long añosDieciocho = (long) 568036800000L;
+        if(aux > añosDieciocho)
+            res = true;
+
+        return res;
+
     }
 
     public void associate(Rendezvous rendezvousParent,Collection<Rendezvous> childs) {
