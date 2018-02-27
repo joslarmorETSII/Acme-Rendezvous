@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.Validator;
 import repositories.ParticipateRepository;
 
 import javax.transaction.Transactional;
@@ -33,6 +34,9 @@ public class ParticipateService {
 
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private Validator validator;
 
     // Constructors -----------------------------------------------------------
     public ParticipateService(){
@@ -91,27 +95,24 @@ public class ParticipateService {
         Assert.isTrue(principal.equals(participate.getAttendant()));
     }
 
-    public Rendezvous reconstruct(QuestionsForm questionsForm, String[] answers,BindingResult binding) {
+    public List<Answer> reconstruct(QuestionsForm questionsForm, String[] answers,BindingResult binding) {
         Rendezvous result;
 
         List<Question> questions = new ArrayList<>(questionsForm.getQuestions());
         List<Answer> allAnswer = new ArrayList<>();
         questions = new ArrayList<>(questionsForm.getQuestions());
 
-        for(String s:answers){
+        for(int i = 0;i<questions.size();i++){
             Answer userAnswer = answerService.create();
-            userAnswer.setAnswer(s);
+            userAnswer.setAnswer(answers[i+1]);
+            userAnswer.setQuestion(questions.get(i));
+            validator.validate(userAnswer,binding);
+
             allAnswer.add(userAnswer);
         }
 
-        answerService.saveAnswers(allAnswer);
 
-        for(int i =0;i<questions.size();i++){
-            questions.get(i).getAnswers().add(allAnswer.get(i));
-        }
-        questionService.saveAll(questions);
-        result = questions.get(0).getRendezvous();
-        return result;
+        return allAnswer;
     }
     public Participate participate(int attendantId,int rendezvousId){
         Participate participate =participateRepository.participate(attendantId,rendezvousId);

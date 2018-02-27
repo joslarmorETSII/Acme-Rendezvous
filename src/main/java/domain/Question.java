@@ -41,7 +41,7 @@ public class Question extends DomainEntity {
 
     @NotNull
     @Valid
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "question")
     public Collection<Answer> getAnswers() {
         return answers;
     }

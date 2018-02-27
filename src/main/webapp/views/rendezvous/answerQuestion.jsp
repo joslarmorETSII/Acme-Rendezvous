@@ -22,7 +22,6 @@
     <form:hidden path="questions"/>
     <form:hidden path="answer"/>
 
-    <jstl:set var="i"  value="0"/>
     <c:forEach items="${questions}"  var="item">
        <b> <jstl:out value="${item.text}"/></b>
         <input type="text" name="answer" id="question.id" property="answer"><br>

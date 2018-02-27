@@ -36,7 +36,7 @@ public class Answer extends DomainEntity {
 
     // Relationships ----------------------------------------------------------
     private User user;
-
+    private Question question;
     @Valid
     @NotNull
     @ManyToOne(optional = false)
@@ -46,5 +46,14 @@ public class Answer extends DomainEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @ManyToOne
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }

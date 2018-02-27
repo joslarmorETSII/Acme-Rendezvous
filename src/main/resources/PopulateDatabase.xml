@@ -304,11 +304,14 @@
     <bean id="answer1" class="domain.Answer">
         <property name="answer" value="Yes I do"/>
         <property name="user" ref="user1"/>
+        <property name="question" ref="question1"/>
     </bean>
 
     <bean id="answer2" class="domain.Answer">
         <property name="answer" value="No, I have"/>
         <property name="user" ref="user1"/>
+        <property name="question" ref="question2"/>
+
     </bean>
 
     <!-- Participates -->

@@ -15,14 +15,11 @@ import services.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/participate/user")
-public class ParticipateUserController  extends AbstractController {
+public class ParticipateUserController extends AbstractController {
 
     // Services --------------------------------------------
     @Autowired
@@ -48,7 +45,7 @@ public class ParticipateUserController  extends AbstractController {
     // Creation --------------------------------------------
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create(@RequestParam int rendezvousId,@RequestParam(required= false) String message) {
+    public ModelAndView create(@RequestParam int rendezvousId, @RequestParam(required = false) String message) {
         ModelAndView result;
         Rendezvous rendezvous;
         Participate participate;
@@ -62,8 +59,8 @@ public class ParticipateUserController  extends AbstractController {
             questionsForm.setAnswer(answerService.create());
             result = new ModelAndView("rendezvous/answerQuestion");
             result.addObject("questionForm", questionsForm);
-            result.addObject("questions",rendezvous.getQuestions());
-            result.addObject("message",message);
+            result.addObject("questions", rendezvous.getQuestions());
+            result.addObject("message", message);
         } else {
             participateService.save(participate);
             rendezvous.getParticipated().add(participate);
@@ -75,26 +72,40 @@ public class ParticipateUserController  extends AbstractController {
     }
 
     @RequestMapping(value = "/answerQuestion", method = RequestMethod.POST)
-    public ModelAndView answerQuestion(@Valid  QuestionsForm questionsForm, BindingResult binding, HttpServletRequest request) {
+    public ModelAndView answerQuestion(@Valid QuestionsForm questionsForm, BindingResult binding, HttpServletRequest request) {
         ModelAndView result;
         Rendezvous rendezvous;
-        String[] answers = request.getParameterValues("answer");
+        String[] answersRequest = request.getParameterValues("answer");
+        List<Answer> answers;
+        List<Question> questions;
 
-        if (binding.hasErrors() )
-            result = createEditModelAndViewForm(questionsForm, "question.save.error");
-        else
-            try {
-                rendezvous = participateService.reconstruct(questionsForm, answers, binding);
+        try {
+            answers = participateService.reconstruct(questionsForm, answersRequest, binding);
+
+            if (binding.hasErrors()) {
+                result = createQuestionForm(questionsForm,  questionsForm.getQuestions().iterator().next().getRendezvous(),"question.save.error");
+            }
+            else {
+                questions= new ArrayList<>(questionsForm.getQuestions());
+                answerService.saveAnswers(answers);
+
+                for(int i =0;i<questions.size();i++){
+                    questions.get(i).getAnswers().add(answers.get(i));
+                }
+                questionService.saveAll(questions);
+
                 Participate participate = participateService.create();
+                rendezvous = questions.get(0).getRendezvous();
                 participate.setRendezvous(rendezvous);
                 participateService.save(participate);
                 rendezvous.getParticipated().add(participate);
                 result = new ModelAndView("redirect: ../../rendezvous/listAll.do");
                 result.addObject("rendezvous", rendezvousService.findAll());
                 result.addObject("user", userService.findByPrincipal());
-            } catch (final Throwable oops) {
-                result = createQuestionForm(questionsForm,questionsForm.getQuestions().iterator().next().getRendezvous(),"question.save.error");
             }
+        } catch (final Throwable oops) {
+            result = createQuestionForm(questionsForm, questionsForm.getQuestions().iterator().next().getRendezvous(), "question.save.error");
+        }
         return result;
     }
 
@@ -104,15 +115,17 @@ public class ParticipateUserController  extends AbstractController {
         ModelAndView result;
         User user;
         Participate participate;
+        Collection<Answer> answersToDelete;
 
         user = userService.findByPrincipal();
         participate = participateService.participate(user.getId(),rendezvousId);
         //TODO: falta comprobar que la linea siguiente funciona (punto 2 del doc de cosas pendientes)
-        answerService.deleteAnswers(participate.getAttendant().getAnswers());
+        answersToDelete = answerService.answersOfUserInRendezvous(rendezvousId,user.getId());
+        answerService.deleteAnswers(answersToDelete,rendezvousService.findOne(rendezvousId));
         participateService.delete(participate);
         result = new ModelAndView("redirect: ../../rendezvous/user/list.do");
-        result.addObject("rendezvous",rendezvousService.findAll());
-        result.addObject("user",user);
+        result.addObject("rendezvous", rendezvousService.findAll());
+        result.addObject("user", user);
 
         return result;
     }
@@ -122,29 +135,34 @@ public class ParticipateUserController  extends AbstractController {
         ModelAndView result;
         User user;
         Participate participate;
+        Collection<Answer> answersToDelete;
+        Rendezvous rendezvous= rendezvousService.findOne(rendezvousId);
 
         user = userService.findByPrincipal();
-        participate = participateService.participate(user.getId(),rendezvousId);
+        participate = participateService.participate(user.getId(), rendezvousId);
+        answersToDelete = answerService.answersOfUserInRendezvous(rendezvousId,user.getId());
 
         result = new ModelAndView("redirect: ../../rendezvous/listAll.do");
-        result.addObject("rendezvous",user.getRendezvouses());
-        result.addObject("user",user);
-        result.addObject("cancelUri","cancelAll");
+        result.addObject("rendezvous", user.getRendezvouses());
+        result.addObject("user", user);
+        result.addObject("cancelUri", "cancelAll");
         try {
+            if(rendezvous.getQuestions().size()>0)
+                answerService.deleteAnswers(answersToDelete,rendezvous);
             participateService.delete(participate);
-        }catch (Throwable oops){
+        } catch (Throwable oops) {
             return result;
         }
 
         return result;
     }
 
-        protected ModelAndView createEditModelAndViewForm(QuestionsForm questionsForm, String message) {
+    protected ModelAndView createEditModelAndViewForm(QuestionsForm questionsForm, String message) {
 
         ModelAndView result = new ModelAndView("rendezvous/answerQuestion");
 
         result.addObject("questionForm", questionsForm);
-        result.addObject("questions",questionsForm.getQuestions());
+        result.addObject("questions", questionsForm.getQuestions());
         result.addObject("message", message);
         return result;
     }
@@ -171,8 +189,8 @@ public class ParticipateUserController  extends AbstractController {
 
         result = new ModelAndView("rendezvous/answerQuestion");
         result.addObject("questionForm", questionsForm);
-        result.addObject("questions",rendezvous.getQuestions());
-        result.addObject("message",message);
+        result.addObject("questions", rendezvous.getQuestions());
+        result.addObject("message", message);
 
         return result;
     }

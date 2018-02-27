@@ -88,6 +88,9 @@ public class RendezvousController extends AbstractController {
         result.addObject("requestUri","rendezvous/display.do");
         result.addObject("momentEs", momentEs);
         result.addObject("momentEn", momentEn);
+        result.addObject("testPicture", rendezvous.getPicture().isEmpty());
+
+
 
         return result;
     }

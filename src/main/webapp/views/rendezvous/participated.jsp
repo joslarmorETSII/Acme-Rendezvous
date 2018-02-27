@@ -16,17 +16,15 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<jstl:forEach items="${attendants}" var="item" >
-    <acme:out code="user.name" value="${item.name}"/><br>
+<jstl:forEach items="${questions}" var="item" >
+    <acme:out code="question.text" value="${item.text}"/>
     <display:table name="${item.answers}" id="row" pagesize="5" class="displaytag" requestURI="${requestURI}">
         <acme:column code="answer.answer" value="${row.answer}"/>
-
+        <acme:column code="user.name" value="${row.user.name}"/>
     </display:table>
-
+    <br>
 
 </jstl:forEach>
 
 <br>
 <acme:cancel code="rendezvous.cancel" url="rendezvous/display.do?rendezvousId=${rendezvous.id}" />
-<%--<input type="button" name="cancel" value="<spring:message code="rendezvous.cancel" />"--%>
-       <%--onclick="javascript: relativeRedir('rendezvous/display.do?rendezvousId=${rendezvous.id}');" />--%>

@@ -1,13 +1,17 @@
 package services;
 
 import domain.Answer;
+import domain.Question;
+import domain.Rendezvous;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.AnswerRepository;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 @Transactional
@@ -19,6 +23,9 @@ public class AnswerService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private QuestionService questionService;
 
     // Supporting services ----------------------------------------------------
 
@@ -52,7 +59,15 @@ public class AnswerService {
         return aux;
     }
 
-    public void deleteAnswers(Collection<Answer> answers){
+    public void deleteAnswers(Collection<Answer> answers, Rendezvous rendezvous){
+        List<Question> questions = new ArrayList<>(rendezvous.getQuestions());
+        List<Answer> answersAux = new ArrayList<>(answers);
+
+        for(int i=0;i<questions.size();i++){
+            Question q =questions.get(i);
+            q.getAnswers().remove(answersAux.get(i));
+        }
+
         answerRepository.delete(answers);
     }
     // Other business methods -------------------------------------------------
@@ -64,5 +79,9 @@ public class AnswerService {
         Object[] result;
         result = this.answerRepository.avgDevAnswersQuestionsPerRendezvous();
         return result;
+    }
+
+    public Collection<Answer> answersOfUserInRendezvous(Integer rendezvousId,Integer attendantID){
+        return answerRepository.answersOfUserInRendezvous(rendezvousId,attendantID);
     }
 }

@@ -21,9 +21,12 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <div id="banner">
-    <a href="${rendezvous.name}">
-        <img src="${rendezvous.picture}" width="500px" height="100%" alt="image_head"/>
-    </a>
+    <jstl:if test="${testPicture eq false}">
+        <img src="${rendezvous.picture}" width="500px" height="100%" />
+    </jstl:if>
+    <jstl:if test="${testPicture eq true}">
+        <img src="images/no_image.png" width="300px" height="100%" />
+    </jstl:if>
 </div>
 <br>
 

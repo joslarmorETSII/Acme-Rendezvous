@@ -42,7 +42,7 @@ public class AnswerController extends AbstractController {
         Collection<User> attendants= userService.rendezvousAttendants(rendezvousId);
         final ModelAndView res = new ModelAndView("rendezvous/participated");
         res.addObject("rendezvous", rendezvous);
-        res.addObject("attendants", attendants);
+        res.addObject("questions", rendezvous.getQuestions());
         res.addObject("requestURI", "answer/list.do");
 
         return res;
