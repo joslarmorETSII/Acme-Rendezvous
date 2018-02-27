@@ -432,6 +432,90 @@
         <property name="user" ref="user2"/>
     </bean>
 
+    <bean id="comment6" class="domain.Comment">
+        <property name="text" value="Comentario 6"/>
+        <property name="moment" value="2018/03/03 12:11"/>
+        <property name="rendezvous" ref="rendezvous1"/>
+        <property name="picture">
+            <null/>
+        </property>
+        <property name="parentComment">
+            <null/>
+        </property>
+        <property name="childrenComments">
+            <list>
+                <null/>
+            </list>
+        </property>
+        <property name="user" ref="user2"/>
+    </bean>
+
+    <bean id="comment7" class="domain.Comment">
+        <property name="text" value="Comentario 7"/>
+        <property name="moment" value="2018/03/03 12:11"/>
+        <property name="rendezvous" ref="rendezvous1"/>
+        <property name="picture">
+            <null/>
+        </property>
+        <property name="parentComment">
+            <null/>
+        </property>
+        <property name="childrenComments">
+            <list>
+                <ref bean="comment8"/>
+                <ref bean="comment9"/>
+            </list>
+        </property>
+        <property name="user" ref="user2"/>
+    </bean>
+
+    <bean id="comment8" class="domain.Comment">
+        <property name="text" value="Commentario de respuesta al comentario 7"/>
+        <property name="moment" value="2018/03/03 12:11"/>
+        <property name="rendezvous" ref="rendezvous1"/>
+        <property name="picture">
+            <null/>
+        </property>
+        <property name="parentComment" ref="comment7"/>
+        <property name="childrenComments">
+            <list>
+                <null/>
+            </list>
+        </property>
+        <property name="user" ref="user2"/>
+    </bean>
+
+    <bean id="comment9" class="domain.Comment">
+        <property name="text" value="Commentario de respuesta al comentario 7"/>
+        <property name="moment" value="2018/03/03 12:11"/>
+        <property name="rendezvous" ref="rendezvous1"/>
+        <property name="picture">
+            <null/>
+        </property>
+        <property name="parentComment" ref="comment7"/>
+        <property name="childrenComments">
+            <list>
+                <null/>
+            </list>
+        </property>
+        <property name="user" ref="user2"/>
+    </bean>
+
+    <bean id="comment10" class="domain.Comment">
+        <property name="text" value="Commentario de respuesta al comentario 9"/>
+        <property name="moment" value="2018/03/03 12:11"/>
+        <property name="rendezvous" ref="rendezvous1"/>
+        <property name="picture">
+            <null/>
+        </property>
+        <property name="parentComment" ref="comment9"/>
+        <property name="childrenComments">
+            <list>
+                <null/>
+            </list>
+        </property>
+        <property name="user" ref="user2"/>
+    </bean>
     <!-- GPSCoordinates -->
 
     <bean id="gpsCoordinates1" class="domain.GPSCoordinates">
