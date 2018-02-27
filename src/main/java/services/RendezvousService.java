@@ -8,6 +8,7 @@ import repositories.RendezvousRepository;
 import security.Authority;
 
 import javax.transaction.Transactional;
+import java.text.DecimalFormat;
 import java.util.*;
 
 @Service
@@ -196,12 +197,18 @@ public class RendezvousService  {
     public Object[] avgDevRendezvousesPerUser() {
         Object[] result;
         result = this.rendezvousRepository.avgDevRendezvousesPerUser();
+
+        this.announcementService.formatDecimal(result);
+
         return result;
     }
 
     public Object[] avgDevRendezvousParticipatePerUser() {
         Object[] result;
+
         result = this.rendezvousRepository.avgDevRendezvousParticipatePerUser();
+        this.announcementService.formatDecimal(result);
+
         return result;
     }
 

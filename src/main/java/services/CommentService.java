@@ -32,6 +32,9 @@ public class CommentService {
     @Autowired
     private AdministratorService administratorService;
 
+    @Autowired
+    private AnnouncementService announcementService;
+
     // Constructors -----------------------------------------------------------
 
     public CommentService(){
@@ -161,7 +164,7 @@ public class CommentService {
         Object[] result;
 
         result = this.commentRepository.avgDevRepliesPerComment();
-
+        this.announcementService.formatDecimal(result);
         return result;
     }
 }

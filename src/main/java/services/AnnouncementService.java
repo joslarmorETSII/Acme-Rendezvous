@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 import repositories.AnnouncementRepository;
 import security.Authority;
 
+import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.Date;
 
@@ -111,7 +112,22 @@ public class AnnouncementService {
 
     public Object[] avgDevAnnouncementsPerRendezvous() {
         Object[] result;
+
         result = this.announcementRepository.avgDevAnnouncementsPerRendezvous();
+
+        this.formatDecimal(result);
+
+        return result;
+    }
+
+    public Object[] formatDecimal(Object[] res) {
+        Object[] result;
+        DecimalFormat df = new DecimalFormat("#0.00");
+
+        res[0] = df.format(res[0]);
+        res[1] = df.format(res[1]);
+
+        result = res;
         return result;
     }
 }

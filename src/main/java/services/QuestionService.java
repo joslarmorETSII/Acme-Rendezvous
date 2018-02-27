@@ -23,6 +23,9 @@ public class QuestionService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AnnouncementService announcementService;
+
     // Constructors -----------------------------------------------------------
     public QuestionService(){super();}
 
@@ -81,6 +84,7 @@ public class QuestionService {
         Object[] result;
 
         result = this.questionRepository.questionsPerRendezvous();
+        result = this.announcementService.formatDecimal(result);
         return result;
     }
 }

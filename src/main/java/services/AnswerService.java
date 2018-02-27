@@ -27,6 +27,9 @@ public class AnswerService {
     @Autowired
     private QuestionService questionService;
 
+    @Autowired
+    private AnnouncementService announcementService;
+
     // Supporting services ----------------------------------------------------
 
     // Constructors -----------------------------------------------------------
@@ -78,6 +81,7 @@ public class AnswerService {
     public Object[] avgDevAnswersQuestionsPerRendezvous() {
         Object[] result;
         result = this.answerRepository.avgDevAnswersQuestionsPerRendezvous();
+        this.announcementService.formatDecimal(result);
         return result;
     }
 

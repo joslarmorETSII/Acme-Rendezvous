@@ -14,6 +14,7 @@ import security.LoginService;
 import security.UserAccount;
 
 import javax.transaction.Transactional;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -33,6 +34,9 @@ public class UserService {
 
     @Autowired
     private UserAccountService userAccountService;
+
+    @Autowired
+    private AnnouncementService announcementService;
 
     // Constructors -----------------------------------------------------------
 
@@ -146,6 +150,8 @@ public class UserService {
     public Object[] avgDevRendezvousPerUser() {
         Object[] result;
         result = this.userRepository.avgDevRendezvousPerUser();
+
+        this.announcementService.formatDecimal(result);
         return result;
     }
     public Collection<User> rendezvousAttendants(int rendezvousId){
