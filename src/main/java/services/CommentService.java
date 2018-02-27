@@ -92,27 +92,17 @@ public class CommentService {
         Assert.notNull(comment);
         Assert.isTrue(checkByPrincipalAdmin(comment));
 
-        if(comment.getChildrenComments().size() == 1) {
-            this.commentRepository.delete(comment.getChildrenComments().iterator().next());
+        if(comment.getChildrenComments().size() == 0) {
             this.commentRepository.delete(comment);
 
-        }else if(comment.getChildrenComments().size() > 1){
-            for(Comment c : comment.getChildrenComments()){
-                if(c.getChildrenComments().size() != 0) {
-                    c.setParentComment(null);
-                    this.commentRepository.save(c);
-                    this.commentRepository.delete(c.getChildrenComments());
-                }
+        }else if(comment.getChildrenComments().size() >= 1) {
+            for (Comment c : comment.getChildrenComments()) {
                 c.setParentComment(null);
-                this.commentRepository.save(c);
+                commentRepository.save(c);
             }
-            commentRepository.delete(comment.getChildrenComments());
-            this.commentRepository.delete(comment);
-
-        } else if(comment.getChildrenComments().size() == 0) {
-            this.commentRepository.delete(comment);
+            comment.setChildrenComments(new ArrayList<Comment>());
+            commentRepository.delete(comment);
         }
-
     }
 
 
