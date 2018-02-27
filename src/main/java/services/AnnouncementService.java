@@ -123,9 +123,12 @@ public class AnnouncementService {
     public Object[] formatDecimal(Object[] res) {
         Object[] result;
         DecimalFormat df = new DecimalFormat("#0.00");
-
-        res[0] = df.format(res[0]);
-        res[1] = df.format(res[1]);
+        if (res[0] == null || res[1]==null) {
+            return null;
+        }else {
+            res[0] = df.format(res[0]);
+            res[1] = df.format(res[1]);
+        }
 
         result = res;
         return result;
