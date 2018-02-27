@@ -19,8 +19,8 @@
 <jstl:forEach items="${questions}" var="item" >
     <acme:out code="question.text" value="${item.text}"/>
     <display:table name="${item.answers}" id="row" pagesize="5" class="displaytag" requestURI="${requestURI}">
-        <acme:column code="answer.answer" value="${row.answer}"/>
         <acme:column code="user.name" value="${row.user.name}"/>
+        <acme:column code="answer.answer" value="${row.answer}"/>
     </display:table>
     <br>
 

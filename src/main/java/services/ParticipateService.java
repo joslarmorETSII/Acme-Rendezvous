@@ -67,7 +67,9 @@ public class ParticipateService {
         Date currentDate = new Date();
         Assert.notNull(participate);
         checkByPrincipal(participate);
-        checkMayorEdad(participate.getAttendant());
+        if(participate.getRendezvous().getForAdults())
+            checkMayorEdad(participate.getAttendant());
+
         //Assert.isTrue(currentDate.before(participate.getMoment()));
         participate.setMoment(currentDate);
 
@@ -122,7 +124,7 @@ public class ParticipateService {
     public void checkMayorEdad(User attendant){
         Date fechaActual= new Date();
         Integer edad=  fechaActual.getYear()-attendant.getBirthday().getYear();
-        Assert.isTrue(edad>=18);
+        Assert.isTrue(edad>=18,"debe ser mayor de edad");
     }
 
 

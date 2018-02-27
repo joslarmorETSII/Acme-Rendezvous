@@ -25,9 +25,11 @@
     <form:hidden path="comments" />
     <form:hidden path="participates" />
     <form:hidden path="rendezvouses" />
+    <form:hidden path="answers" />
 
 
-        <acme:textbox code="user.name" path="name" />
+
+    <acme:textbox code="user.name" path="name" />
         <br />
 
         <acme:textbox code="user.surname" path="surname"/>

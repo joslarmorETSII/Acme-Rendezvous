@@ -5,6 +5,7 @@ import domain.*;
 import forms.QuestionsForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,9 +50,12 @@ public class ParticipateUserController extends AbstractController {
         ModelAndView result;
         Rendezvous rendezvous;
         Participate participate;
+        User principal = userService.findByPrincipal();
 
         participate = participateService.create();
         rendezvous = rendezvousService.findOne(rendezvousId);
+        if(rendezvous.getForAdults())
+            participateService.checkMayorEdad(principal);
         participate.setRendezvous(rendezvous);
         if (rendezvous.getQuestions().size() > 0) {
             QuestionsForm questionsForm = new QuestionsForm();
@@ -104,7 +108,7 @@ public class ParticipateUserController extends AbstractController {
                 result.addObject("user", userService.findByPrincipal());
             }
         } catch (final Throwable oops) {
-            result = createQuestionForm(questionsForm, questionsForm.getQuestions().iterator().next().getRendezvous(), "question.save.error");
+                result = createQuestionForm(questionsForm, questionsForm.getQuestions().iterator().next().getRendezvous(), "question.save.error");
         }
         return result;
     }
@@ -147,7 +151,7 @@ public class ParticipateUserController extends AbstractController {
         result.addObject("user", user);
         result.addObject("cancelUri", "cancelAll");
         try {
-            if(rendezvous.getQuestions().size()>0)
+            if(rendezvous.getQuestions().size()>0 && answersToDelete.size()>0)
                 answerService.deleteAnswers(answersToDelete,rendezvous);
             participateService.delete(participate);
         } catch (Throwable oops) {
